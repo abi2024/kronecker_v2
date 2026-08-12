@@ -11,8 +11,8 @@ factor with a phase rotation, so length is unbounded and long tokens degrade
 gracefully instead of being cropped — at identical parameter count.
 
 ## Status
-- [ ] M0 — reproduce V1 codec, pin determinism fingerprint
-- [ ] M1 — collision audit per script (pos_dim 32/48/64) + analytic overlay
+- [X ] M0 — reproduce V1 codec, pin determinism fingerprint
+- [X ] M1 — collision audit per script (pos_dim 32/48/64) + analytic overlay
 - [ ] M2 — tiny-scale stability of the wave codec
 - [ ] M3 — matched-parameter head-to-head, per-script bits-per-byte
 - [ ] M4 — 124M / 2.5B tokens / 3 seeds, all arms + robustness probe
