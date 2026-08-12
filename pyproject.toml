@@ -1,0 +1,22 @@
+[project]
+name = "kronecker-v2"
+version = "0.1.0"
+dependencies = [
+    "torch",
+    "torch-hd",              # imports as `torchhd`
+    "kronecker-embeddings",  # the V1 reference codec — the baseline arm
+    "transformers",
+    "numpy",
+    "pandas",
+    "matplotlib",
+    "pyyaml",
+    "regex",
+    "pytest",
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

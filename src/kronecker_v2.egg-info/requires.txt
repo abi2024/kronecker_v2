@@ -1,0 +1,10 @@
+torch
+torch-hd
+kronecker-embeddings
+transformers
+numpy
+pandas
+matplotlib
+pyyaml
+regex
+pytest

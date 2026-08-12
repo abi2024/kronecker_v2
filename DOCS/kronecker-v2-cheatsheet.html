@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The 32-byte window — Kronecker V2 cheat sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#10142E;          /* indigo ground */
+  --ink-2:#181D3D;        /* raised panel */
+  --ink-3:#232A52;        /* hairline */
+  --paper:#F2EEE4;        /* off-white */
+  --paper-dim:#A8A6BC;    /* muted body */
+  --turmeric:#E9A93C;     /* the one-hot side */
+  --teal:#48CFC0;         /* the wave side */
+  --rose:#E2607A;         /* collision / danger */
+  --sp:clamp(1rem,2.4vw,2rem);
+  --display:"Syne",system-ui,sans-serif;
+  --body:"Instrument Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --deva:"Noto Sans Devanagari","Instrument Sans",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--ink);color:var(--paper);
+  font-family:var(--body);font-size:16px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  background-image:
+    linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
+  background-size:32px 32px;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:var(--sp)}
+
+/* ---------- type ---------- */
+h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.02em;margin:0}
+h1{font-size:clamp(2.1rem,6vw,4.2rem);line-height:.98}
+h2{font-size:clamp(1.3rem,2.6vw,1.9rem);line-height:1.1}
+h3{font-size:1rem;font-weight:700;letter-spacing:.01em}
+.eyebrow{
+  font-family:var(--mono);font-size:.68rem;font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--turmeric);
+}
+.lede{font-size:clamp(1rem,1.6vw,1.18rem);color:var(--paper);max-width:62ch}
+.dim{color:var(--paper-dim)}
+.mono{font-family:var(--mono)}
+.deva{font-family:var(--deva)}
+.hl-a{color:var(--turmeric)}
+.hl-b{color:var(--teal)}
+.hl-c{color:var(--rose)}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(2rem,6vw,4.5rem) 0 clamp(1.5rem,4vw,3rem)}
+.hero h1{margin:.6rem 0 1.1rem}
+.hero h1 em{font-style:normal;color:var(--turmeric)}
+.thesis-strip{
+  display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.6rem;align-items:center;
+}
+.chip{
+  font-family:var(--mono);font-size:.78rem;padding:.4rem .7rem;
+  border:1px solid var(--ink-3);border-radius:2px;background:var(--ink-2);
+}
+.chip.bad{border-color:rgba(226,96,122,.45);color:var(--rose)}
+.chip.good{border-color:rgba(72,207,192,.4);color:var(--teal)}
+
+/* ---------- panels ---------- */
+.panel{
+  background:var(--ink-2);border:1px solid var(--ink-3);border-radius:3px;
+  padding:clamp(1.1rem,2.4vw,1.8rem);margin:1rem 0;
+}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+@media(max-width:820px){.grid2,.grid3{grid-template-columns:1fr}}
+.panel-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:1rem;flex-wrap:wrap}
+
+/* ---------- signature: byte window explorer ---------- */
+.explorer{
+  border:1px solid rgba(233,169,60,.28);
+  background:linear-gradient(180deg,rgba(233,169,60,.05),transparent 60%),var(--ink-2);
+}
+.exp-input{
+  width:100%;background:var(--ink);border:1px solid var(--ink-3);border-radius:2px;
+  color:var(--paper);font-family:var(--deva);font-size:1.5rem;padding:.7rem .9rem;
+  outline:none;transition:border-color .15s;
+}
+.exp-input:focus{border-color:var(--turmeric)}
+.presets{display:flex;flex-wrap:wrap;gap:.4rem;margin:.7rem 0 1.1rem}
+.preset{
+  font-family:var(--deva);font-size:.95rem;padding:.3rem .65rem;cursor:pointer;
+  background:transparent;color:var(--paper-dim);border:1px solid var(--ink-3);border-radius:2px;
+  transition:all .15s;
+}
+.preset:hover,.preset:focus-visible{color:var(--turmeric);border-color:var(--turmeric)}
+.slider-row{display:flex;align-items:center;gap:.9rem;margin:1.1rem 0 .4rem;flex-wrap:wrap}
+.slider-row input[type=range]{flex:1;min-width:180px;accent-color:var(--turmeric)}
+
+.strip{display:flex;gap:2px;margin:.9rem 0;flex-wrap:wrap}
+.cell{
+  width:26px;height:34px;border:1px solid var(--ink-3);border-radius:1px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:.5rem;line-height:1.1;color:var(--ink);
+  background:var(--ink);position:relative;transition:background .18s,opacity .18s;
+}
+.cell.filled{background:var(--turmeric);color:#20180A;font-weight:600}
+.cell.cut{background:var(--ink);border-style:dashed;border-color:rgba(226,96,122,.5);color:var(--rose);opacity:.55}
+.cell.cut.filled{background:rgba(226,96,122,.22);color:var(--rose)}
+.cell .idx{font-size:.42rem;opacity:.5;color:var(--paper-dim)}
+.cell.filled .idx{color:#20180A;opacity:.6}
+.cliff{width:2px;background:var(--rose);border-radius:1px;margin:0 3px;align-self:stretch}
+
+.verdict{
+  font-family:var(--mono);font-size:.86rem;padding:.75rem .9rem;border-radius:2px;
+  border-left:3px solid var(--ink-3);background:var(--ink);margin-top:1rem;
+}
+.verdict.safe{border-left-color:var(--teal)}
+.verdict.danger{border-left-color:var(--rose)}
+.verdict strong{font-weight:600}
+.readout{display:flex;gap:1.6rem;flex-wrap:wrap;font-family:var(--mono);font-size:.8rem;color:var(--paper-dim);margin-top:.5rem}
+.readout b{color:var(--paper);font-weight:600}
+
+/* ---------- byte cost bars ---------- */
+.cost-row{display:grid;grid-template-columns:8.5rem 1fr 4.2rem;gap:.7rem;align-items:center;margin:.5rem 0;font-size:.9rem}
+.cost-bar{height:16px;background:var(--ink);border:1px solid var(--ink-3);border-radius:1px;overflow:hidden;position:relative}
+.cost-fill{height:100%;background:var(--turmeric);transition:width .4s}
+.cost-fill.over{background:repeating-linear-gradient(45deg,var(--rose),var(--rose) 4px,rgba(226,96,122,.5) 4px,rgba(226,96,122,.5) 8px)}
+.cost-num{font-family:var(--mono);font-size:.78rem;color:var(--paper-dim);text-align:right}
+
+/* ---------- data table ---------- */
+table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:.83rem}
+th{
+  text-align:right;font-weight:600;color:var(--paper-dim);font-size:.66rem;
+  letter-spacing:.1em;text-transform:uppercase;padding:.5rem .5rem;border-bottom:1px solid var(--ink-3);
+}
+th:first-child,td:first-child{text-align:left}
+td{padding:.45rem .5rem;text-align:right;border-bottom:1px solid rgba(35,42,82,.5)}
+tr.zero td{color:var(--teal)}
+tr.paper-setting td{background:rgba(233,169,60,.09)}
+tr.paper-setting td:first-child::after{content:" ← paper's 124M";color:var(--turmeric);font-size:.7rem}
+
+/* ---------- slot vs rotation ---------- */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--ink-3);border-radius:3px;overflow:hidden}
+@media(max-width:820px){.compare{grid-template-columns:1fr}}
+.side{padding:clamp(1.1rem,2.4vw,1.7rem)}
+.side.a{background:linear-gradient(180deg,rgba(233,169,60,.06),transparent);border-right:1px solid var(--ink-3)}
+.side.b{background:linear-gradient(180deg,rgba(72,207,192,.06),transparent)}
+@media(max-width:820px){.side.a{border-right:none;border-bottom:1px solid var(--ink-3)}}
+.side svg{width:100%;height:auto;display:block;margin:.9rem 0}
+.side ul{margin:.8rem 0 0;padding-left:1.1rem;font-size:.9rem}
+.side li{margin:.35rem 0}
+.side li::marker{color:var(--paper-dim)}
+
+/* ---------- gotchas ---------- */
+.gotcha{border-left:2px solid var(--ink-3);padding-left:.9rem}
+.gotcha h3{color:var(--paper);margin-bottom:.35rem}
+.gotcha p{margin:.3rem 0;font-size:.88rem;color:var(--paper-dim)}
+.gotcha .fix{font-family:var(--mono);font-size:.76rem;color:var(--teal)}
+
+/* ---------- misc ---------- */
+.rule{height:1px;background:var(--ink-3);margin:clamp(2rem,5vw,3.5rem) 0}
+.q-list{counter-reset:q;list-style:none;padding:0;margin:1rem 0 0}
+.q-list li{
+  counter-increment:q;padding:.6rem 0 .6rem 2.6rem;position:relative;
+  border-bottom:1px solid rgba(35,42,82,.5);font-size:.95rem;
+}
+.q-list li::before{
+  content:counter(q);position:absolute;left:0;top:.6rem;
+  font-family:var(--mono);font-size:.7rem;color:var(--turmeric);
+  border:1px solid var(--ink-3);width:1.5rem;height:1.5rem;
+  display:flex;align-items:center;justify-content:center;border-radius:50%;
+}
+footer{padding:2rem 0 3rem;font-family:var(--mono);font-size:.72rem;color:var(--paper-dim)}
+:focus-visible{outline:2px solid var(--turmeric);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="eyebrow">Kronecker V2 · Milestone 1 · findings</div>
+  <h1>Three different words.<br>One <em>identical</em> vector.<br>Forever.</h1>
+  <p class="lede">The Kronecker embedding builds a token's vector from its bytes using a frozen recipe that sees only the first <span class="mono">pos_dim</span> of them. Two tokens sharing that prefix get the same vector — and no amount of training can ever pull them apart.</p>
+  <div class="thesis-strip">
+    <span class="chip bad"><span class="deva">कार्य</span> work</span>
+    <span class="chip bad"><span class="deva">कार्यक्रम</span> programme</span>
+    <span class="chip bad"><span class="deva">कार्यालय</span> office</span>
+    <span class="chip">→ same 16 bytes → same code → same embedding</span>
+  </div>
+</header>
+
+<!-- ============ SIGNATURE: EXPLORER ============ -->
+<section class="panel explorer">
+  <div class="panel-head">
+    <div>
+      <div class="eyebrow">Try it</div>
+      <h2>Where does your word get cut?</h2>
+    </div>
+    <div class="dim mono" style="font-size:.76rem">each cell = one byte position</div>
+  </div>
+
+  <input class="exp-input" id="word" value="कार्यक्रम" spellcheck="false" aria-label="Type a word to encode">
+  <div class="presets" id="presets"></div>
+
+  <div class="slider-row">
+    <span class="mono" style="font-size:.8rem">pos_dim</span>
+    <input type="range" id="posdim" min="8" max="40" value="16" aria-label="Byte window size">
+    <span class="mono hl-a" id="posdim-val" style="font-size:.9rem;min-width:2.2rem">16</span>
+    <span class="dim mono" style="font-size:.74rem">D = 256 × pos_dim = <b id="dval" class="mono">4096</b></span>
+  </div>
+
+  <div class="strip" id="strip" aria-live="polite"></div>
+
+  <div class="readout">
+    <span>characters <b id="r-chars">—</b></span>
+    <span>bytes <b id="r-bytes">—</b></span>
+    <span>bytes/char <b id="r-bpc">—</b></span>
+    <span>kept <b id="r-kept">—</b></span>
+    <span>dropped <b id="r-drop">—</b></span>
+  </div>
+
+  <div class="verdict" id="verdict">—</div>
+</section>
+
+<!-- ============ WHY: BYTE COST ============ -->
+<section class="panel">
+  <div class="eyebrow">Root cause</div>
+  <h2>The window is measured in bytes. Meaning is measured in characters.</h2>
+  <p class="dim" style="max-width:62ch">UTF-8 charges different scripts different rates. A window that is generous in one language is cramped in another, and nothing in the embedding's parameter count reveals this.</p>
+  <div style="margin-top:1.2rem" id="costbars"></div>
+  <p class="dim" style="font-size:.86rem;margin-top:1rem">
+    <span class="deva hl-c">क्ष</span> looks like one character. Unicode stores it as three codepoints — <span class="deva">क</span> + halant + <span class="deva">ष</span> — at 3 bytes each. <strong class="hl-c">Nine bytes for one visual symbol.</strong> Three of those and a 32-byte budget is gone.
+  </p>
+</section>
+
+<!-- ============ WHY TRAINING CAN'T FIX IT ============ -->
+<section class="panel">
+  <div class="eyebrow">The part people get wrong</div>
+  <h2>Why more training cannot fix a collision</h2>
+  <div class="grid2" style="margin-top:1.2rem">
+    <div>
+      <h3 class="dim">Dense table</h3>
+      <svg viewBox="0 0 300 130" role="img" aria-label="Dense table: two tokens own separate rows and move independently">
+        <rect x="10" y="18" width="130" height="20" fill="#232A52"/>
+        <rect x="10" y="44" width="130" height="20" fill="#232A52"/>
+        <rect x="10" y="70" width="130" height="20" fill="#48CFC0" opacity=".85"/>
+        <rect x="10" y="96" width="130" height="20" fill="#48CFC0" opacity=".45"/>
+        <text x="150" y="84" fill="#48CFC0" font-family="IBM Plex Mono" font-size="10">token A row</text>
+        <text x="150" y="110" fill="#48CFC0" font-family="IBM Plex Mono" font-size="10" opacity=".7">token B row</text>
+        <text x="10" y="12" fill="#A8A6BC" font-family="IBM Plex Mono" font-size="9">one row per token</text>
+        <path d="M280 78 l0 -14 M276 68 l4 -5 4 5" stroke="#48CFC0" stroke-width="1.5" fill="none"/>
+        <path d="M280 104 l0 14 M276 114 l4 5 4 -5" stroke="#48CFC0" stroke-width="1.5" fill="none"/>
+      </svg>
+      <p style="font-size:.88rem">Gradient moves A's row and leaves B's alone. They can separate because <strong>they own different parameters.</strong></p>
+    </div>
+    <div>
+      <h3 class="dim">Kronecker</h3>
+      <svg viewBox="0 0 300 130" role="img" aria-label="Kronecker: both tokens produce the same code into one shared projection">
+        <rect x="10" y="30" width="80" height="22" fill="#E9A93C" opacity=".85"/>
+        <rect x="10" y="62" width="80" height="22" fill="#E9A93C" opacity=".85"/>
+        <text x="10" y="24" fill="#A8A6BC" font-family="IBM Plex Mono" font-size="9">same code, twice</text>
+        <path d="M96 41 L140 55 M96 73 L140 61" stroke="#E2607A" stroke-width="1.5" fill="none"/>
+        <rect x="144" y="38" width="46" height="40" fill="none" stroke="#A8A6BC" stroke-width="1"/>
+        <text x="167" y="62" fill="#A8A6BC" font-family="IBM Plex Mono" font-size="8" text-anchor="middle">W</text>
+        <path d="M194 58 L228 58" stroke="#E2607A" stroke-width="1.5"/>
+        <rect x="232" y="48" width="56" height="20" fill="#E2607A" opacity=".8"/>
+        <text x="260" y="82" fill="#E2607A" font-family="IBM Plex Mono" font-size="9" text-anchor="middle">one output</text>
+      </svg>
+      <p style="font-size:.88rem">There is no per-token parameter. One shared matrix receives <strong class="hl-c">the same input vector</strong> from both. Whatever it does to one, it does to the other.</p>
+    </div>
+  </div>
+  <div class="verdict danger" style="margin-top:1.1rem">
+    A fingerprint door with two people who share a print. Improving the scanner never helps — <strong>the information isn't there.</strong>
+  </div>
+</section>
+
+<!-- ============ THE NUMBERS ============ -->
+<section class="panel">
+  <div class="panel-head">
+    <div>
+      <div class="eyebrow">Measured · 131,072-token BrahmicTokenizer · no training</div>
+      <h2>What the audit found</h2>
+    </div>
+  </div>
+  <div class="grid2">
+    <div>
+      <h3 class="dim" style="margin-bottom:.7rem">Permanent collisions by window</h3>
+      <table>
+        <thead><tr><th>pos_dim</th><th>groups</th><th>tokens</th><th>% vocab</th></tr></thead>
+        <tbody>
+          <tr><td>12</td><td>1,877</td><td>5,335</td><td>4.070%</td></tr>
+          <tr class="paper-setting"><td>16</td><td>380</td><td>903</td><td>0.689%</td></tr>
+          <tr><td>20</td><td>131</td><td>303</td><td>0.231%</td></tr>
+          <tr><td>24</td><td>39</td><td>93</td><td>0.071%</td></tr>
+          <tr class="zero"><td>32</td><td>0</td><td>0</td><td>0.000%</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:.88rem;margin-top:.9rem">Zero at 32 is <strong>not a null result.</strong> The tokenizer's own audit reports <span class="mono">tokens &gt; 32 bytes: 0</span> — it was built to satisfy the window. The constraint didn't vanish; it was <strong class="hl-a">paid for upstream, in the vocabulary.</strong></p>
+    </div>
+    <div>
+      <h3 class="dim" style="margin-bottom:.7rem">Who pays, at pos_dim = 16</h3>
+      <div id="scriptbars"></div>
+      <p style="font-size:.88rem;margin-top:.9rem">Latin loses <strong>18 of 108,185</strong> tokens — 0.02%. Devanagari loses 6.3% of its own. <strong class="hl-c">Two orders of magnitude of asymmetry</strong> from one shared window.</p>
+    </div>
+  </div>
+  <div class="verdict" style="margin-top:1.1rem">
+    <strong>Second mechanism, independent of the window.</strong> <span class="mono">token_id_to_bytes</span> resolves ids via <span class="mono">tokenizer.decode()</span>, which renders every partial-codepoint token as U+FFFD. <strong class="hl-c">1,151 tokens still collide at pos_dim = 32</strong>, where truncation contributes nothing. That's the byte-extraction path, not the codec.
+  </div>
+</section>
+
+<!-- ============ THE FIX ============ -->
+<section>
+  <div class="eyebrow" style="margin-bottom:.5rem">The fix</div>
+  <h2 style="margin-bottom:1rem">Stop asking "which slot?" Start asking "how much rotation?"</h2>
+  <div class="compare">
+    <div class="side a">
+      <div class="eyebrow" style="color:var(--turmeric)">One-hot · a grid</div>
+      <svg viewBox="0 0 320 150" role="img" aria-label="A grid of slots with a hard cliff at the last column">
+        <g stroke="#232A52" stroke-width="1">
+          <script type="text/placeholder"></script>
+        </g>
+        <g id="gridcells"></g>
+        <line x1="250" y1="14" x2="250" y2="126" stroke="#E2607A" stroke-width="2"/>
+        <text x="256" y="74" fill="#E2607A" font-family="IBM Plex Mono" font-size="9">cliff</text>
+        <text x="16" y="142" fill="#A8A6BC" font-family="IBM Plex Mono" font-size="9">byte position →</text>
+      </svg>
+      <ul>
+        <li>Position is an <strong>index</strong> into a fixed number of columns.</li>
+        <li>Byte 33 has nowhere to go. It is dropped, silently.</li>
+        <li>Longer vocabulary → same cost. Longer <em>token</em> → data loss.</li>
+      </ul>
+    </div>
+    <div class="side b">
+      <div class="eyebrow" style="color:var(--teal)">Wave · a circle</div>
+      <svg viewBox="0 0 320 150" role="img" aria-label="Phasors on a circle, rotation encoding position with no edge">
+        <circle cx="160" cy="70" r="52" fill="none" stroke="#232A52" stroke-width="1"/>
+        <g id="phasors"></g>
+        <circle cx="160" cy="70" r="2.5" fill="#A8A6BC"/>
+        <text x="16" y="142" fill="#A8A6BC" font-family="IBM Plex Mono" font-size="9">position p → rotate p times. no edge.</text>
+      </svg>
+      <ul>
+        <li>Each byte value gets a fixed random <strong>angle</strong>.</li>
+        <li>Position <span class="mono">p</span> multiplies that angle — <span class="mono">z<sup>p</sup></span>. <strong>p is a multiplier, not an index.</strong></li>
+        <li>Bind = add angles. Bundle = add arrows. Nothing to fall off.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid2" style="margin-top:1rem">
+    <div class="panel" style="margin:0">
+      <h3>Why the rotation is load-bearing</h3>
+      <p style="font-size:.9rem">Drop it and just add a vector per character: <span class="mono">dog</span> and <span class="mono">god</span> produce identical codes, because addition ignores order. <strong>Every anagram collides.</strong> Position-as-rotation is what breaks the tie — and it is exactly the binding operation from Holographic Reduced Representations, which is why Plate belongs in your related work.</p>
+    </div>
+    <div class="panel" style="margin:0">
+      <h3>Why 0.79, not 0.00</h3>
+      <p style="font-size:.9rem"><span class="deva">कार्य</span> and <span class="deva">कार्यक्रम</span> <em>should</em> be near each other — shared prefix, related morphology. That orthographic locality is why Kronecker beat BPE in the first place. A codec that pushed them to zero would destroy the thing worth keeping. <strong class="hl-b">Near but distinguishable is the target.</strong></p>
+    </div>
+  </div>
+
+  <div class="panel" style="border-color:rgba(72,207,192,.3)">
+    <div class="eyebrow" style="color:var(--teal)">Parameter parity, by construction</div>
+    <p class="mono" style="font-size:.92rem;margin:.6rem 0">
+      one-hot: 256 × 16 = <b class="hl-a">4096</b> real &nbsp;·&nbsp; wave: 2048 complex × 2 = <b class="hl-b">4096</b> real
+    </p>
+    <p style="font-size:.88rem;margin:0" class="dim">Same input width → same <span class="mono">Linear(4096, d_model)</span> → same trainable parameter count. Any difference you later measure cannot be explained by "the new one was bigger." This is asserted by <span class="mono">test_equal_params.py</span>, not by a sentence in a README.</p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ============ GOTCHAS ============ -->
+<section>
+  <div class="eyebrow">Three things that look like test failures and are actually facts about your codec</div>
+  <h2 style="margin:.5rem 0 1.2rem">Reproducibility</h2>
+  <div class="grid3">
+    <div class="gotcha">
+      <h3>torch.rand isn't portable</h3>
+      <p>PyTorch guarantees CPU RNG reproducibility within one platform and build. Windows and Linux vectorize differently — two "seed 0" codecs, different numbers.</p>
+      <p class="fix">→ numpy PCG64: integer arithmetic, same stream everywhere</p>
+    </div>
+    <div class="gotcha">
+      <h3>cos and sin aren't either</h3>
+      <p>MSVC's libm and glibc's differ in the last bits. The wave codes <em>cannot</em> be pinned bitwise across operating systems by any amount of seeding.</p>
+      <p class="fix">→ pin phases exactly (no trig), pin codes by value at 1e-4</p>
+    </div>
+    <div class="gotcha">
+      <h3>A matmul isn't row-order stable</h3>
+      <p>Identical input rows at different batch positions can give bitwise-different output — BLAS tiles and schedules the reduction differently.</p>
+      <p class="fix">→ exact on the lookup, allclose on the projection</p>
+    </div>
+  </div>
+  <div class="verdict danger" style="margin-top:1.2rem">
+    Why it matters: develop on Windows, train on a rented Linux box, and without these fixes your trained model uses a <strong>different codec than the one you audited</strong> — and every number in the paper describes the wrong object. Silently.
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ============ TALKING POINTS ============ -->
+<section>
+  <div class="eyebrow">If you can answer these, you understand it</div>
+  <h2 style="margin:.5rem 0">Three questions</h2>
+  <ol class="q-list">
+    <li>Why can't more training fix a collision?</li>
+    <li>Why would adding character vectors <em>without</em> rotation make <span class="mono">dog</span> and <span class="mono">god</span> identical?</li>
+    <li>Why is a cosine of 0.79 between <span class="deva">कार्य</span> and <span class="deva">कार्यक्रम</span> a better outcome than 0.00?</li>
+  </ol>
+</section>
+
+<footer>
+  Milestone 1 · measured on the 131,072-token BrahmicTokenizer, no training, no GPU · figures reproduce via
+  <span class="hl-a">python experiments/m1_collision_audit.py --byte-source both</span>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  const enc = new TextEncoder();
+
+  /* ---------- known collision families (real groups from the audit) ---------- */
+  const FAMILIES = [
+    ["कार्य","कार्यक्रम","कार्यालय"],
+    ["सरकार","सरकारी","सरकारले"],
+    ["अधिकार","अधिकारी","अधिकारियों"],
+    ["संस्कृति","संस्करण"],
+    ["विज्ञ","विज्ञान"]
+  ];
+  const PRESETS = ["कार्यक्रम","कार्यालय","अधिकारियों","संस्कृति","क्ष","తెలుగు","the","internationalization"];
+
+  const $ = id => document.getElementById(id);
+  const wordEl=$("word"), posEl=$("posdim"), stripEl=$("strip"), verdictEl=$("verdict");
+
+  /* presets */
+  PRESETS.forEach(w=>{
+    const b=document.createElement("button");
+    b.className="preset"; b.textContent=w; b.type="button";
+    b.addEventListener("click",()=>{wordEl.value=w;render();wordEl.focus();});
+    $("presets").appendChild(b);
+  });
+
+  /* map each byte to the character index it belongs to (for colour banding) */
+  function byteChars(word){
+    const out=[];
+    for(const ch of word){
+      const n=enc.encode(ch).length;
+      for(let i=0;i<n;i++) out.push(ch);
+    }
+    return out;
+  }
+
+  /* UTF-8-safe truncation: never split a codepoint */
+  function safeTruncate(word, maxBytes){
+    let kept="", used=0;
+    for(const ch of word){
+      const n=enc.encode(ch).length;
+      if(used+n>maxBytes) break;
+      kept+=ch; used+=n;
+    }
+    return {kept, used};
+  }
+
+  function render(){
+    const word=wordEl.value||"";
+    const pos=parseInt(posEl.value,10);
+    $("posdim-val").textContent=pos;
+    $("dval").textContent=(256*pos).toLocaleString();
+
+    const bytes=enc.encode(word);
+    const owners=byteChars(word);
+    const {kept,used}=safeTruncate(word,pos);
+
+    /* strip: one cell per byte position, up to max(pos, bytes) */
+    stripEl.innerHTML="";
+    const total=Math.max(pos,bytes.length);
+    for(let i=0;i<total;i++){
+      if(i===pos && bytes.length>pos){
+        const c=document.createElement("div"); c.className="cliff"; stripEl.appendChild(c);
+      }
+      const cell=document.createElement("div");
+      const hasByte=i<bytes.length;
+      const beyond=i>=used;
+      cell.className="cell"+(hasByte?" filled":"")+(beyond?" cut":"");
+      if(hasByte){
+        cell.innerHTML=`<span>${bytes[i].toString(16).padStart(2,"0")}</span><span class="idx">${owners[i]||""}</span>`;
+        cell.title=`byte ${i+1} = 0x${bytes[i].toString(16)} (from "${owners[i]}")`;
+      }else{
+        cell.innerHTML=`<span class="idx">${i+1}</span>`;
+      }
+      stripEl.appendChild(cell);
+    }
+
+    const chars=[...word].length;
+    $("r-chars").textContent=chars;
+    $("r-bytes").textContent=bytes.length;
+    $("r-bpc").textContent=chars?(bytes.length/chars).toFixed(1):"—";
+    $("r-kept").textContent=`${used} B / ${[...kept].length} chars`;
+    $("r-drop").textContent=`${bytes.length-used} B`;
+
+    /* collision check against the real families */
+    let clash=null;
+    for(const fam of FAMILIES){
+      if(!fam.includes(word)) continue;
+      const mine=safeTruncate(word,pos).kept;
+      const others=fam.filter(w=>w!==word && safeTruncate(w,pos).kept===mine);
+      if(others.length){clash=others;break;}
+    }
+
+    if(clash){
+      verdictEl.className="verdict danger";
+      verdictEl.innerHTML=`<strong>COLLIDES</strong> with <span class="deva">${clash.join("</span>, <span class='deva'>")}</span> — identical code, identical vector, permanently. Widen the window to separate them.`;
+    }else if(bytes.length>used){
+      verdictEl.className="verdict danger";
+      verdictEl.innerHTML=`<strong>TRUNCATED</strong> — ${bytes.length-used} bytes dropped. Any word sharing these first ${used} bytes becomes indistinguishable from this one.`;
+    }else{
+      verdictEl.className="verdict safe";
+      verdictEl.innerHTML=`<strong>FITS</strong> — all ${bytes.length} bytes survive the window. Nothing lost.`;
+    }
+  }
+
+  wordEl.addEventListener("input",render);
+  posEl.addEventListener("input",render);
+
+  /* ---------- byte-cost bars ---------- */
+  const COSTS=[
+    ["English",'"internationalization"',20,20],
+    ["German",'"Straße"',6,7],
+    ["Devanagari",'"कार्यक्रम"',9,27],
+    ["Telugu",'"తెలుగు"',6,18],
+    ["Conjunct",'"क्ष" ×4',12,36]
+  ];
+  $("costbars").innerHTML=COSTS.map(([name,sample,chars,bytes])=>{
+    const pct=Math.min(100,bytes/32*100), over=bytes>32;
+    return `<div class="cost-row">
+      <span>${name}<br><span class="dim mono deva" style="font-size:.7rem">${sample}</span></span>
+      <span class="cost-bar"><span class="cost-fill${over?" over":""}" style="width:${pct}%"></span></span>
+      <span class="cost-num">${bytes} B<br><span style="opacity:.6">${chars} ch</span></span>
+    </div>`;
+  }).join("")+`<p class="dim mono" style="font-size:.7rem;margin-top:.6rem">bar full = the 32-byte production window</p>`;
+
+  /* ---------- per-script collision bars ---------- */
+  const SCRIPTS=[["Devanagari",253,4020],["Malayalam",182,1797],["Bengali",101,2166],
+                 ["Telugu",78,1402],["Kannada",77,1422],["Tamil",60,1054],["Latin",18,108185]];
+  const maxPct=Math.max(...SCRIPTS.map(([,n,t])=>n/t*100));
+  $("scriptbars").innerHTML=SCRIPTS.map(([name,n,t])=>{
+    const pct=n/t*100;
+    return `<div class="cost-row">
+      <span>${name}</span>
+      <span class="cost-bar"><span class="cost-fill" style="width:${pct/maxPct*100}%;background:${name==="Latin"?"#48CFC0":"#E2607A"}"></span></span>
+      <span class="cost-num">${n}<br><span style="opacity:.6">${pct.toFixed(2)}%</span></span>
+    </div>`;
+  }).join("");
+
+  /* ---------- decorative svg: grid cells + phasors ---------- */
+  const gc=document.getElementById("gridcells");
+  let cells="";
+  for(let r=0;r<6;r++) for(let c=0;c<14;c++){
+    const x=18+c*17, y=18+r*18, on=(r*7+c*3)%5===0 && c<13;
+    cells+=`<rect x="${x}" y="${y}" width="14" height="14" fill="${on?"#E9A93C":"none"}" opacity="${on?.85:1}" stroke="#232A52" stroke-width="1"/>`;
+  }
+  gc.innerHTML=cells;
+
+  const ph=document.getElementById("phasors");
+  let arrows="";
+  for(let i=0;i<9;i++){
+    const a=(i*47)*Math.PI/180, len=52;
+    const x=160+Math.cos(a)*len, y=70+Math.sin(a)*len;
+    arrows+=`<line x1="160" y1="70" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#48CFC0" stroke-width="1.4" opacity="${(0.25+0.075*i).toFixed(2)}"/>
+             <circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.4" fill="#48CFC0" opacity="${(0.35+0.07*i).toFixed(2)}"/>`;
+  }
+  ph.innerHTML=arrows;
+
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+extends: _shared.yaml
+milestone: m4
+model: {n_layer: 12, n_head: 12, d_model: 768}
+tokens: 2_500_000_000
+seeds: [0, 1, 2]
+codec: {name: albert}

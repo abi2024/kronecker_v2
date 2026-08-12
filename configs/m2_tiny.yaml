@@ -1,0 +1,5 @@
+extends: _shared.yaml
+milestone: m2
+model: {n_layer: 6, n_head: 6, d_model: 384}
+tokens: 100_000_000
+codec: {name: onehot, pos_dim: 32}   # <- the ONLY line that differs between arms

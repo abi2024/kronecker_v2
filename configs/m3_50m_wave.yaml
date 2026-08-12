@@ -1,0 +1,5 @@
+extends: _shared.yaml
+milestone: m3
+model: {n_layer: 12, n_head: 8, d_model: 512}
+tokens: 500_000_000
+codec: {name: wave}

@@ -1,0 +1,126 @@
+{
+  "raw": {
+    "12": {
+      "groups": 1877,
+      "collided_tokens": 5335,
+      "pct_of_vocab": 4.0703,
+      "truncation": {
+        "pos_dim": 12,
+        "vocab_size": 131072,
+        "n_truncated": 6573,
+        "pct_truncated": 5.014801025390625,
+        "max_bytes_lost": 21
+      }
+    },
+    "16": {
+      "groups": 380,
+      "collided_tokens": 903,
+      "pct_of_vocab": 0.6889,
+      "truncation": {
+        "pos_dim": 16,
+        "vocab_size": 131072,
+        "n_truncated": 1532,
+        "pct_truncated": 1.1688232421875,
+        "max_bytes_lost": 16
+      }
+    },
+    "20": {
+      "groups": 131,
+      "collided_tokens": 303,
+      "pct_of_vocab": 0.2312,
+      "truncation": {
+        "pos_dim": 20,
+        "vocab_size": 131072,
+        "n_truncated": 710,
+        "pct_truncated": 0.54168701171875,
+        "max_bytes_lost": 12
+      }
+    },
+    "24": {
+      "groups": 39,
+      "collided_tokens": 93,
+      "pct_of_vocab": 0.071,
+      "truncation": {
+        "pos_dim": 24,
+        "vocab_size": 131072,
+        "n_truncated": 288,
+        "pct_truncated": 0.2197265625,
+        "max_bytes_lost": 9
+      }
+    },
+    "32": {
+      "groups": 0,
+      "collided_tokens": 0,
+      "pct_of_vocab": 0.0,
+      "truncation": {
+        "pos_dim": 32,
+        "vocab_size": 131072,
+        "n_truncated": 0,
+        "pct_truncated": 0.0,
+        "max_bytes_lost": 0
+      }
+    }
+  },
+  "decode": {
+    "12": {
+      "groups": 1887,
+      "collided_tokens": 6493,
+      "pct_of_vocab": 4.9538,
+      "truncation": {
+        "pos_dim": 12,
+        "vocab_size": 131072,
+        "n_truncated": 6583,
+        "pct_truncated": 5.022430419921875,
+        "max_bytes_lost": 21
+      }
+    },
+    "16": {
+      "groups": 391,
+      "collided_tokens": 2056,
+      "pct_of_vocab": 1.5686,
+      "truncation": {
+        "pos_dim": 16,
+        "vocab_size": 131072,
+        "n_truncated": 1533,
+        "pct_truncated": 1.169586181640625,
+        "max_bytes_lost": 16
+      }
+    },
+    "20": {
+      "groups": 141,
+      "collided_tokens": 1454,
+      "pct_of_vocab": 1.1093,
+      "truncation": {
+        "pos_dim": 20,
+        "vocab_size": 131072,
+        "n_truncated": 710,
+        "pct_truncated": 0.54168701171875,
+        "max_bytes_lost": 12
+      }
+    },
+    "24": {
+      "groups": 49,
+      "collided_tokens": 1244,
+      "pct_of_vocab": 0.9491,
+      "truncation": {
+        "pos_dim": 24,
+        "vocab_size": 131072,
+        "n_truncated": 288,
+        "pct_truncated": 0.2197265625,
+        "max_bytes_lost": 9
+      }
+    },
+    "32": {
+      "groups": 10,
+      "collided_tokens": 1151,
+      "pct_of_vocab": 0.8781,
+      "truncation": {
+        "pos_dim": 32,
+        "vocab_size": 131072,
+        "n_truncated": 0,
+        "pct_truncated": 0.0,
+        "max_bytes_lost": 0
+      }
+    }
+  }
+}

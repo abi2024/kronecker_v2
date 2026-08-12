@@ -1,0 +1,10 @@
+# Settings identical across every arm. If a value lives here, it is NOT the
+# variable under test.
+tokenizer: theschoolofai/BrahmicTokenizer-131K
+vocab_size: 131072
+code_dim: 8192
+seed: 0
+data:
+  english: HuggingFaceFW/fineweb-edu
+  indic: [ai4bharat/sangraha]
+  english_fraction: 0.5
