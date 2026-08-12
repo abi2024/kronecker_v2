@@ -1,0 +1,19 @@
+# CPU smoke test: proves the pipeline, not the science.
+model: {block_size: 128, vocab_size: 131072, n_layer: 2, n_head: 4, d_model: 128, dropout: 0.0}
+data: {dir: /tmp/m2data, tables_dir: /tmp/tables}
+train:
+  device: cpu
+  batch_size: 4
+  grad_accum: 1
+  max_steps: 50
+  lr: 1.0e-3
+  warmup: 10
+  min_lr_frac: 0.1
+  weight_decay: 0.1
+  grad_clip: 1.0
+  eval_every: 25
+  eval_iters: 8
+  log_every: 10
+  seed: 1337
+  data_seed: 42
+out_root: /tmp/m2runs

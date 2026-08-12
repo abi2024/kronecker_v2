@@ -1,0 +1,2 @@
+extends: m2_shared.yaml
+codec: {name: wave, d_complex: 2048, seed: 0, normalize: znorm, table: wave2048_znorm}

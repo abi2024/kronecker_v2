@@ -19,15 +19,21 @@ class CodecEmbedding(nn.Module):
     """Wrap any Codec into a trainable embedding layer."""
 
     def __init__(self, codec, d_model: int, vocab_size: int = 131_072,
-                 chunk: int = 8192) -> None:
+                 chunk: int = 8192, codes: torch.Tensor | None = None) -> None:
         super().__init__()
         self.codec = codec
         self.vocab_size = vocab_size
         self.d_model = d_model
         self.code_dim = codec.code_dim
 
-        with torch.no_grad():
-            table = codec.build_table(vocab_size, chunk=chunk)
+        if codes is not None:
+            # Prebuilt (e.g. loaded from disk, possibly bf16). Must match shape.
+            assert codes.shape == (vocab_size, self.code_dim), \
+                f"codes {tuple(codes.shape)} != ({vocab_size}, {self.code_dim})"
+            table = codes
+        else:
+            with torch.no_grad():
+                table = codec.build_table(vocab_size, chunk=chunk)
         # persistent=False: the table is a pure function of the codec + vocab,
         # so it is rebuilt on load rather than shipped inside the checkpoint.
         self.register_buffer("codes", table, persistent=False)

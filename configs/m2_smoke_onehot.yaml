@@ -1,0 +1,2 @@
+extends: m2_smoke_shared.yaml
+codec: {name: onehot, pos_dim: 16, table: onehot16}

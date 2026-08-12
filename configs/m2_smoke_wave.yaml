@@ -1,0 +1,2 @@
+extends: m2_smoke_shared.yaml
+codec: {name: wave, d_complex: 2048, seed: 0, normalize: sqrt_len, table: wave2048_sqrt_len}
