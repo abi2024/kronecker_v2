@@ -154,7 +154,7 @@ def main() -> None:
     table_hash = cfg["codec"].get("table", "dense")
     print(f"[{name}] device={device} params={counts} body_hash={body_hash[:12]}")
 
-    log = (out / "log.csv").open("w", encoding="utf-8")
+    log = (out / "log.csv").open("w", encoding="utf-8", buffering=1)
     log.write("step,loss,val_loss,lr,grad_norm,proj_grad_norm,tokens_per_s\n")
 
     status, val_loss, best_val = "ok", float("nan"), float("inf")

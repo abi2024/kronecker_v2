@@ -12,8 +12,8 @@ data:
   tables_dir: data/tables
 train:
   device: null            # auto: cuda if available
-  batch_size: 8           # micro-batch; logits are the VRAM hog at V=131K
-  grad_accum: 4           # effective 32,768 tokens/step
+  batch_size: 4           # micro-batch; logits are the VRAM hog at V=131K
+  grad_accum: 8           # effective 32,768 tokens/step
   max_steps: 3000         # ~98M tokens
   lr: 6.0e-4
   warmup: 200
@@ -21,7 +21,7 @@ train:
   weight_decay: 0.1
   grad_clip: 1.0
   eval_every: 250
-  eval_iters: 100
+  eval_iters: 50
   log_every: 20
   seed: 1337              # same across arms => identical body init (verified)
   data_seed: 42           # same across arms => identical batch order

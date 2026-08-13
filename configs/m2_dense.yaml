@@ -1,0 +1,5 @@
+# Reference arm, NOT part of the matched-parameter claim: a dense 131072 x 384
+# learned table adds ~50M embedding params the codec arms don't have. Useful
+# context curve; excluded from the 5% verdict by the report (codec name != wave).
+extends: m2_shared.yaml
+codec: {name: dense}
