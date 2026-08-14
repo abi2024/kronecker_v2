@@ -1,4 +1,4 @@
-arm,status,final_val,best_val,Δ_vs_baseline_%,max_loss_jump,emb_params,wall_min,body_hash,tokens_seen
+arm,status,final_val,best_val,delta_vs_base_pct,max_loss_jump,emb_params,wall_min,body_hash,tokens_seen
 m2_dense,ok,4.5592,4.5592,-5.27,0.478,50331648,59.4,4a6392274148,98304000
 m2_onehot,ok,4.8129,4.8129,0.0,0.478,1572864,58.6,4a6392274148,98304000
 m2_wave_l2,ok,4.7532,4.7532,-1.24,0.493,1572864,58.6,4a6392274148,98304000

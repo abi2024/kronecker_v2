@@ -18,9 +18,15 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 
 import pandas as pd
+
+# Windows consoles default to cp1252 and raise on non-Latin-1 output. Results
+# must never be lost to a print statement.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 CLAIM_PCT = 5.0
 
@@ -66,7 +72,7 @@ def main() -> None:
             "status": m.get("status"),
             "final_val": round(fv, 4) if fv is not None else None,
             "best_val": round(m.get("best_val_loss", float("nan")), 4),
-            "Δ_vs_baseline_%": (round(100 * (fv - base_val) / base_val, 2)
+            "delta_vs_base_pct": (round(100 * (fv - base_val) / base_val, 2)
                                  if fv is not None and base_val else None),
             "max_loss_jump": round(spike(r["log"]), 3),
             "emb_params": m.get("param_counts", {}).get("embedding"),
@@ -75,6 +81,9 @@ def main() -> None:
             "tokens_seen": m.get("tokens_seen"),
         })
     df = pd.DataFrame(rows)
+    # Write artifacts BEFORE printing: a console failure must not cost results.
+    args.root.mkdir(parents=True, exist_ok=True)
+    df.to_csv(args.root / "summary.csv", index=False)
     print("\n=== M2 grid ===")
     print(df.to_string(index=False))
 
@@ -102,10 +111,7 @@ def main() -> None:
     else:
         print("\nCLAIM: cannot score (missing one-hot baseline or wave arms)")
 
-    # ---- artifacts ----
-    args.root.mkdir(parents=True, exist_ok=True)
-    df.to_csv(args.root / "summary.csv", index=False)
-
+    # ---- plot ----
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
