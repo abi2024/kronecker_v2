@@ -1,0 +1,4 @@
+extends: m2_shared.yaml
+# Matched partner: d_complex = 128 * pos_dim keeps the code width identical.
+codec: {name: wave, d_complex: 1536, seed: 0, normalize: l2, table: wave1536_l2}
+out_root: results/m4

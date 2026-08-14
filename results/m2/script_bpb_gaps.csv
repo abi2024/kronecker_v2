@@ -1,0 +1,4 @@
+script,val_tokens,m2_dense_bpb,m2_dense_nats,m2_dense_SE,m2_dense_sig,m2_wave_l2_bpb,m2_wave_l2_nats,m2_wave_l2_SE,m2_wave_l2_sig,m2_wave_sqrtlen_bpb,m2_wave_sqrtlen_nats,m2_wave_sqrtlen_SE,m2_wave_sqrtlen_sig,m2_wave_znorm_bpb,m2_wave_znorm_nats,m2_wave_znorm_SE,m2_wave_znorm_sig
+LATIN,961098,-0.0731,-0.269,0.001,yes,-0.008,-0.0296,0.0007,yes,0.015,0.0551,0.0006,yes,0.0242,0.0891,0.0006,yes
+DEVANAGARI,727929,-0.042,-0.2591,0.0011,yes,-0.0144,-0.0887,0.0009,yes,0.0083,0.0514,0.0007,yes,0.0167,0.1032,0.0008,yes
+other / non-alpha,310819,-0.1554,-0.2021,0.0016,yes,-0.058,-0.0755,0.0014,yes,0.0253,0.0329,0.0012,yes,0.0511,0.0664,0.0012,yes

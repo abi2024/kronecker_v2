@@ -1,0 +1,4 @@
+extends: m2_shared.yaml
+# Dose-response arm. Everything matches M2 exactly except the byte window.
+codec: {name: onehot, pos_dim: 12, table: onehot12}
+out_root: results/m4

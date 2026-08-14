@@ -180,15 +180,87 @@ And the cleanest single sentence in the project:
 
 Collided tokens are common words, so what follows them is predictable. Every model that *can* tell them apart finds those positions easier. One-hot alone finds them **harder**.
 
+
+## 5. The Indic claim, measured directly
+
+### Finding 10 — the advantage scales with a script's collision rate
+
+Everything above argues from the collision audit (a property of the vocabulary)
+or from buckets defined by collision status. This measures the thing itself:
+what does each writing system cost each arm?
+
+Reported in **bits per byte**, because per-token loss is not comparable across
+scripts — a Devanagari token covers 8.91 UTF-8 bytes against Latin's 5.31, so an
+arm can look worse per token on Indic text while being no worse per unit of text.
+
+![Per-script bits per byte](figures/fig5_script_bpb.png)
+
+| script | val share | bytes/token | one-hot BPB | wave/l2 BPB | gap | relative |
+|---|---:|---:|---:|---:|---:|---:|
+| Latin | 48.1% | 5.31 | 1.5732 | 1.5652 | −0.0080 | **−0.51%** |
+| Devanagari | 36.4% | 8.91 | 0.7180 | 0.7036 | −0.0144 | **−2.01%** |
+| other / non-alpha | 15.5% | 1.88 | 2.2616 | 2.2036 | −0.0580 | −2.56% |
+
+**Four times the relative improvement on Devanagari as on Latin**, both
+significant at ~40σ on paired per-token differences.
+
+The framing that carries it is how much of the dense table's advantage the
+codec recovers — because that is the trade the codec exists to make:
+
+| script | dense's edge over one-hot | wave/l2's edge | **recovered** |
+|---|---:|---:|---:|
+| Latin | +0.0731 | +0.0080 | **10.9%** |
+| Devanagari | +0.0420 | +0.0144 | **34.3%** |
+| other | +0.1553 | +0.0580 | 37.3% |
+
+> On Devanagari the phase code closes a third of the gap to a table with 32×
+> the parameters. On Latin, a tenth.
+
+**The same internal control holds.** `sqrt_len` and `znorm` lose to one-hot on
+both scripts, yet all three wave arms show an identical Indic-specific edge:
+
+| normalization | Latin | Devanagari | Indic-specific difference |
+|---|---:|---:|---:|
+| wave / l2 | −0.0080 | −0.0144 | **−0.0064** |
+| wave / sqrt_len | +0.0150 | +0.0083 | **−0.0067** |
+| wave / znorm | +0.0242 | +0.0167 | **−0.0075** |
+
+The Indic benefit belongs to the codec family; the aggregate belongs to the
+normalization. That is the same dissociation the collision analysis found,
+reproduced on a completely different partition of the data.
+
+**Two limits on this table.**
+
+*Cross-script BPB levels are corpus-confounded.* Devanagari sits at 0.718 BPB
+against Latin's 1.573 — working back through bytes per token, 4.43 nats/token
+versus 5.79. Hindi is not intrinsically easier; Sangraha's verified subset is
+plausibly more templated than FineWeb-Edu. The within-script gaps are paired on
+identical tokens and unaffected, but no claim is made that the model handles
+Hindi better than English.
+
+*Only Devanagari is testable here.* Bengali, Telugu, Tamil and Malayalam hold
+vocabulary entries but almost no data in an English+Hindi corpus, and fell below
+the reporting threshold. This matters because the audit says **Malayalam is the
+worst-hit script** — 10.13% of its tokens collide, against Devanagari's 6.29%
+and Latin's 0.02% — and it is currently the one script the measurement cannot
+reach. M3 adds Malayalam to the mixture for exactly this reason, turning the
+per-script table into a three-point dose gradient with a falsifiable ordering
+attached: **the wave advantage should order Malayalam > Devanagari > Latin.**
+
+
+AND section 8, the M3 row of the status table — replace its "question" cell:
+
+
 ---
 
-## 5. What is claimed, and what is not
+## 6. What is claimed, and what is not
 
 **Claimed.**
 - At `pos_dim = 16`, 903 tokens of the production vocabulary receive permanently identical one-hot codes, ~98% of them Indic.
 - The 32-byte window is satisfied only because the tokenizer was co-designed to satisfy it.
 - A phase-bound Fourier code removes the ceiling and, at identical parameter count, reduces validation loss by 1.24%.
 - Collisions cost the one-hot codec 0.355 nats on affected positions; the phase code eliminates that cost; because such positions are 1% of the stream, this explains 6.3% of the aggregate gain.
+- Per script, the phase code recovers 34.3% of a dense table's advantage on Devanagari against 10.9% on Latin — the Indic benefit is measured directly, not inferred from the audit.
 
 **Not claimed.**
 - That this beats a dense table. **It does not** — dense is 4.08% better, using **32×** the embedding parameters. The trade is a 32× parameter reduction for ~4% loss.
@@ -199,7 +271,7 @@ A note on reproducibility discovered the hard way: `torch.rand` is not portable 
 
 ---
 
-## 6. Reproduce
+## 7. Reproduce
 
 ```bash
 python -m venv .venv && source .venv/bin/activate     # Scripts/activate on Windows
@@ -230,7 +302,7 @@ Every figure in this README is produced by `m2_figures.py` from the CSVs on disk
 
 ---
 
-## 7. Repository map
+## 8. Repository map
 
 ```
 src/kronecker_v2/
@@ -254,13 +326,13 @@ Three rules the repo enforces mechanically: only the embedding changes between a
 
 ---
 
-## 8. Status and roadmap
+## 9. Status and roadmap
 
 | phase | question it settles | status |
 |---|---|---|
 | M1 | how much does the byte window actually cost, on the real vocabulary? | **closed** · `m1-closed` |
 | M2 | does removing the ceiling help, at equal parameters — and through what mechanism? | **closed** · `m2-closed` |
-| M3 | does it survive scale, and beat the baselines a reviewer will demand? | in progress |
+| M3 |   does it survive scale, beat the baselines a reviewer will demand, and does the per-script advantage order with collision rate (Malayalam > Devanagari > Latin)?| in progress |
 | M4 | is the collision mechanism **causal**? | designed, ~1 night |
 | M5 | does the co-design claim generalise beyond one tokenizer? | designed, ~1 night |
 | M6 | does the vocabulary-independence advantage show up where it matters? | designed, ~1 night |

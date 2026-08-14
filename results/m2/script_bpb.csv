@@ -1,0 +1,4 @@
+script,vocab_tokens,val_tokens,val_share_%,val_bytes,bytes_per_token,m2_dense_bpb,m2_onehot_bpb,m2_wave_l2_bpb,m2_wave_sqrtlen_bpb,m2_wave_znorm_bpb
+LATIN,108184,961098,48.06,5102245,5.31,1.5001,1.5732,1.5652,1.5882,1.5974
+DEVANAGARI,4002,727929,36.4,6482756,8.91,0.676,0.718,0.7036,0.7263,0.7347
+other / non-alpha,8171,310819,15.54,583447,1.88,2.1063,2.2616,2.2036,2.2869,2.3127
