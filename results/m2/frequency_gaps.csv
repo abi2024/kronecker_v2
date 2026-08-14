@@ -1,0 +1,5 @@
+bucket,val_share_%,m2_onehot,m2_onehot_share_of_gap_%,m2_wave_l2,m2_wave_l2_share_of_gap_%,m2_wave_sqrtlen,m2_wave_sqrtlen_share_of_gap_%,m2_wave_znorm,m2_wave_znorm_share_of_gap_%
+top 1K,61.17,0.2272,54.5,0.1436,44.6,0.2694,54.0,0.3078,54.5
+1K-10K,29.46,0.3004,34.7,0.2697,40.4,0.3659,35.3,0.4169,35.5
+10K-100K,9.36,0.2942,10.8,0.3155,15.0,0.3493,10.7,0.3698,10.0
+unseen in train,0.01,0.1665,0.0,0.2323,0.0,0.3389,0.0,0.262,0.0

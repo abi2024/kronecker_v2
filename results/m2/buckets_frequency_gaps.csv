@@ -1,0 +1,5 @@
+bucket,val_tokens,m2_dense,m2_dense_SE,m2_dense_sig,m2_wave_l2,m2_wave_l2_SE,m2_wave_l2_sig,m2_wave_sqrtlen,m2_wave_sqrtlen_SE,m2_wave_sqrtlen_sig,m2_wave_znorm,m2_wave_znorm_SE,m2_wave_znorm_sig
+top 1K,1223243,-0.2272,0.0008,yes,-0.0836,0.0006,yes,0.0422,0.0005,yes,0.0807,0.0006,yes
+1K-10K,589146,-0.3004,0.0014,yes,-0.0308,0.001,yes,0.0654,0.0009,yes,0.1164,0.0009,yes
+10K-100K,187279,-0.2942,0.0023,yes,0.0213,0.0018,yes,0.0551,0.0015,yes,0.0757,0.0015,yes
+unseen in train,204,-0.1665,0.0824,yes,0.0658,0.0786,no,0.1724,0.0691,yes,0.0955,0.0664,no

@@ -1,0 +1,4 @@
+bucket,val_tokens,m2_dense,m2_dense_SE,m2_dense_sig,m2_wave_l2,m2_wave_l2_SE,m2_wave_l2_sig,m2_wave_sqrtlen,m2_wave_sqrtlen_SE,m2_wave_sqrtlen_sig,m2_wave_znorm,m2_wave_znorm_SE,m2_wave_znorm_sig
+after collides @16,19991,-0.5121,0.0071,yes,-0.368,0.0065,yes,-0.3374,0.0061,yes,-0.3029,0.0061,yes
+"after cropped, still distinct",22457,-0.1532,0.0051,yes,-0.0134,0.0044,yes,0.0137,0.0038,yes,0.048,0.0039,yes
+after fits in window,1957424,-0.2536,0.0007,yes,-0.0556,0.0005,yes,0.0547,0.0004,yes,0.0952,0.0005,yes

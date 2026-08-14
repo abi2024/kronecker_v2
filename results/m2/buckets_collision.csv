@@ -1,0 +1,4 @@
+bucket,vocab_tokens,val_tokens,val_share_%,m2_dense,m2_onehot,m2_wave_l2,m2_wave_sqrtlen,m2_wave_znorm
+collides @16,903,19991,1.0,5.6896,5.9107,5.8509,5.9194,5.9827
+"cropped, still distinct",887,22457,1.12,5.4518,5.6624,5.6331,5.7119,5.7445
+fits in window,129282,1957424,97.88,4.5768,4.8327,4.7741,4.8834,4.9237

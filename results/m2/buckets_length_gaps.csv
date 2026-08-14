@@ -1,0 +1,6 @@
+bucket,val_tokens,m2_dense,m2_dense_SE,m2_dense_sig,m2_wave_l2,m2_wave_l2_SE,m2_wave_l2_sig,m2_wave_sqrtlen,m2_wave_sqrtlen_SE,m2_wave_sqrtlen_sig,m2_wave_znorm,m2_wave_znorm_SE,m2_wave_znorm_sig
+1-4 B,840857,-0.2285,0.001,yes,-0.0543,0.0008,yes,0.0406,0.0007,yes,0.069,0.0007,yes
+5-8 B,708705,-0.2817,0.0011,yes,-0.0638,0.0009,yes,0.0586,0.0007,yes,0.1038,0.0008,yes
+9-12 B,286731,-0.2913,0.0018,yes,-0.0595,0.0014,yes,0.0652,0.0012,yes,0.1161,0.0012,yes
+13-16 B,128170,-0.2112,0.0025,yes,-0.0552,0.0021,yes,0.0384,0.0018,yes,0.1069,0.0019,yes
+17+ B (cropped @16),35409,-0.2163,0.0049,yes,-0.0403,0.0043,yes,0.0366,0.0037,yes,0.0811,0.0038,yes
