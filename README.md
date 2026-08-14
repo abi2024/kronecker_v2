@@ -1,5 +1,7 @@
 # Kronecker V2 — Removing the Byte-Window Limit
 
+**[→ Interactive walkthrough](docs/index.html)** — type a word, watch it get cropped, see why anagrams break plain addition.
+
 **Assignment problem solved: #3** — *"Today Kronecker is limiting to presenting 32 positions for every word… That's a waste of space. How can it be dynamic and not force us to crop a word?"*
 
 > **One sentence.** The one-hot byte×position grid does not merely waste space — it imposes a hidden design constraint on the tokenizer (*no token may exceed `pos_dim` bytes*), and where that constraint is violated it merges distinct words into a single vector permanently; this project measures the damage on the real 131,072-token vocabulary and replaces the grid with a phase-bound Fourier code that has no position ceiling, at identical parameter count.
