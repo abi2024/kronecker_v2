@@ -1,6 +1,6 @@
 # Kronecker V2 — Removing the Byte-Window Limit
 
-**[→ Interactive walkthrough](docs/index.html)** — type a word, watch it get cropped, see why anagrams break plain addition.
+**[→ Interactive walkthrough](https://abi2024.github.io/kronecker_v2/)** — type a word, watch it get cropped, see why anagrams break plain addition.
 
 **Assignment problem solved: #3** — *"Today Kronecker is limiting to presenting 32 positions for every word… That's a waste of space. How can it be dynamic and not force us to crop a word?"*
 
