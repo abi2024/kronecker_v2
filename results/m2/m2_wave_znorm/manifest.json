@@ -1,0 +1,61 @@
+{
+  "git_sha": "7695669",
+  "torch": "2.13.0+cu126",
+  "device": "NVIDIA GeForce RTX 3060",
+  "written_at": "2026-08-14 04:39:13",
+  "milestone": "m2",
+  "config": "configs\\m2_wave_znorm.yaml",
+  "cfg": {
+    "model": {
+      "block_size": 1024,
+      "vocab_size": 131072,
+      "n_layer": 6,
+      "n_head": 6,
+      "d_model": 384,
+      "dropout": 0.0
+    },
+    "data": {
+      "dir": "data/m2",
+      "tables_dir": "data/tables"
+    },
+    "train": {
+      "device": null,
+      "batch_size": 4,
+      "grad_accum": 8,
+      "max_steps": 3000,
+      "lr": 0.0006,
+      "warmup": 200,
+      "min_lr_frac": 0.1,
+      "weight_decay": 0.1,
+      "grad_clip": 1.0,
+      "eval_every": 250,
+      "eval_iters": 50,
+      "log_every": 20,
+      "seed": 1337,
+      "data_seed": 42
+    },
+    "out_root": "results/m2",
+    "codec": {
+      "name": "wave",
+      "d_complex": 2048,
+      "seed": 0,
+      "normalize": "znorm",
+      "table": "wave2048_znorm"
+    }
+  },
+  "seed": 1337,
+  "data_seed": 42,
+  "param_counts": {
+    "total": 62924544,
+    "body": 11020032,
+    "lm_head": 50331648,
+    "embedding": 1572864
+  },
+  "body_state_hash": "4a6392274148906ad83be107c1e78e1a5cf0f3f57df54e3ea9caad5ae07c6d61",
+  "table": "wave2048_znorm",
+  "status": "ok",
+  "final_val_loss": 4.90226222038269,
+  "best_val_loss": 4.90226222038269,
+  "wall_seconds": 3520.0,
+  "tokens_seen": 98304000
+}

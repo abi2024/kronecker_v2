@@ -1,0 +1,11 @@
+code_dim: one-hot@pos_dim=16 = 4096, wave = 4096  (equal by construction)
+
+pair                                   one-hot     wave
+Traceback (most recent call last):
+  File "C:\Users\ANT-PC\Desktop\ERA V5\kroneker_v2\experiments\m1_separation_demo.py", line 49, in <module>
+    main()
+  File "C:\Users\ANT-PC\Desktop\ERA V5\kroneker_v2\experiments\m1_separation_demo.py", line 44, in main
+    print(f"{pair:<34}{verdict:>12}{cos(wave.encode_bytes(a), wave.encode_bytes(b)):>9.4f}")
+  File "C:\Users\ANT-PC\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode characters in position 0-4: character maps to <undefined>

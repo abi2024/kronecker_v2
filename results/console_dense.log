@@ -1,0 +1,166 @@
+[m2_dense] device=cuda params={'total': 111683328, 'body': 11020032, 'lm_head': 50331648, 'embedding': 50331648} body_hash=4a6392274148
+[m2_dense] step     0 loss 11.8718 lr 3.00e-06 gn 3.67 proj_gn 0.00 22,345 tok/s
+[m2_dense] step     0 VAL 11.8578
+[m2_dense] step    20 loss 11.1407 lr 6.30e-05 gn 1.46 proj_gn 0.00 27,805 tok/s
+[m2_dense] step    40 loss 10.2752 lr 1.23e-04 gn 1.14 proj_gn 0.00 27,827 tok/s
+[m2_dense] step    60 loss 9.0732 lr 1.83e-04 gn 1.15 proj_gn 0.00 27,867 tok/s
+[m2_dense] step    80 loss 8.1718 lr 2.43e-04 gn 0.80 proj_gn 0.00 27,848 tok/s
+[m2_dense] step   100 loss 7.5130 lr 3.03e-04 gn 0.77 proj_gn 0.00 27,908 tok/s
+[m2_dense] step   120 loss 7.2601 lr 3.63e-04 gn 0.65 proj_gn 0.00 27,839 tok/s
+[m2_dense] step   140 loss 6.7562 lr 4.23e-04 gn 0.47 proj_gn 0.00 27,924 tok/s
+[m2_dense] step   160 loss 6.7067 lr 4.83e-04 gn 0.48 proj_gn 0.00 27,807 tok/s
+[m2_dense] step   180 loss 6.4353 lr 5.43e-04 gn 0.46 proj_gn 0.00 27,959 tok/s
+[m2_dense] step   200 loss 6.2648 lr 6.00e-04 gn 0.64 proj_gn 0.00 27,811 tok/s
+[m2_dense] step   220 loss 6.4090 lr 6.00e-04 gn 0.58 proj_gn 0.00 27,973 tok/s
+[m2_dense] step   240 loss 6.3280 lr 6.00e-04 gn 0.46 proj_gn 0.00 27,839 tok/s
+[m2_dense] step   250 VAL 6.1349
+[m2_dense] step   260 loss 6.0539 lr 5.99e-04 gn 0.44 proj_gn 0.00 27,862 tok/s
+[m2_dense] step   280 loss 6.0853 lr 5.99e-04 gn 0.46 proj_gn 0.00 27,854 tok/s
+[m2_dense] step   300 loss 5.9346 lr 5.98e-04 gn 0.46 proj_gn 0.00 27,822 tok/s
+[m2_dense] step   320 loss 5.9915 lr 5.98e-04 gn 0.44 proj_gn 0.00 27,867 tok/s
+[m2_dense] step   340 loss 5.7774 lr 5.97e-04 gn 0.42 proj_gn 0.00 27,794 tok/s
+[m2_dense] step   360 loss 5.8491 lr 5.96e-04 gn 0.43 proj_gn 0.00 27,787 tok/s
+[m2_dense] step   380 loss 5.9234 lr 5.95e-04 gn 0.44 proj_gn 0.00 27,781 tok/s
+[m2_dense] step   400 loss 5.9486 lr 5.93e-04 gn 0.40 proj_gn 0.00 27,838 tok/s
+[m2_dense] step   420 loss 5.9412 lr 5.92e-04 gn 0.43 proj_gn 0.00 27,800 tok/s
+[m2_dense] step   440 loss 5.7193 lr 5.90e-04 gn 1.41 proj_gn 0.00 27,837 tok/s
+[m2_dense] step   460 loss 5.7280 lr 5.89e-04 gn 0.40 proj_gn 0.00 27,903 tok/s
+[m2_dense] step   480 loss 5.9280 lr 5.87e-04 gn 0.41 proj_gn 0.00 27,856 tok/s
+[m2_dense] step   500 loss 5.8211 lr 5.85e-04 gn 0.44 proj_gn 0.00 27,901 tok/s
+[m2_dense] step   500 VAL 5.6764
+[m2_dense] step   520 loss 5.6828 lr 5.83e-04 gn 0.41 proj_gn 0.00 27,992 tok/s
+[m2_dense] step   540 loss 5.6174 lr 5.81e-04 gn 0.41 proj_gn 0.00 27,880 tok/s
+[m2_dense] step   560 loss 5.5544 lr 5.78e-04 gn 0.39 proj_gn 0.00 27,987 tok/s
+[m2_dense] step   580 loss 5.6765 lr 5.76e-04 gn 0.41 proj_gn 0.00 27,777 tok/s
+[m2_dense] step   600 loss 5.5518 lr 5.73e-04 gn 0.45 proj_gn 0.00 27,958 tok/s
+[m2_dense] step   620 loss 5.5952 lr 5.71e-04 gn 0.42 proj_gn 0.00 27,827 tok/s
+[m2_dense] step   640 loss 5.5853 lr 5.68e-04 gn 0.43 proj_gn 0.00 27,863 tok/s
+[m2_dense] step   660 loss 5.4488 lr 5.65e-04 gn 0.45 proj_gn 0.00 27,860 tok/s
+[m2_dense] step   680 loss 5.5464 lr 5.62e-04 gn 0.48 proj_gn 0.00 27,881 tok/s
+[m2_dense] step   700 loss 5.6110 lr 5.59e-04 gn 0.45 proj_gn 0.00 27,839 tok/s
+[m2_dense] step   720 loss 5.4288 lr 5.55e-04 gn 0.45 proj_gn 0.00 27,858 tok/s
+[m2_dense] step   740 loss 5.4131 lr 5.52e-04 gn 0.47 proj_gn 0.00 27,854 tok/s
+[m2_dense] step   750 VAL 5.3955
+[m2_dense] step   760 loss 5.4288 lr 5.48e-04 gn 0.42 proj_gn 0.00 27,854 tok/s
+[m2_dense] step   780 loss 5.4730 lr 5.45e-04 gn 0.47 proj_gn 0.00 27,840 tok/s
+[m2_dense] step   800 loss 5.4042 lr 5.41e-04 gn 0.52 proj_gn 0.00 27,906 tok/s
+[m2_dense] step   820 loss 5.5040 lr 5.37e-04 gn 0.45 proj_gn 0.00 27,852 tok/s
+[m2_dense] step   840 loss 5.1267 lr 5.33e-04 gn 0.45 proj_gn 0.00 27,961 tok/s
+[m2_dense] step   860 loss 5.3599 lr 5.29e-04 gn 0.48 proj_gn 0.00 27,827 tok/s
+[m2_dense] step   880 loss 5.2077 lr 5.25e-04 gn 0.48 proj_gn 0.00 27,961 tok/s
+[m2_dense] step   900 loss 5.3501 lr 5.21e-04 gn 0.52 proj_gn 0.00 27,820 tok/s
+[m2_dense] step   920 loss 5.2536 lr 5.17e-04 gn 0.48 proj_gn 0.00 27,999 tok/s
+[m2_dense] step   940 loss 5.2931 lr 5.12e-04 gn 0.48 proj_gn 0.00 27,821 tok/s
+[m2_dense] step   960 loss 5.1717 lr 5.08e-04 gn 0.48 proj_gn 0.00 27,983 tok/s
+[m2_dense] step   980 loss 5.1761 lr 5.03e-04 gn 0.48 proj_gn 0.00 27,803 tok/s
+[m2_dense] step  1000 loss 5.2522 lr 4.98e-04 gn 0.57 proj_gn 0.00 27,927 tok/s
+[m2_dense] step  1000 VAL 5.2017
+[m2_dense] step  1020 loss 5.2588 lr 4.94e-04 gn 0.57 proj_gn 0.00 27,843 tok/s
+[m2_dense] step  1040 loss 5.2522 lr 4.89e-04 gn 0.47 proj_gn 0.00 27,820 tok/s
+[m2_dense] step  1060 loss 5.1140 lr 4.84e-04 gn 0.50 proj_gn 0.00 27,827 tok/s
+[m2_dense] step  1080 loss 5.1514 lr 4.79e-04 gn 0.50 proj_gn 0.00 27,825 tok/s
+[m2_dense] step  1100 loss 5.1129 lr 4.74e-04 gn 0.50 proj_gn 0.00 27,794 tok/s
+[m2_dense] step  1120 loss 5.2513 lr 4.68e-04 gn 0.53 proj_gn 0.00 27,845 tok/s
+[m2_dense] step  1140 loss 5.1170 lr 4.63e-04 gn 0.55 proj_gn 0.00 27,830 tok/s
+[m2_dense] step  1160 loss 5.0174 lr 4.58e-04 gn 0.52 proj_gn 0.00 27,892 tok/s
+[m2_dense] step  1180 loss 5.0181 lr 4.53e-04 gn 0.57 proj_gn 0.00 27,817 tok/s
+[m2_dense] step  1200 loss 5.1387 lr 4.47e-04 gn 0.60 proj_gn 0.00 27,906 tok/s
+[m2_dense] step  1220 loss 5.1730 lr 4.42e-04 gn 0.58 proj_gn 0.00 27,828 tok/s
+[m2_dense] step  1240 loss 4.9795 lr 4.36e-04 gn 0.59 proj_gn 0.00 27,943 tok/s
+[m2_dense] step  1250 VAL 5.0456
+[m2_dense] step  1260 loss 4.9831 lr 4.31e-04 gn 0.56 proj_gn 0.00 27,954 tok/s
+[m2_dense] step  1280 loss 5.0190 lr 4.25e-04 gn 0.55 proj_gn 0.00 27,804 tok/s
+[m2_dense] step  1300 loss 4.9700 lr 4.19e-04 gn 0.56 proj_gn 0.00 27,952 tok/s
+[m2_dense] step  1320 loss 4.9928 lr 4.13e-04 gn 0.58 proj_gn 0.00 27,821 tok/s
+[m2_dense] step  1340 loss 4.8861 lr 4.08e-04 gn 0.54 proj_gn 0.00 27,897 tok/s
+[m2_dense] step  1360 loss 4.9724 lr 4.02e-04 gn 0.58 proj_gn 0.00 27,801 tok/s
+[m2_dense] step  1380 loss 4.9189 lr 3.96e-04 gn 0.55 proj_gn 0.00 27,841 tok/s
+[m2_dense] step  1400 loss 4.9920 lr 3.90e-04 gn 0.62 proj_gn 0.00 27,844 tok/s
+[m2_dense] step  1420 loss 5.0564 lr 3.84e-04 gn 0.58 proj_gn 0.00 27,793 tok/s
+[m2_dense] step  1440 loss 4.8727 lr 3.78e-04 gn 0.54 proj_gn 0.00 27,818 tok/s
+[m2_dense] step  1460 loss 4.9093 lr 3.72e-04 gn 0.59 proj_gn 0.00 27,800 tok/s
+[m2_dense] step  1480 loss 5.1352 lr 3.66e-04 gn 0.68 proj_gn 0.00 27,824 tok/s
+[m2_dense] step  1500 loss 4.8844 lr 3.60e-04 gn 0.63 proj_gn 0.00 27,831 tok/s
+[m2_dense] step  1500 VAL 4.9200
+[m2_dense] step  1520 loss 4.8129 lr 3.54e-04 gn 0.56 proj_gn 0.00 27,808 tok/s
+[m2_dense] step  1540 loss 4.9175 lr 3.48e-04 gn 0.60 proj_gn 0.00 27,950 tok/s
+[m2_dense] step  1560 loss 4.8752 lr 3.42e-04 gn 0.59 proj_gn 0.00 27,829 tok/s
+[m2_dense] step  1580 loss 4.6052 lr 3.36e-04 gn 0.59 proj_gn 0.00 28,001 tok/s
+[m2_dense] step  1600 loss 4.7876 lr 3.30e-04 gn 0.55 proj_gn 0.00 27,818 tok/s
+[m2_dense] step  1620 loss 4.9210 lr 3.24e-04 gn 0.62 proj_gn 0.00 27,980 tok/s
+[m2_dense] step  1640 loss 4.8084 lr 3.18e-04 gn 0.59 proj_gn 0.00 27,832 tok/s
+[m2_dense] step  1660 loss 4.8837 lr 3.12e-04 gn 0.64 proj_gn 0.00 27,945 tok/s
+[m2_dense] step  1680 loss 4.9950 lr 3.06e-04 gn 0.58 proj_gn 0.00 27,824 tok/s
+[m2_dense] step  1700 loss 4.7934 lr 3.00e-04 gn 0.61 proj_gn 0.00 27,939 tok/s
+[m2_dense] step  1720 loss 4.7926 lr 2.94e-04 gn 0.60 proj_gn 0.00 27,843 tok/s
+[m2_dense] step  1740 loss 4.8582 lr 2.88e-04 gn 0.59 proj_gn 0.00 27,895 tok/s
+[m2_dense] step  1750 VAL 4.8167
+[m2_dense] step  1760 loss 4.8493 lr 2.82e-04 gn 0.60 proj_gn 0.00 27,848 tok/s
+[m2_dense] step  1780 loss 4.9260 lr 2.76e-04 gn 0.69 proj_gn 0.00 27,838 tok/s
+[m2_dense] step  1800 loss 4.7582 lr 2.70e-04 gn 0.63 proj_gn 0.00 27,845 tok/s
+[m2_dense] step  1820 loss 4.8511 lr 2.64e-04 gn 0.62 proj_gn 0.00 27,871 tok/s
+[m2_dense] step  1840 loss 4.7988 lr 2.58e-04 gn 0.62 proj_gn 0.00 27,831 tok/s
+[m2_dense] step  1860 loss 4.8482 lr 2.52e-04 gn 0.64 proj_gn 0.00 27,891 tok/s
+[m2_dense] step  1880 loss 4.7685 lr 2.47e-04 gn 0.62 proj_gn 0.00 27,840 tok/s
+[m2_dense] step  1900 loss 4.6852 lr 2.41e-04 gn 0.63 proj_gn 0.00 27,944 tok/s
+[m2_dense] step  1920 loss 4.7905 lr 2.35e-04 gn 0.62 proj_gn 0.00 27,841 tok/s
+[m2_dense] step  1940 loss 4.5822 lr 2.29e-04 gn 0.64 proj_gn 0.00 27,990 tok/s
+[m2_dense] step  1960 loss 4.8885 lr 2.24e-04 gn 0.61 proj_gn 0.00 27,811 tok/s
+[m2_dense] step  1980 loss 4.6740 lr 2.18e-04 gn 0.69 proj_gn 0.00 27,984 tok/s
+[m2_dense] step  2000 loss 4.8630 lr 2.13e-04 gn 0.64 proj_gn 0.00 27,779 tok/s
+[m2_dense] step  2000 VAL 4.7395
+[m2_dense] step  2020 loss 4.7865 lr 2.07e-04 gn 0.66 proj_gn 0.00 27,808 tok/s
+[m2_dense] step  2040 loss 4.8850 lr 2.02e-04 gn 0.68 proj_gn 0.00 27,827 tok/s
+[m2_dense] step  2060 loss 4.6534 lr 1.97e-04 gn 0.66 proj_gn 0.00 27,804 tok/s
+[m2_dense] step  2080 loss 4.7828 lr 1.92e-04 gn 0.65 proj_gn 0.00 27,876 tok/s
+[m2_dense] step  2100 loss 4.7320 lr 1.86e-04 gn 0.61 proj_gn 0.00 27,830 tok/s
+[m2_dense] step  2120 loss 4.7852 lr 1.81e-04 gn 0.65 proj_gn 0.00 27,849 tok/s
+[m2_dense] step  2140 loss 4.7240 lr 1.76e-04 gn 0.70 proj_gn 0.00 27,822 tok/s
+[m2_dense] step  2160 loss 4.7319 lr 1.71e-04 gn 0.66 proj_gn 0.00 27,803 tok/s
+[m2_dense] step  2180 loss 4.6436 lr 1.66e-04 gn 0.71 proj_gn 0.00 27,825 tok/s
+[m2_dense] step  2200 loss 4.6811 lr 1.62e-04 gn 0.65 proj_gn 0.00 27,842 tok/s
+[m2_dense] step  2220 loss 4.7199 lr 1.57e-04 gn 0.68 proj_gn 0.00 27,849 tok/s
+[m2_dense] step  2240 loss 4.7478 lr 1.52e-04 gn 0.66 proj_gn 0.00 27,829 tok/s
+[m2_dense] step  2250 VAL 4.6711
+[m2_dense] step  2260 loss 4.5001 lr 1.48e-04 gn 0.66 proj_gn 0.00 27,785 tok/s
+[m2_dense] step  2280 loss 4.5032 lr 1.43e-04 gn 0.70 proj_gn 0.00 27,979 tok/s
+[m2_dense] step  2300 loss 4.9144 lr 1.39e-04 gn 0.65 proj_gn 0.00 27,813 tok/s
+[m2_dense] step  2320 loss 4.6300 lr 1.35e-04 gn 0.69 proj_gn 0.00 27,993 tok/s
+[m2_dense] step  2340 loss 4.5184 lr 1.31e-04 gn 0.65 proj_gn 0.00 27,810 tok/s
+[m2_dense] step  2360 loss 4.6418 lr 1.27e-04 gn 0.65 proj_gn 0.00 27,979 tok/s
+[m2_dense] step  2380 loss 4.5461 lr 1.23e-04 gn 0.66 proj_gn 0.00 27,843 tok/s
+[m2_dense] step  2400 loss 4.6480 lr 1.19e-04 gn 0.67 proj_gn 0.00 27,913 tok/s
+[m2_dense] step  2420 loss 4.7059 lr 1.15e-04 gn 0.70 proj_gn 0.00 27,848 tok/s
+[m2_dense] step  2440 loss 4.6962 lr 1.12e-04 gn 0.71 proj_gn 0.00 27,905 tok/s
+[m2_dense] step  2460 loss 4.5935 lr 1.08e-04 gn 0.65 proj_gn 0.00 27,814 tok/s
+[m2_dense] step  2480 loss 4.5275 lr 1.05e-04 gn 0.71 proj_gn 0.00 27,821 tok/s
+[m2_dense] step  2500 loss 4.5836 lr 1.01e-04 gn 0.64 proj_gn 0.00 27,787 tok/s
+[m2_dense] step  2500 VAL 4.6207
+[m2_dense] step  2520 loss 4.6655 lr 9.82e-05 gn 0.68 proj_gn 0.00 27,855 tok/s
+[m2_dense] step  2540 loss 4.4568 lr 9.52e-05 gn 0.66 proj_gn 0.00 27,791 tok/s
+[m2_dense] step  2560 loss 4.5700 lr 9.22e-05 gn 0.67 proj_gn 0.00 27,849 tok/s
+[m2_dense] step  2580 loss 4.5443 lr 8.94e-05 gn 0.66 proj_gn 0.00 27,810 tok/s
+[m2_dense] step  2600 loss 4.5346 lr 8.67e-05 gn 0.66 proj_gn 0.00 27,915 tok/s
+[m2_dense] step  2620 loss 4.7141 lr 8.42e-05 gn 0.67 proj_gn 0.00 27,858 tok/s
+[m2_dense] step  2640 loss 4.6536 lr 8.17e-05 gn 0.68 proj_gn 0.00 27,949 tok/s
+[m2_dense] step  2660 loss 4.7588 lr 7.94e-05 gn 0.73 proj_gn 0.00 27,805 tok/s
+[m2_dense] step  2680 loss 4.6484 lr 7.72e-05 gn 0.71 proj_gn 0.00 27,981 tok/s
+[m2_dense] step  2700 loss 4.5770 lr 7.52e-05 gn 0.64 proj_gn 0.00 27,840 tok/s
+[m2_dense] step  2720 loss 4.6986 lr 7.32e-05 gn 0.65 proj_gn 0.00 27,969 tok/s
+[m2_dense] step  2740 loss 4.5816 lr 7.14e-05 gn 0.70 proj_gn 0.00 27,827 tok/s
+[m2_dense] step  2750 VAL 4.5845
+[m2_dense] step  2760 loss 4.5229 lr 6.97e-05 gn 0.69 proj_gn 0.00 27,810 tok/s
+[m2_dense] step  2780 loss 4.6264 lr 6.82e-05 gn 0.71 proj_gn 0.00 27,852 tok/s
+[m2_dense] step  2800 loss 4.5401 lr 6.68e-05 gn 0.70 proj_gn 0.00 27,846 tok/s
+[m2_dense] step  2820 loss 4.4395 lr 6.55e-05 gn 0.65 proj_gn 0.00 27,839 tok/s
+[m2_dense] step  2840 loss 4.3178 lr 6.43e-05 gn 0.69 proj_gn 0.00 27,829 tok/s
+[m2_dense] step  2860 loss 4.4176 lr 6.33e-05 gn 0.70 proj_gn 0.00 27,824 tok/s
+[m2_dense] step  2880 loss 4.6828 lr 6.24e-05 gn 0.67 proj_gn 0.00 27,808 tok/s
+[m2_dense] step  2900 loss 4.5595 lr 6.17e-05 gn 0.72 proj_gn 0.00 27,828 tok/s
+[m2_dense] step  2920 loss 4.5424 lr 6.11e-05 gn 0.74 proj_gn 0.00 27,858 tok/s
+[m2_dense] step  2940 loss 4.6247 lr 6.06e-05 gn 0.71 proj_gn 0.00 27,818 tok/s
+[m2_dense] step  2960 loss 4.4243 lr 6.03e-05 gn 0.75 proj_gn 0.00 27,918 tok/s
+[m2_dense] step  2980 loss 4.3329 lr 6.01e-05 gn 0.74 proj_gn 0.00 27,801 tok/s
+[m2_dense] step  2999 loss 4.4665 lr 6.00e-05 gn 0.76 proj_gn 0.00 27,802 tok/s
+[m2_dense] step  2999 VAL 4.5592
+[m2_dense] done: status=ok final_val=4.5592 wall=3562s -> results\m2\m2_dense

@@ -1,0 +1,10 @@
+
+=== M2 grid ===
+Traceback (most recent call last):
+  File "C:\Users\ANT-PC\Desktop\ERA V5\kroneker_v2\experiments\m2_report.py", line 128, in <module>
+    main()
+  File "C:\Users\ANT-PC\Desktop\ERA V5\kroneker_v2\experiments\m2_report.py", line 79, in main
+    print(df.to_string(index=False))
+  File "C:\Users\ANT-PC\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u0394' in position 45: character maps to <undefined>
