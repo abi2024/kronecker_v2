@@ -1,0 +1,4 @@
+extends: m3_shared.yaml
+# ALBERT factorization, matched budget. At V=131,072 that forces
+# rank 16 — the codec's cost has no V in it at all.
+codec: {name: albert, code_dim: 4096, seed: 0}

@@ -1,0 +1,5 @@
+script,val_tokens,m3_albert_bpb,m3_albert_nats,m3_albert_SE,m3_albert_sig,m3_dense_bpb,m3_dense_nats,m3_dense_SE,m3_dense_sig,m3_hash_bpb,m3_hash_nats,m3_hash_SE,m3_hash_sig,m3_rp_bpb,m3_rp_nats,m3_rp_SE,m3_rp_sig,m3_wave_bpb,m3_wave_nats,m3_wave_SE,m3_wave_sig,m3_wave768_bpb,m3_wave768_nats,m3_wave768_SE,m3_wave768_sig
+LATIN,4444794,0.0062,0.023,0.0004,yes,-0.0485,-0.179,0.0004,yes,0.0686,0.2533,0.0005,yes,0.0055,0.0203,0.0004,yes,0.0073,0.0269,0.0004,yes,-0.0009,-0.0034,0.0004,yes
+DEVANAGARI,2448575,-0.0242,-0.1496,0.0006,yes,-0.0416,-0.2567,0.0007,yes,-0.0141,-0.0872,0.0006,yes,-0.0234,-0.1443,0.0006,yes,-0.0199,-0.1225,0.0005,yes,-0.0274,-0.169,0.0006,yes
+MALAYALAM,2380475,-0.0413,-0.2552,0.0007,yes,-0.0504,-0.3114,0.0007,yes,-0.0356,-0.2201,0.0006,yes,-0.0343,-0.2119,0.0006,yes,-0.0362,-0.2238,0.0006,yes,-0.0417,-0.2578,0.0006,yes
+other / non-alpha,1724399,-0.0743,-0.1034,0.0007,yes,-0.1224,-0.1704,0.0007,yes,-0.0214,-0.0297,0.0007,yes,-0.0593,-0.0826,0.0006,yes,-0.0619,-0.0862,0.0006,yes,-0.0795,-0.1107,0.0006,yes

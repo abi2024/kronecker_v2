@@ -1,0 +1,3 @@
+extends: m3_shared.yaml
+# The efficiency claim: M5's best wave, 4x fewer params than one-hot's best.
+codec: {name: wave, d_complex: 768, seed: 0, normalize: l2, table: wave768_l2}

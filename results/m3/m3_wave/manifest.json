@@ -1,0 +1,61 @@
+{
+  "git_sha": "0649478",
+  "torch": "2.13.0+cu126",
+  "device": "NVIDIA GeForce RTX 3060",
+  "written_at": "2026-08-17 16:57:45",
+  "milestone": "m2",
+  "config": "configs\\m3_wave.yaml",
+  "cfg": {
+    "model": {
+      "block_size": 1024,
+      "vocab_size": 131072,
+      "n_layer": 12,
+      "n_head": 8,
+      "d_model": 512,
+      "dropout": 0.0
+    },
+    "data": {
+      "dir": "data/m3",
+      "tables_dir": "data/tables"
+    },
+    "train": {
+      "device": null,
+      "batch_size": 4,
+      "grad_accum": 8,
+      "max_steps": 3000,
+      "lr": 0.0006,
+      "warmup": 200,
+      "min_lr_frac": 0.1,
+      "weight_decay": 0.1,
+      "grad_clip": 1.0,
+      "eval_every": 250,
+      "eval_iters": 50,
+      "log_every": 20,
+      "seed": 1337,
+      "data_seed": 42
+    },
+    "out_root": "results/m3",
+    "codec": {
+      "name": "wave",
+      "d_complex": 2048,
+      "seed": 0,
+      "normalize": "l2",
+      "table": "wave2048_l2"
+    }
+  },
+  "seed": 1337,
+  "data_seed": 42,
+  "param_counts": {
+    "total": 107504640,
+    "body": 38298624,
+    "lm_head": 67108864,
+    "embedding": 2097152
+  },
+  "body_state_hash": "baffcfaa1f55d70831281d768ea578c7cb82b189b91baf4bc951a31f701e02e2",
+  "table": "wave2048_l2",
+  "status": "ok",
+  "final_val_loss": 4.2645617818832395,
+  "best_val_loss": 4.2645617818832395,
+  "wall_seconds": 5007.4,
+  "tokens_seen": 98304000
+}

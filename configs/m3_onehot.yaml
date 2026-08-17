@@ -1,0 +1,3 @@
+extends: m3_shared.yaml
+# V1 baseline. Everything is reported relative to this.
+codec: {name: onehot, pos_dim: 16, table: onehot16}

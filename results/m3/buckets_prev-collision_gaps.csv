@@ -1,0 +1,4 @@
+bucket,val_tokens,m3_albert,m3_albert_SE,m3_albert_sig,m3_dense,m3_dense_SE,m3_dense_sig,m3_hash,m3_hash_SE,m3_hash_sig,m3_rp,m3_rp_SE,m3_rp_sig,m3_wave,m3_wave_SE,m3_wave_sig,m3_wave768,m3_wave768_SE,m3_wave768_sig
+after collides @16,238168,-0.4888,0.002,yes,-0.5544,0.002,yes,-0.4697,0.002,yes,-0.032,0.0014,yes,-0.4759,0.0018,yes,-0.4964,0.0019,yes
+"after cropped, still distinct",144496,-0.0198,0.0019,yes,-0.0988,0.002,yes,0.0105,0.0019,yes,0.0119,0.0017,yes,0.0027,0.0017,no,-0.0203,0.0017,yes
+after fits in window,10617144,-0.0876,0.0003,yes,-0.2179,0.0003,yes,0.0424,0.0003,yes,-0.0851,0.0003,yes,-0.0705,0.0002,yes,-0.1047,0.0003,yes

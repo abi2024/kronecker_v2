@@ -32,3 +32,10 @@ it was never about collisions and M2's mechanism claim is wrong.
 | 2026-08-17 | m2 | m5_bag | 1337 | a000c6d | bag2048_l2 | 4.8400 | results\m5\m5_bag |
 | 2026-08-17 | m2 | m5_wave1024 | 1337 | a000c6d | wave1024_l2 | 4.7552 | results\m5\m5_wave1024 |
 | 2026-08-17 | m2 | m5_wave768 | 1337 | a000c6d | wave768_l2 | 4.7152 | results\m5\m5_wave768 |
+| 2026-08-17 | m2 | m3_onehot | 1337 | 0649478 | onehot16 | 4.3476 | results\m3\m3_onehot |
+| 2026-08-17 | m2 | m3_wave768 | 1337 | 0649478 | wave768_l2 | 4.2339 | results\m3\m3_wave768 |
+| 2026-08-17 | m2 | m3_wave | 1337 | 0649478 | wave2048_l2 | 4.2646 | results\m3\m3_wave |
+| 2026-08-17 | m2 | m3_rp | 1337 | 0649478 | rp16_l2 | 4.2620 | results\m3\m3_rp |
+| 2026-08-17 | m2 | m3_hash | 1337 | 0649478 | dense | 4.3697 | results\m3\m3_hash |
+| 2026-08-17 | m2 | m3_albert | 1337 | 0649478 | dense | 4.2485 | results\m3\m3_albert |
+| 2026-08-17 | m2 | m3_dense | 1337 | 0649478 | dense | 4.1225 | results\m3\m3_dense |

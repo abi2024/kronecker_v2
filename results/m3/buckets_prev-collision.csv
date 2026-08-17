@@ -1,0 +1,4 @@
+bucket,vocab_tokens,val_tokens,val_share_%,m3_albert,m3_dense,m3_hash,m3_onehot,m3_rp,m3_wave,m3_wave768
+after collides @16,903,238168,2.17,3.4116,3.346,3.4308,3.9004,3.8684,3.4245,3.404
+"after cropped, still distinct",887,144496,1.31,3.5947,3.5157,3.6251,3.6145,3.6264,3.6172,3.5942
+after fits in window,129282,10617144,96.52,4.3976,4.2673,4.5276,4.4852,4.4001,4.4147,4.3805

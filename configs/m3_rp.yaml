@@ -1,0 +1,4 @@
+extends: m3_shared.yaml
+# One-hot's exact information, spread densely. M5 showed this is the
+# strongest non-wave codec and recovers 81% of the gain at matched width.
+codec: {name: rp, pos_dim: 16, seed: 0, normalize: l2, table: rp16_l2}

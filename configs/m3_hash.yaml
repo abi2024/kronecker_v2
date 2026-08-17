@@ -1,0 +1,3 @@
+extends: m3_shared.yaml
+# Hash embeddings (Svenstrup et al.), matched budget: 3,584 buckets.
+codec: {name: hash, code_dim: 4096, seed: 0}

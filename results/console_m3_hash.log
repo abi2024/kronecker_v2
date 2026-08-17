@@ -1,0 +1,172 @@
+d_model=512, code_dim=4096, V=131,072
+  codec  (onehot / wave)     2,097,152   target
+  albert                   2,105,344   +0.39%   rank=16
+  hash                     2,097,152   +0.00%   buckets=3584
+  dense (reference)       67,108,864   32x
+
+[m3_hash] device=cuda params={'total': 107504640, 'body': 38298624, 'lm_head': 67108864, 'embedding': 2097152} body_hash=baffcfaa1f55
+[m3_hash] step     0 loss 11.8976 lr 3.00e-06 gn 7.08 proj_gn 0.00 16,920 tok/s
+[m3_hash] step     0 VAL 11.8448
+[m3_hash] step    20 loss 11.0125 lr 6.30e-05 gn 1.24 proj_gn 0.00 19,881 tok/s
+[m3_hash] step    40 loss 9.8282 lr 1.23e-04 gn 1.13 proj_gn 0.00 19,979 tok/s
+[m3_hash] step    60 loss 8.6058 lr 1.83e-04 gn 0.81 proj_gn 0.00 19,988 tok/s
+[m3_hash] step    80 loss 7.9671 lr 2.43e-04 gn 0.52 proj_gn 0.00 19,981 tok/s
+[m3_hash] step   100 loss 7.5062 lr 3.03e-04 gn 0.79 proj_gn 0.00 19,956 tok/s
+[m3_hash] step   120 loss 7.2948 lr 3.63e-04 gn 0.81 proj_gn 0.00 19,987 tok/s
+[m3_hash] step   140 loss 7.1388 lr 4.23e-04 gn 2.05 proj_gn 0.00 19,995 tok/s
+[m3_hash] step   160 loss 6.9285 lr 4.83e-04 gn 0.73 proj_gn 0.00 19,965 tok/s
+[m3_hash] step   180 loss 6.7303 lr 5.43e-04 gn 0.72 proj_gn 0.00 19,982 tok/s
+[m3_hash] step   200 loss 6.7143 lr 6.00e-04 gn 0.55 proj_gn 0.00 19,991 tok/s
+[m3_hash] step   220 loss 6.5642 lr 6.00e-04 gn 0.43 proj_gn 0.00 19,952 tok/s
+[m3_hash] step   240 loss 6.4382 lr 6.00e-04 gn 0.40 proj_gn 0.00 19,986 tok/s
+[m3_hash] step   250 VAL 6.4429
+[m3_hash] step   260 loss 6.6585 lr 5.99e-04 gn 0.50 proj_gn 0.00 19,989 tok/s
+[m3_hash] step   280 loss 6.3621 lr 5.99e-04 gn 0.57 proj_gn 0.00 19,972 tok/s
+[m3_hash] step   300 loss 6.1457 lr 5.98e-04 gn 0.40 proj_gn 0.00 19,983 tok/s
+[m3_hash] step   320 loss 6.4206 lr 5.98e-04 gn 0.37 proj_gn 0.00 19,992 tok/s
+[m3_hash] step   340 loss 6.2920 lr 5.97e-04 gn 0.37 proj_gn 0.00 19,969 tok/s
+[m3_hash] step   360 loss 6.1172 lr 5.96e-04 gn 0.44 proj_gn 0.00 20,003 tok/s
+[m3_hash] step   380 loss 6.1888 lr 5.95e-04 gn 0.43 proj_gn 0.00 19,988 tok/s
+[m3_hash] step   400 loss 5.9537 lr 5.93e-04 gn 0.40 proj_gn 0.00 19,962 tok/s
+[m3_hash] step   420 loss 6.3012 lr 5.92e-04 gn 0.42 proj_gn 0.00 19,988 tok/s
+[m3_hash] step   440 loss 6.0753 lr 5.90e-04 gn 0.51 proj_gn 0.00 19,999 tok/s
+[m3_hash] step   460 loss 5.7675 lr 5.89e-04 gn 0.39 proj_gn 0.00 19,944 tok/s
+[m3_hash] step   480 loss 6.0100 lr 5.87e-04 gn 0.49 proj_gn 0.00 20,006 tok/s
+[m3_hash] step   500 loss 5.8477 lr 5.85e-04 gn 0.41 proj_gn 0.00 19,985 tok/s
+[m3_hash] step   500 VAL 5.8325
+[m3_hash] step   520 loss 5.9936 lr 5.83e-04 gn 0.43 proj_gn 0.00 20,001 tok/s
+[m3_hash] step   540 loss 6.0159 lr 5.81e-04 gn 0.36 proj_gn 0.00 19,996 tok/s
+[m3_hash] step   560 loss 5.9058 lr 5.78e-04 gn 0.39 proj_gn 0.00 19,986 tok/s
+[m3_hash] step   580 loss 5.9002 lr 5.76e-04 gn 0.37 proj_gn 0.00 19,775 tok/s
+[m3_hash] step   600 loss 5.6057 lr 5.73e-04 gn 0.38 proj_gn 0.00 20,000 tok/s
+[m3_hash] step   620 loss 5.7273 lr 5.71e-04 gn 0.39 proj_gn 0.00 19,946 tok/s
+[m3_hash] step   640 loss 5.6275 lr 5.68e-04 gn 0.41 proj_gn 0.00 19,453 tok/s
+[m3_hash] step   660 loss 5.7291 lr 5.65e-04 gn 0.43 proj_gn 0.00 19,994 tok/s
+[m3_hash] step   680 loss 5.7523 lr 5.62e-04 gn 0.48 proj_gn 0.00 19,975 tok/s
+[m3_hash] step   700 loss 5.8051 lr 5.59e-04 gn 0.42 proj_gn 0.00 19,963 tok/s
+[m3_hash] step   720 loss 5.7189 lr 5.55e-04 gn 0.41 proj_gn 0.00 19,987 tok/s
+[m3_hash] step   740 loss 5.5570 lr 5.52e-04 gn 0.42 proj_gn 0.00 19,984 tok/s
+[m3_hash] step   750 VAL 5.4952
+[m3_hash] step   760 loss 5.5396 lr 5.48e-04 gn 0.42 proj_gn 0.00 19,937 tok/s
+[m3_hash] step   780 loss 5.4621 lr 5.45e-04 gn 0.39 proj_gn 0.00 19,975 tok/s
+[m3_hash] step   800 loss 5.6896 lr 5.41e-04 gn 0.40 proj_gn 0.00 20,003 tok/s
+[m3_hash] step   820 loss 5.5321 lr 5.37e-04 gn 0.40 proj_gn 0.00 19,938 tok/s
+[m3_hash] step   840 loss 5.4254 lr 5.33e-04 gn 0.43 proj_gn 0.00 19,972 tok/s
+[m3_hash] step   860 loss 5.4839 lr 5.29e-04 gn 0.43 proj_gn 0.00 19,987 tok/s
+[m3_hash] step   880 loss 5.4852 lr 5.25e-04 gn 0.45 proj_gn 0.00 19,946 tok/s
+[m3_hash] step   900 loss 5.5930 lr 5.21e-04 gn 0.40 proj_gn 0.00 19,966 tok/s
+[m3_hash] step   920 loss 5.5000 lr 5.17e-04 gn 0.44 proj_gn 0.00 19,993 tok/s
+[m3_hash] step   940 loss 5.4167 lr 5.12e-04 gn 0.46 proj_gn 0.00 19,987 tok/s
+[m3_hash] step   960 loss 5.4773 lr 5.08e-04 gn 0.47 proj_gn 0.00 19,981 tok/s
+[m3_hash] step   980 loss 5.4144 lr 5.03e-04 gn 0.45 proj_gn 0.00 19,997 tok/s
+[m3_hash] step  1000 loss 5.3425 lr 4.98e-04 gn 0.47 proj_gn 0.00 19,993 tok/s
+[m3_hash] step  1000 VAL 5.2434
+[m3_hash] step  1020 loss 5.3701 lr 4.94e-04 gn 0.45 proj_gn 0.00 19,933 tok/s
+[m3_hash] step  1040 loss 5.3944 lr 4.89e-04 gn 0.44 proj_gn 0.00 19,984 tok/s
+[m3_hash] step  1060 loss 5.4759 lr 4.84e-04 gn 0.47 proj_gn 0.00 19,987 tok/s
+[m3_hash] step  1080 loss 5.1613 lr 4.79e-04 gn 0.47 proj_gn 0.00 19,946 tok/s
+[m3_hash] step  1100 loss 5.1985 lr 4.74e-04 gn 0.48 proj_gn 0.00 19,991 tok/s
+[m3_hash] step  1120 loss 5.4683 lr 4.68e-04 gn 0.54 proj_gn 0.00 19,995 tok/s
+[m3_hash] step  1140 loss 5.2451 lr 4.63e-04 gn 0.42 proj_gn 0.00 19,951 tok/s
+[m3_hash] step  1160 loss 5.0704 lr 4.58e-04 gn 0.45 proj_gn 0.00 20,007 tok/s
+[m3_hash] step  1180 loss 5.1389 lr 4.53e-04 gn 0.47 proj_gn 0.00 20,000 tok/s
+[m3_hash] step  1200 loss 5.2990 lr 4.47e-04 gn 0.49 proj_gn 0.00 19,953 tok/s
+[m3_hash] step  1220 loss 5.0526 lr 4.42e-04 gn 0.47 proj_gn 0.00 19,975 tok/s
+[m3_hash] step  1240 loss 5.0890 lr 4.36e-04 gn 0.45 proj_gn 0.00 19,976 tok/s
+[m3_hash] step  1250 VAL 5.0363
+[m3_hash] step  1260 loss 5.1380 lr 4.31e-04 gn 0.51 proj_gn 0.00 19,958 tok/s
+[m3_hash] step  1280 loss 5.3985 lr 4.25e-04 gn 0.45 proj_gn 0.00 19,965 tok/s
+[m3_hash] step  1300 loss 5.2216 lr 4.19e-04 gn 0.50 proj_gn 0.00 19,997 tok/s
+[m3_hash] step  1320 loss 4.9243 lr 4.13e-04 gn 0.53 proj_gn 0.00 19,956 tok/s
+[m3_hash] step  1340 loss 4.8906 lr 4.08e-04 gn 0.47 proj_gn 0.00 19,988 tok/s
+[m3_hash] step  1360 loss 5.0637 lr 4.02e-04 gn 0.50 proj_gn 0.00 19,996 tok/s
+[m3_hash] step  1380 loss 5.1542 lr 3.96e-04 gn 0.47 proj_gn 0.00 19,956 tok/s
+[m3_hash] step  1400 loss 5.0132 lr 3.90e-04 gn 0.49 proj_gn 0.00 19,993 tok/s
+[m3_hash] step  1420 loss 4.9099 lr 3.84e-04 gn 0.49 proj_gn 0.00 19,989 tok/s
+[m3_hash] step  1440 loss 4.8345 lr 3.78e-04 gn 0.49 proj_gn 0.00 19,970 tok/s
+[m3_hash] step  1460 loss 4.9022 lr 3.72e-04 gn 0.50 proj_gn 0.00 20,008 tok/s
+[m3_hash] step  1480 loss 5.0959 lr 3.66e-04 gn 0.48 proj_gn 0.00 19,995 tok/s
+[m3_hash] step  1500 loss 4.9007 lr 3.60e-04 gn 0.51 proj_gn 0.00 19,961 tok/s
+[m3_hash] step  1500 VAL 4.8565
+[m3_hash] step  1520 loss 4.9540 lr 3.54e-04 gn 0.50 proj_gn 0.00 19,936 tok/s
+[m3_hash] step  1540 loss 5.0465 lr 3.48e-04 gn 0.51 proj_gn 0.00 20,020 tok/s
+[m3_hash] step  1560 loss 4.9142 lr 3.42e-04 gn 0.52 proj_gn 0.00 19,980 tok/s
+[m3_hash] step  1580 loss 4.7798 lr 3.36e-04 gn 0.52 proj_gn 0.00 19,922 tok/s
+[m3_hash] step  1600 loss 5.1612 lr 3.30e-04 gn 0.53 proj_gn 0.00 20,011 tok/s
+[m3_hash] step  1620 loss 4.6094 lr 3.24e-04 gn 0.51 proj_gn 0.00 19,996 tok/s
+[m3_hash] step  1640 loss 4.9781 lr 3.18e-04 gn 0.56 proj_gn 0.00 19,925 tok/s
+[m3_hash] step  1660 loss 5.0198 lr 3.12e-04 gn 0.58 proj_gn 0.00 20,027 tok/s
+[m3_hash] step  1680 loss 4.9343 lr 3.06e-04 gn 0.58 proj_gn 0.00 19,984 tok/s
+[m3_hash] step  1700 loss 4.5877 lr 3.00e-04 gn 0.50 proj_gn 0.00 19,918 tok/s
+[m3_hash] step  1720 loss 4.8967 lr 2.94e-04 gn 0.54 proj_gn 0.00 19,992 tok/s
+[m3_hash] step  1740 loss 4.9390 lr 2.88e-04 gn 0.50 proj_gn 0.00 19,981 tok/s
+[m3_hash] step  1750 VAL 4.7237
+[m3_hash] step  1760 loss 4.8372 lr 2.82e-04 gn 0.53 proj_gn 0.00 19,965 tok/s
+[m3_hash] step  1780 loss 5.0265 lr 2.76e-04 gn 0.57 proj_gn 0.00 19,956 tok/s
+[m3_hash] step  1800 loss 5.0516 lr 2.70e-04 gn 0.54 proj_gn 0.00 20,022 tok/s
+[m3_hash] step  1820 loss 4.9607 lr 2.64e-04 gn 0.60 proj_gn 0.00 19,953 tok/s
+[m3_hash] step  1840 loss 4.7425 lr 2.58e-04 gn 0.53 proj_gn 0.00 19,962 tok/s
+[m3_hash] step  1860 loss 4.9144 lr 2.52e-04 gn 0.51 proj_gn 0.00 20,014 tok/s
+[m3_hash] step  1880 loss 4.7476 lr 2.47e-04 gn 0.55 proj_gn 0.00 19,970 tok/s
+[m3_hash] step  1900 loss 4.3687 lr 2.41e-04 gn 0.57 proj_gn 0.00 19,960 tok/s
+[m3_hash] step  1920 loss 4.6695 lr 2.35e-04 gn 0.55 proj_gn 0.00 20,008 tok/s
+[m3_hash] step  1940 loss 4.5534 lr 2.29e-04 gn 0.54 proj_gn 0.00 19,982 tok/s
+[m3_hash] step  1960 loss 4.8922 lr 2.24e-04 gn 0.56 proj_gn 0.00 19,918 tok/s
+[m3_hash] step  1980 loss 4.7628 lr 2.18e-04 gn 0.57 proj_gn 0.00 19,993 tok/s
+[m3_hash] step  2000 loss 4.7644 lr 2.13e-04 gn 0.52 proj_gn 0.00 19,994 tok/s
+[m3_hash] step  2000 VAL 4.6052
+[m3_hash] step  2020 loss 4.6320 lr 2.07e-04 gn 0.56 proj_gn 0.00 19,951 tok/s
+[m3_hash] step  2040 loss 4.6496 lr 2.02e-04 gn 0.68 proj_gn 0.00 19,987 tok/s
+[m3_hash] step  2060 loss 4.7713 lr 1.97e-04 gn 0.53 proj_gn 0.00 20,019 tok/s
+[m3_hash] step  2080 loss 4.5519 lr 1.92e-04 gn 0.54 proj_gn 0.00 19,952 tok/s
+[m3_hash] step  2100 loss 4.8361 lr 1.86e-04 gn 0.56 proj_gn 0.00 19,981 tok/s
+[m3_hash] step  2120 loss 4.5911 lr 1.81e-04 gn 0.57 proj_gn 0.00 19,995 tok/s
+[m3_hash] step  2140 loss 4.5722 lr 1.76e-04 gn 0.55 proj_gn 0.00 19,962 tok/s
+[m3_hash] step  2160 loss 4.7363 lr 1.71e-04 gn 0.55 proj_gn 0.00 19,981 tok/s
+[m3_hash] step  2180 loss 4.4391 lr 1.66e-04 gn 0.56 proj_gn 0.00 19,984 tok/s
+[m3_hash] step  2200 loss 4.8209 lr 1.62e-04 gn 0.58 proj_gn 0.00 19,939 tok/s
+[m3_hash] step  2220 loss 4.5485 lr 1.57e-04 gn 0.56 proj_gn 0.00 19,992 tok/s
+[m3_hash] step  2240 loss 4.3543 lr 1.52e-04 gn 0.58 proj_gn 0.00 20,006 tok/s
+[m3_hash] step  2250 VAL 4.5156
+[m3_hash] step  2260 loss 4.6504 lr 1.48e-04 gn 0.61 proj_gn 0.00 19,995 tok/s
+[m3_hash] step  2280 loss 4.6677 lr 1.43e-04 gn 0.53 proj_gn 0.00 19,945 tok/s
+[m3_hash] step  2300 loss 4.4852 lr 1.39e-04 gn 0.59 proj_gn 0.00 19,984 tok/s
+[m3_hash] step  2320 loss 4.7968 lr 1.35e-04 gn 0.58 proj_gn 0.00 19,991 tok/s
+[m3_hash] step  2340 loss 4.7889 lr 1.31e-04 gn 0.59 proj_gn 0.00 19,965 tok/s
+[m3_hash] step  2360 loss 4.7017 lr 1.27e-04 gn 0.57 proj_gn 0.00 19,984 tok/s
+[m3_hash] step  2380 loss 4.7381 lr 1.23e-04 gn 0.59 proj_gn 0.00 19,991 tok/s
+[m3_hash] step  2400 loss 4.6510 lr 1.19e-04 gn 0.58 proj_gn 0.00 19,956 tok/s
+[m3_hash] step  2420 loss 4.5334 lr 1.15e-04 gn 0.57 proj_gn 0.00 19,992 tok/s
+[m3_hash] step  2440 loss 4.5330 lr 1.12e-04 gn 0.55 proj_gn 0.00 19,973 tok/s
+[m3_hash] step  2460 loss 4.5090 lr 1.08e-04 gn 0.56 proj_gn 0.00 19,981 tok/s
+[m3_hash] step  2480 loss 4.3515 lr 1.05e-04 gn 0.57 proj_gn 0.00 19,990 tok/s
+[m3_hash] step  2500 loss 4.4367 lr 1.01e-04 gn 0.56 proj_gn 0.00 19,971 tok/s
+[m3_hash] step  2500 VAL 4.4483
+[m3_hash] step  2520 loss 4.6633 lr 9.82e-05 gn 0.58 proj_gn 0.00 19,941 tok/s
+[m3_hash] step  2540 loss 4.4939 lr 9.52e-05 gn 0.58 proj_gn 0.00 19,988 tok/s
+[m3_hash] step  2560 loss 4.8559 lr 9.22e-05 gn 0.56 proj_gn 0.00 19,996 tok/s
+[m3_hash] step  2580 loss 4.8392 lr 8.94e-05 gn 0.61 proj_gn 0.00 19,944 tok/s
+[m3_hash] step  2600 loss 4.5023 lr 8.67e-05 gn 0.61 proj_gn 0.00 19,989 tok/s
+[m3_hash] step  2620 loss 4.7943 lr 8.42e-05 gn 0.58 proj_gn 0.00 19,988 tok/s
+[m3_hash] step  2640 loss 4.5844 lr 8.17e-05 gn 0.57 proj_gn 0.00 19,941 tok/s
+[m3_hash] step  2660 loss 4.3805 lr 7.94e-05 gn 0.58 proj_gn 0.00 20,018 tok/s
+[m3_hash] step  2680 loss 4.5298 lr 7.72e-05 gn 0.59 proj_gn 0.00 20,002 tok/s
+[m3_hash] step  2700 loss 4.5914 lr 7.52e-05 gn 0.59 proj_gn 0.00 19,943 tok/s
+[m3_hash] step  2720 loss 4.4236 lr 7.32e-05 gn 0.61 proj_gn 0.00 20,002 tok/s
+[m3_hash] step  2740 loss 4.6161 lr 7.14e-05 gn 0.60 proj_gn 0.00 19,776 tok/s
+[m3_hash] step  2750 VAL 4.4029
+[m3_hash] step  2760 loss 4.5730 lr 6.97e-05 gn 0.62 proj_gn 0.00 19,984 tok/s
+[m3_hash] step  2780 loss 4.3972 lr 6.82e-05 gn 0.59 proj_gn 0.00 19,992 tok/s
+[m3_hash] step  2800 loss 4.6903 lr 6.68e-05 gn 0.61 proj_gn 0.00 19,959 tok/s
+[m3_hash] step  2820 loss 4.5348 lr 6.55e-05 gn 0.61 proj_gn 0.00 19,976 tok/s
+[m3_hash] step  2840 loss 4.3902 lr 6.43e-05 gn 0.59 proj_gn 0.00 19,993 tok/s
+[m3_hash] step  2860 loss 4.4981 lr 6.33e-05 gn 0.64 proj_gn 0.00 19,963 tok/s
+[m3_hash] step  2880 loss 4.3354 lr 6.24e-05 gn 0.59 proj_gn 0.00 19,988 tok/s
+[m3_hash] step  2900 loss 4.1842 lr 6.17e-05 gn 0.62 proj_gn 0.00 19,970 tok/s
+[m3_hash] step  2920 loss 4.4247 lr 6.11e-05 gn 0.59 proj_gn 0.00 19,974 tok/s
+[m3_hash] step  2940 loss 4.5320 lr 6.06e-05 gn 0.59 proj_gn 0.00 19,993 tok/s
+[m3_hash] step  2960 loss 4.5143 lr 6.03e-05 gn 0.58 proj_gn 0.00 19,972 tok/s
+[m3_hash] step  2980 loss 4.7200 lr 6.01e-05 gn 0.59 proj_gn 0.00 19,981 tok/s
+[m3_hash] step  2999 loss 4.5298 lr 6.00e-05 gn 0.60 proj_gn 0.00 19,993 tok/s
+[m3_hash] step  2999 VAL 4.3697
+[m3_hash] done: status=ok final_val=4.3697 wall=4973s -> results\m3\m3_hash

@@ -1,0 +1,32 @@
+# M3 — the scale test. Everything identical across arms except `codec:`.
+# Model is 3.4x M2's body (37.7M vs 11.0M) on the SAME schedule, so the only
+# variable against M2 is size. Data is the three-language corpus: the collision
+# audit says Malayalam is the worst-hit script (10.13% of its tokens merged at
+# pos_dim=16, vs Devanagari 6.29% and Latin 0.02%), which gives a three-point
+# gradient with a falsifiable ordering: Malayalam > Devanagari > Latin.
+model:
+  block_size: 1024
+  vocab_size: 131072
+  n_layer: 12
+  n_head: 8
+  d_model: 512
+  dropout: 0.0
+data:
+  dir: data/m3
+  tables_dir: data/tables
+train:
+  device: null
+  batch_size: 4           # bench before trusting: d_model 512 raises activations
+  grad_accum: 8           # effective 32,768 tokens/step, as in M2
+  max_steps: 3000
+  lr: 6.0e-4
+  warmup: 200
+  min_lr_frac: 0.1
+  weight_decay: 0.1
+  grad_clip: 1.0
+  eval_every: 250
+  eval_iters: 50
+  log_every: 20
+  seed: 1337
+  data_seed: 42
+out_root: results/m3

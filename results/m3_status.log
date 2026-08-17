@@ -1,0 +1,11 @@
+23:30:48  results\m3   GPU 1% busy | 0.7/12.0 GB | 59C
+--------------------------------------------------------------
+DONE m3_onehot           val 4.3476  85 min
+DONE m3_wave768          val 4.2339  83 min
+DONE m3_wave             val 4.2646  83 min
+DONE m3_rp               val 4.2620  83 min
+DONE m3_hash             val 4.3697  83 min
+DONE m3_albert           val 4.2485  84 min
+DONE m3_dense            val 4.1225  142 min
+--------------------------------------------------------------
+7 done, 0 running, 0 queued
