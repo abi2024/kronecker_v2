@@ -1,0 +1,59 @@
+{
+  "git_sha": "a000c6d",
+  "torch": "2.13.0+cu126",
+  "device": "NVIDIA GeForce RTX 3060",
+  "written_at": "2026-08-17 02:43:19",
+  "milestone": "m2",
+  "config": "configs\\m5_s1338_onehot.yaml",
+  "cfg": {
+    "model": {
+      "block_size": 1024,
+      "vocab_size": 131072,
+      "n_layer": 6,
+      "n_head": 6,
+      "d_model": 384,
+      "dropout": 0.0
+    },
+    "data": {
+      "dir": "data/m2",
+      "tables_dir": "data/tables"
+    },
+    "train": {
+      "device": null,
+      "batch_size": 4,
+      "grad_accum": 8,
+      "max_steps": 3000,
+      "lr": 0.0006,
+      "warmup": 200,
+      "min_lr_frac": 0.1,
+      "weight_decay": 0.1,
+      "grad_clip": 1.0,
+      "eval_every": 250,
+      "eval_iters": 50,
+      "log_every": 20,
+      "seed": 1338,
+      "data_seed": 43
+    },
+    "out_root": "results/m5",
+    "codec": {
+      "name": "onehot",
+      "pos_dim": 16,
+      "table": "onehot16"
+    }
+  },
+  "seed": 1338,
+  "data_seed": 43,
+  "param_counts": {
+    "total": 62924544,
+    "body": 11020032,
+    "lm_head": 50331648,
+    "embedding": 1572864
+  },
+  "body_state_hash": "6dfbeacce139df8943138a89c26799b90e8fb87e100bc5d22ecb21bf356c3431",
+  "table": "onehot16",
+  "status": "ok",
+  "final_val_loss": 4.812175483703613,
+  "best_val_loss": 4.812175483703613,
+  "wall_seconds": 3413.5,
+  "tokens_seen": 98304000
+}

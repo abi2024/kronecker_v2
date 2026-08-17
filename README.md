@@ -1,137 +1,108 @@
 # Kronecker V2 — Removing the Byte-Window Limit
 
-**[→ Interactive walkthrough](https://abi2024.github.io/kronecker_v2/)** — type a word, watch it get cropped, see why anagrams break plain addition.
-
 **Assignment problem solved: #3** — *"Today Kronecker is limiting to presenting 32 positions for every word… That's a waste of space. How can it be dynamic and not force us to crop a word?"*
 
-> **One sentence.** The one-hot byte×position grid does not merely waste space — it imposes a hidden design constraint on the tokenizer (*no token may exceed `pos_dim` bytes*), and where that constraint is violated it merges distinct words into a single vector permanently; this project measures the damage on the real 131,072-token vocabulary and replaces the grid with a phase-bound Fourier code that has no position ceiling, at identical parameter count.
+**[→ Interactive walkthrough](https://abi2024.github.io/kronecker_v2/)** — type a word, watch it get cropped, see why anagrams break plain addition.
+
+> **The claim, in one sentence.** The one-hot byte×position grid imposes a hidden design constraint on the tokenizer — *no token may exceed `pos_dim` bytes* — and where that constraint is violated it merges distinct words into one vector permanently; replacing the grid with a phase-bound Fourier code removes the ceiling, and does so with **four times fewer parameters** than the grid needs at its own best setting.
 
 | | |
 |---|---|
-| **Headline result** | At equal trainable parameters, the phase code beats the one-hot grid by **1.24%** validation loss (4.7532 vs 4.8129) |
-| **Mechanism, isolated** | On positions following a collided token, the phase code gains **0.355 ± 0.008 nats** over one-hot — a difference-in-differences at **45σ** |
-| **Honest magnitude** | Those positions are 1% of the stream, so the mechanism explains **6.3%** of the aggregate gain |
-| **Compute** | One RTX 3060. ~5 GPU-hours for the headline grid. No frontier hardware anywhere in this repo. |
+| **Headline, over 3 seeds** | phase code beats the grid by **0.0668 ± 0.0056** nats at matched parameters (t = 11.9) |
+| **Efficiency** | at 589,824 parameters it beats the grid's *own best* (2,359,296 params) by **0.0922 nats**, 6.6 sd |
+| **Mechanism, causal** | collisions cost the grid **0.344 ± 0.014** nats on affected positions; effect **vanishes at zero dose** (0.3σ) |
+| **Mechanism, honest** | **81%** of the aggregate gain is representational spread, not the Fourier construction |
+| **Compute** | one RTX 3060, ~20 GPU-hours total. No frontier hardware anywhere in this repo. |
 
-Detailed evidence: [`results/M1_FINDINGS.md`](results/M1_FINDINGS.md) · [`results/M2_FINDINGS.md`](results/M2_FINDINGS.md)
-
----
-
-## 1. Why this is one problem and not two
-
-Problem 4 asks for a Fourier alternative — *"represent each character like a Fourier wave, and just add them to make a word."*
-
-Taken literally that fails on the first example you try. Addition is commutative, so `dog` and `god` produce the identical vector, and so does every anagram. To make character waves work at all, order has to enter through something other than the sum — and the natural choice is to rotate each character's wave by its position.
-
-Rotation has no ceiling. Position 47 is simply "rotate 47 times as far." **The fix that makes Problem 4 work is the fix that solves Problem 3.** So this is a single submission answering Problem 3, whose method happens to be the construction Problem 4 gestures at. Nothing is mixed; the two questions have one answer.
+Evidence sheets: [M1](results/M1_FINDINGS.md) · [M2](results/M2_FINDINGS.md) · [M4/M5](results/M4_M5_FINDINGS.md)
 
 ---
 
-## 2. What the 32-byte window actually costs
+## 1. Why Problems 3 and 4 have one answer
 
-The Kronecker codec marks each of a token's UTF-8 bytes on a 256 × `pos_dim` grid and flattens it. Bytes past `pos_dim` are dropped. Two tokens sharing that prefix therefore produce **byte-identical codes**, and since the codec is frozen and the projection is shared, no amount of training can separate them. This is not "close in embedding space" — it is the same vector, forever.
+Problem 4 asks for a Fourier alternative — *represent each character as a wave and add them to make a word*. Taken literally it fails on the first example: addition is commutative, so `dog` and `god` produce the identical vector, and so does every anagram. Order must enter through something other than the sum, and the natural choice is to **rotate each character's wave by its position**. Rotation has no ceiling — position 47 is just "rotate 47 times as far."
+
+The repair that makes Problem 4 work is the repair that removes Problem 3's length limit. This is one solution to Problem 3, whose mechanism is the construction Problem 4 gestures at.
+
+**This is not a rhetorical point — it is measured.** §6 trains the bag-of-bytes version (same phasors, rotation removed): it scores **4.8400**, *worse* than the grid it was meant to improve on. Order binding is load-bearing.
+
+---
+
+## 2. What the 32-byte window costs
+
+The codec sees only a token's first `pos_dim` bytes. Two tokens sharing that prefix get the *same* vector for the life of the model: the codec is frozen and the projection is shared, so no amount of training separates them.
 
 ### Finding 1 — the window is a tokenizer design constraint, not a free parameter
 
-Measured on the production vocabulary. No training, no GPU, ~2 minutes:
+| pos_dim | collision groups | tokens merged | % of vocab |
+|--------:|-----------------:|--------------:|-----------:|
+| 12 | 1,877 | 5,335 | 4.070% |
+| **16** | **380** | **903** | **0.689%** |
+| 20 | 131 | 303 | 0.231% |
+| 24 | 39 | 93 | 0.071% |
+| 32 | 0 | 0 | 0.000% |
 
-| pos_dim | collision groups | collided tokens | % of vocab | % truncated |
-|--------:|-----------------:|----------------:|-----------:|------------:|
-| 12 | 1,877 | 5,335 | 4.070% | 5.015% |
-| **16** | **380** | **903** | **0.689%** | **1.169%** |
-| 20 | 131 | 303 | 0.231% | 0.542% |
-| 24 | 39 | 93 | 0.071% | 0.220% |
-| 32 | 0 | 0 | 0.000% | 0.000% |
+Zero at 32 is **not a null result**. BrahmicTokenizer-131K's own audit reports `tokens > 32 bytes: 0` — the vocabulary was *built* to satisfy the window, which we reproduce independently from `tokenizer.json`. The constraint never disappeared; it was **paid for upstream**, as a restriction on which merges the tokenizer may learn, and it appears nowhere in the embedding's parameter accounting.
 
-Zero at 32 is **not a null result**. BrahmicTokenizer-131K's own audit reports `tokens > 32 bytes: 0` — the vocabulary was *built* to satisfy the window, and we reproduce that independently from `tokenizer.json` (max observed byte length: exactly 32).
-
-So the constraint never disappeared. It was **paid for upstream, in the tokenizer**, as a restriction on which merges the vocabulary is allowed to learn — and it appears nowhere in the embedding's parameter accounting.
-
-The bolded row is the setting the reference paper's own 124M experiments use (`pos_dim=16`, `D = 256 × 16 = 4096`). There, the constraint is violated.
+The bold row is the setting the reference paper's own 124M experiments use. There, it is violated.
 
 ### Finding 2 — the cost falls almost entirely on Indic scripts
 
-At `pos_dim = 16`:
+At `pos_dim = 16`: Malayalam loses 182 of 1,797 tokens (**10.13%**), Devanagari 253 of 4,020 (6.29%), Tamil 5.69%, Telugu 5.56%, Bengali 4.66% — against **18 of 108,185 Latin tokens (0.02%)**.
 
-| script | collided | of | % of own script |
-|---|---:|---:|---:|
-| Malayalam | 182 | 1,797 | **10.13%** |
-| Devanagari | 253 | 4,020 | 6.29% |
-| Tamil | 60 | 1,054 | 5.69% |
-| Telugu | 78 | 1,402 | 5.56% |
-| Kannada | 77 | 1,422 | 5.41% |
-| Bengali | 101 | 2,166 | 4.66% |
-| **Latin** | **18** | **108,185** | **0.02%** |
-
-UTF-8 charges 1 byte per Latin character and **3 per Indic character**; a conjunct such as क्ष is three codepoints, so nine bytes for one visual symbol. The same window is 32 English characters or ~10 Indic ones. Two orders of magnitude of asymmetry from one shared constant.
-
-Representative collision groups — three unrelated words, one vector:
+UTF-8 charges 1 byte per Latin character and **3 per Indic character**; a conjunct such as क्ष is three codepoints, so nine bytes for one visual symbol. Representative groups — three unrelated words, one vector:
 
 ```
 कार्य (work) / कार्यक्रम (programme) / कार्यालय (office)
 अधिकार (right) / अधिकारी (officer) / अधिकारियों (officers)
-संस्क / संस्कृति (culture) / संस्करण (edition)
 ```
 
 ### Finding 3 — a second collision mechanism, independent of the window
 
-The reference `token_id_to_bytes` resolves ids through `tokenizer.decode()`, which renders every partial-codepoint byte-fallback token as U+FFFD. Those tokens collapse together at **any** `pos_dim`: **1,151 tokens still collide at `pos_dim = 32`**, where truncation contributes nothing (658 of them share the byte string `b'\xef\xbf\xbd'`). This is a defect in the byte-extraction path, not the codec; reading the byte-level BPE piece directly removes it. The audit reports both sources so the two are never conflated.
+The reference `token_id_to_bytes` resolves ids through `tokenizer.decode()`, which renders every partial-codepoint byte-fallback token as U+FFFD. Those tokens collapse together at **any** `pos_dim`: **1,151 tokens still collide at `pos_dim = 32`**, where truncation contributes nothing. A defect in the byte-extraction path, not the codec; the audit reports both sources so they are never conflated.
 
 ---
 
-## 3. The proposed fix: a phase-bound Fourier byte code
+## 3. The fix
 
-Replace the question *"which of `pos_dim` slots?"* with *"how much rotation?"*
+Replace *"which of `pos_dim` slots?"* with *"how much rotation?"*
 
-1. Every byte **value** (0–255) gets a fixed random vector of angles — a phasor.
-2. Byte **position** `p` enters as a rotation: the position phasor raised to the power `p` (fractional power encoding), i.e. angles multiplied by `p`.
-3. **Bind** value to position by adding angles (complex multiplication), **bundle** across the token's bytes by summing, then normalise.
+1. Every byte **value** gets a fixed random vector of angles — a phasor.
+2. Byte **position** `p` enters as a rotation: the position phasor raised to the power `p`.
+3. **Bind** value to position by adding angles, **bundle** across bytes by summing, then normalise.
 
-Since `p` is an exponent rather than an index, there is no last slot to fall off. Long tokens degrade gracefully through phasor crosstalk instead of being cropped. Nothing about this is learned — the codec is frozen, exactly as in V1; only the shared projection trains.
+`p` is an exponent, not an index, so there is no last slot to fall off. The codec stays frozen exactly as in V1; only the shared projection trains.
 
-**Parameter parity by construction.** 2048 complex dimensions = 4096 real dimensions = the one-hot code width at `pos_dim = 16`. Both arms feed an identical `Linear(4096 → d_model)`. This is asserted by [`tests/test_equal_params.py`](tests/test_equal_params.py), not claimed in prose — any difference measured later cannot be explained by one arm being larger.
-
-Prior art this rests on: Plate's Holographic Reduced Representations (binding by circular convolution = phase addition in the Fourier domain) and fractional power encoding, implemented over `torchhd`. The novelty claimed here is narrow and specific: *a phase-bound Fourier byte code as the token-embedding replacement inside a transformer LM.*
+Prior art this rests on: Plate's Holographic Reduced Representations and fractional power encoding, over `torchhd`. The novelty claimed is narrow: *a phase-bound Fourier byte code as the token-embedding replacement inside a transformer LM.*
 
 ---
 
-## 4. How the solution is proved
-
-Three layers of evidence, each falsifiable, each with its claim written down **before** the run.
-
-### Layer 1 — measurement (no training)
+## 4. Evidence layer 1 — measurement, no training
 
 ```bash
 python experiments/m1_collision_audit.py --byte-source both
 python experiments/m1_separation_demo.py
 ```
 
-The tables in §2, plus a direct demonstration that the phase code separates what the grid merges — at identical width:
+The tables in §2, plus a direct demonstration that the phase code separates what the grid merges, at identical width:
 
 | pair | one-hot @16 | wave @2048 |
 |---|---|---:|
 | कार्य / कार्यक्रम | **IDENTICAL** | 0.7609 |
-| कार्य / कार्यालय | **IDENTICAL** | 0.7952 |
 | सरकार / सरकारी | **IDENTICAL** | 0.9130 |
 | अधिकार / अधिकारी | **IDENTICAL** | 0.9293 |
 
-Separated but still **near** — orthographic locality, the property that made Kronecker work in the first place, is preserved. A codec that pushed these to zero similarity would have destroyed the thing worth keeping.
+Separated but still **near** — orthographic locality, the property that made Kronecker work at all, is preserved.
 
-### Layer 2 — a controlled training comparison
+---
 
-Five arms. **Only the embedding module differs.** Same tokenizer, same data, same body, same schedule, same batch order.
+## 5. Evidence layer 2 — a controlled comparison, with an error bar
 
-| | |
-|---|---|
-| model | 6 layer, 6 head, d_model 384 (11.0M body + 50.3M lm_head) |
-| data | 98M train / 2M val tokens, ~50% English (FineWeb-Edu) + ~50% Hindi (Sangraha) |
-| schedule | 3,000 steps × 32,768 tokens, AdamW, cosine, bf16 |
-
-**Controls verified, not assumed:** all five arms report `body_state_hash = 4a6392274148` — every parameter outside the embedding initialised bit-identically — and all five drew batches from the same RNG stream.
+Five arms, 6-layer model, 98M tokens (~50% English, ~50% Hindi). **Only the embedding module differs**: same tokenizer, body, schedule and batch order, verified by an identical `body_state_hash` across arms.
 
 ![Grid](figures/fig1_grid.png)
 
-| arm | final val loss | vs baseline | embedding params |
+| arm | final val | vs baseline | embedding params |
 |---|---:|---:|---:|
 | dense table *(reference, **not** matched)* | 4.5592 | −5.27% | 50,331,648 |
 | **wave / l2** | **4.7532** | **−1.24%** | 1,572,864 |
@@ -139,389 +110,216 @@ Five arms. **Only the embedding module differs.** Same tokenizer, same data, sam
 | wave / sqrt_len | 4.8612 | +1.00% | 1,572,864 |
 | wave / znorm | 4.9023 | +1.86% | 1,572,864 |
 
-Pre-registered claim — *"best wave arm within 5% of one-hot"* — **passed, with the sign negative.**
+### Finding 4 — the result survives three seeds, and one earlier claim does not
 
-Two things the right-hand panel shows that the final number hides. The phase code starts **worse**, crosses over near step 1500, and the gap is **still widening at cutoff** — so the result is budget-dependent and a shorter run would have shown it losing. Both stated here rather than left for a reviewer to find.
+Every number in this project was `n=1` until seed variance was measured directly.
 
-### Layer 3 — mechanism, not just scoreboard
+![Ablation and seed variance](figures/fig6_ablation.png)
 
-An aggregate cannot distinguish "slightly better everywhere" from "identical everywhere except one slice." Re-scoring the finished checkpoints separates them — no retraining, only re-reading the answers with the questions sorted.
+| arm | mean over 3 seeds | sd |
+|---|---:|---:|
+| one-hot | 4.8156 | 0.0053 |
+| wave / l2 | 4.7488 | 0.0128 |
 
-![Decomposition](figures/fig2_decomposition.png)
+**Paired gap −0.0668 ± 0.0056 SE, t = 11.9 (2 df).** The headline survives, and the true gap is slightly *larger* than the single seed showed. That number then recalibrates everything else:
 
-**The advantage tracks frequency, not byte length.** Frequent tokens are short tokens, so these are confounded — and the distinction matters, because this project's thesis is about length. Sorted by frequency the gap varies and crosses zero (−0.084 / −0.031 / +0.021); sorted by byte length it is flat (−0.054 / −0.064 / −0.060 / −0.055 / −0.040). A prior prediction that the dense table's lead would shrink in the tail was **falsified**.
+| claim | effect / noise | |
+|---|---:|---|
+| wave beats one-hot | 11.9 sd | survives |
+| one-hot depends on pos_dim | 12.4 sd | survives |
+| wave768 beats one-hot's best | 6.6 sd | survives |
+| **wave "insensitive to pos_dim"** | **1.5 sd** | **not resolved** |
+
+Wave's spread across `pos_dim` was 0.0195 against a seed noise of 0.0128. An earlier finding that smaller wave codes are monotonically better was **inside the noise**, and is withdrawn.
+
+---
+
+## 6. Evidence layer 3 — what the advantage is actually made of
+
+An aggregate cannot say *why*. Two ablations complete a 2×2, each holding one property fixed:
+
+- **`rp`** passes the one-hot code through an invertible Gaussian matrix. **Identical information** — collisions and truncation included — but spread across ~1,436 effective dimensions instead of ~15. Isolates spread.
+- **`bag`** uses the same frozen phasors and bundling but drops the position rotation. Same spread, no order. Isolates binding.
+
+| arm | val | what it has |
+|---|---:|---|
+| bag | 4.8400 | many effective dims, **no order** |
+| one-hot | 4.8156 | **~15 effective dims** of 4,096, order |
+| **rp** | **4.7612** | ~1,436 dims, order, **one-hot's exact information** |
+| wave | 4.7488 | ~997 dims, order, unbounded length |
+
+```
+spread alone    one-hot → rp    −0.0544    81% of wave's total gain    3.9 sd
+order alone     wave → bag      +0.0912    catastrophic                6.6 sd
+residual        rp → wave       −0.0124    0.9 sd — NOT RESOLVED
+```
+
+### Finding 5 — most of the aggregate gain is spread, not Fourier structure
+
+**81% of the phase code's advantage is recovered by spreading the grid's own information across more dimensions.** At matched width, `rp` and `wave` are **statistically indistinguishable** (0.9 sd). This deflates the obvious reading of the earlier results, and belongs in the paper exactly as stated.
+
+### Finding 6 — but the phase code doesn't need the width
+
+![Efficiency frontier](figures/fig7_efficiency.png)
+
+| | best setting | embedding params | val |
+|---|---|---:|---:|
+| one-hot | pos_dim 24 | 2,359,296 | 4.8074 |
+| **wave** | **d_complex 768** | **589,824** | **4.7152** |
+
+**−0.0922 nats using 4× fewer parameters (6.6 sd)**, and wave@768 beats `rp`@4096 by 0.046 (3.3 sd). Random projection buys spread but still needs 4,096 dimensions; the phase construction reaches it in 1,536. The two curves do not overlap: one-hot's *best* is worse than wave's *worst*.
+
+---
+
+## 7. Evidence layer 4 — the collision mechanism, tested causally
+
+Bucketing by the **target** token showed no collision effect at all. That contradiction located an error: the `lm_head` is untied and dense, so a collided token stays perfectly scoreable *as an answer*. A collision corrupts a token *as context* — what degrades is the prediction of **whatever follows**.
 
 ![Which side](figures/fig3_which_side.png)
 
-**Measuring the right side of the model.** Bucketing by the *target* token showed no collision effect at all. That contradiction located an error in the measurement: the `lm_head` is untied and dense, so every token keeps a private output row and remains perfectly scoreable *as an answer*. A collision corrupts a token *as context* — two sequences containing कार्य and कार्यक्रम produce identical hidden states, so what degrades is the prediction of **whatever follows**. Re-bucketing by the preceding input token, the effect is **11× larger**.
+Re-bucketing by the preceding input token, the effect is **11× larger**. Attribution then needs a control, because positions after collided tokens are also after *long*, *Indic*, *common* tokens. The control is long Indic tokens that are also cropped but stay **unique**; the difference-in-differences cancels what the groups share.
 
 ![Attribution](figures/fig4_attribution.png)
 
-**Attribution by difference-in-differences.** Positions after collided tokens are also after *long*, *Indic*, *common* tokens — so the raw −0.368 cannot be attributed. The control group is long Indic tokens that one-hot also crops, but whose truncated form is **unique** (e.g. दिल्ली 19 B → ' दिल्ल'; 887 such tokens). Subtracting it cancels everything the groups share:
+### Finding 7 — the effect scales with dose and vanishes at zero
 
-| arm | after collided | after control | difference | σ |
-|---|---:|---:|---:|---:|
-| dense | −0.5121 | −0.1532 | −0.3589 | 41 |
-| **wave / l2** | −0.3680 | −0.0134 | **−0.3546** | **45** |
-| wave / sqrt_len | −0.3374 | +0.0137 | −0.3511 | 49 |
-| wave / znorm | −0.3029 | +0.0480 | −0.3509 | 48 |
+`pos_dim` is a dial with a known dose. The treatment set is held **fixed** — the same 903 tokens across all four models — so the only thing that varies is whether the codec merges them.
 
-**The reported effect is −0.355, not −0.368.** The first is attributable; the second is merely observed.
+![Dose response](figures/fig5_dose_response.png)
 
-The obvious objection — *"collided tokens are mostly Indic, maybe the codec is just better at Indic"* — is answered inside the data. `sqrt_len` and `znorm` **lose** to one-hot overall and on the control bucket, which is also long and Indic, yet win by −0.337 and −0.303 after collided tokens. All four arms land within 0.008 of each other on the difference-in-differences while their aggregate scores span 0.15 nats. **The collision effect belongs to the codec; the aggregate belongs to the normalization.** Two independent dials, cleanly separated.
+| pos_dim | of the set merged | DiD | σ |
+|---:|---:|---:|---:|
+| 12 | 100% | −0.7226 | 46.3 |
+| 16 | 100% | **−0.3436** | 24.8 |
+| 24 | 10.3% | −0.0333 | 2.4 |
+| **32** | **0%** | **+0.0045** | **0.3** |
 
-And the cleanest single sentence in the project:
+**At zero dose the effect is 0.3σ — indistinguishable from nothing.** It is also near-linear in dose: at 10.3% of the set merged the effect is 9.7% of full size, within 1.3 percentage points of exact proportionality. `pos_dim=32` is a placebo the *tokenizer* built, not one we chose.
 
-| | after collided | after control | |
-|---|---:|---:|---|
-| dense | 3.3531 | 3.6130 | −0.260 **easier** |
-| wave / l2 | 3.4973 | 3.7528 | −0.256 **easier** |
-| **one-hot** | **3.8652** | 3.7662 | **+0.099 harder** |
+A methodological note kept in the record: the first version of this analysis defined the control as "distinct at `pos_dim=16`", and **588 of those 887 tokens are themselves merged at `pos_dim=12`** — the control was two-thirds treated, which suppressed p12's estimate and produced a spurious 3.7σ placebo residual. The corrected control requires distinctness at the *narrowest* window, which is monotone and so guarantees it everywhere; a `control_merged` column verifies this per model.
 
-Collided tokens are common words, so what follows them is predictable. Every model that *can* tell them apart finds those positions easier. One-hot alone finds them **harder**.
+---
 
+## 8. The Indic claim, measured directly
 
-## 5. The Indic claim, measured directly
-
-### Finding 10 — the advantage scales with a script's collision rate
-
-Everything above argues from the collision audit (a property of the vocabulary)
-or from buckets defined by collision status. This measures the thing itself:
-what does each writing system cost each arm?
-
-Reported in **bits per byte**, because per-token loss is not comparable across
-scripts — a Devanagari token covers 8.91 UTF-8 bytes against Latin's 5.31, so an
-arm can look worse per token on Indic text while being no worse per unit of text.
+Reported in **bits per byte** — a Devanagari token covers 8.91 UTF-8 bytes against Latin's 5.31, so per-token loss is not comparable across scripts.
 
 ![Per-script bits per byte](figures/fig5_script_bpb.png)
 
-| script | val share | bytes/token | one-hot BPB | wave/l2 BPB | gap | relative |
-|---|---:|---:|---:|---:|---:|---:|
-| Latin | 48.1% | 5.31 | 1.5732 | 1.5652 | −0.0080 | **−0.51%** |
-| Devanagari | 36.4% | 8.91 | 0.7180 | 0.7036 | −0.0144 | **−2.01%** |
-| other / non-alpha | 15.5% | 1.88 | 2.2616 | 2.2036 | −0.0580 | −2.56% |
-
-**Four times the relative improvement on Devanagari as on Latin**, both
-significant at ~40σ on paired per-token differences.
-
-The framing that carries it is how much of the dense table's advantage the
-codec recovers — because that is the trade the codec exists to make:
-
-| script | dense's edge over one-hot | wave/l2's edge | **recovered** |
+| script | one-hot BPB | wave/l2 BPB | relative |
 |---|---:|---:|---:|
-| Latin | +0.0731 | +0.0080 | **10.9%** |
-| Devanagari | +0.0420 | +0.0144 | **34.3%** |
-| other | +0.1553 | +0.0580 | 37.3% |
+| Latin | 1.5732 | 1.5652 | **−0.51%** |
+| Devanagari | 0.7180 | 0.7036 | **−2.01%** |
 
-> On Devanagari the phase code closes a third of the gap to a table with 32×
-> the parameters. On Latin, a tenth.
+**Four times the relative improvement on Devanagari as on Latin.** Framed as how much of a dense table's advantage the codec recovers: **10.9% on Latin, 34.3% on Devanagari.**
 
-**The same internal control holds.** `sqrt_len` and `znorm` lose to one-hot on
-both scripts, yet all three wave arms show an identical Indic-specific edge:
+All three normalizations show the same Indic-specific edge (−0.0064 / −0.0067 / −0.0075) even though two of them *lose* overall — the Indic benefit belongs to the codec family, the aggregate to the normalization.
 
-| normalization | Latin | Devanagari | Indic-specific difference |
-|---|---:|---:|---:|
-| wave / l2 | −0.0080 | −0.0144 | **−0.0064** |
-| wave / sqrt_len | +0.0150 | +0.0083 | **−0.0067** |
-| wave / znorm | +0.0242 | +0.0167 | **−0.0075** |
-
-The Indic benefit belongs to the codec family; the aggregate belongs to the
-normalization. That is the same dissociation the collision analysis found,
-reproduced on a completely different partition of the data.
-
-**Two limits on this table.**
-
-*Cross-script BPB levels are corpus-confounded.* Devanagari sits at 0.718 BPB
-against Latin's 1.573 — working back through bytes per token, 4.43 nats/token
-versus 5.79. Hindi is not intrinsically easier; Sangraha's verified subset is
-plausibly more templated than FineWeb-Edu. The within-script gaps are paired on
-identical tokens and unaffected, but no claim is made that the model handles
-Hindi better than English.
-
-*Only Devanagari is testable here.* Bengali, Telugu, Tamil and Malayalam hold
-vocabulary entries but almost no data in an English+Hindi corpus, and fell below
-the reporting threshold. This matters because the audit says **Malayalam is the
-worst-hit script** — 10.13% of its tokens collide, against Devanagari's 6.29%
-and Latin's 0.02% — and it is currently the one script the measurement cannot
-reach. M3 adds Malayalam to the mixture for exactly this reason, turning the
-per-script table into a three-point dose gradient with a falsifiable ordering
-attached: **the wave advantage should order Malayalam > Devanagari > Latin.**
-
-
-AND section 8, the M3 row of the status table — replace its "question" cell:
-
+*Limits:* cross-script BPB levels are corpus-confounded (Sangraha is plausibly more templated than FineWeb-Edu), and only Devanagari is testable in an English+Hindi corpus — so the worst-hit script, Malayalam, is currently unmeasurable. M3 adds it.
 
 ---
 
-## 6. What is claimed, and what is not
+## 9. What is claimed, and what is not
 
 **Claimed.**
-- At `pos_dim = 16`, 903 tokens of the production vocabulary receive permanently identical one-hot codes, ~98% of them Indic.
-- The 32-byte window is satisfied only because the tokenizer was co-designed to satisfy it.
-- A phase-bound Fourier code removes the ceiling and, at identical parameter count, reduces validation loss by 1.24%.
-- Collisions cost the one-hot codec 0.355 nats on affected positions; the phase code eliminates that cost; because such positions are 1% of the stream, this explains 6.3% of the aggregate gain.
-- Per script, the phase code recovers 34.3% of a dense table's advantage on Devanagari against 10.9% on Latin — the Indic benefit is measured directly, not inferred from the audit.
+- At `pos_dim=16`, 903 tokens receive permanently identical codes, ~98% of them Indic; the 32-byte window holds only because the tokenizer was co-designed to make it hold.
+- The phase code beats the grid by 0.0668 ± 0.0056 nats over three seeds, and by 0.0922 nats using **4× fewer parameters** at each side's best setting.
+- Collisions cost the grid 0.344 nats on affected positions; the effect scales with dose and is 0.3σ at zero dose.
+- Per script, the codec recovers 34.3% of a dense table's advantage on Devanagari against 10.9% on Latin.
 
 **Not claimed.**
-- That this beats a dense table. **It does not** — dense is 4.08% better, using **32×** the embedding parameters. The trade is a 32× parameter reduction for ~4% loss.
-- That it holds at frontier scale. One model size, one token budget, one seed per arm, one language pair, one metric.
-- That validation loss is the right axis. It is the axis most favourable to a dense table; typo robustness, unseen-token handling and vocabulary-independent cost are invisible to it and untested here.
+- **That the Fourier construction explains the aggregate gain.** It does not — 81% is representational spread, and at matched width a random projection of the grid's own information is statistically indistinguishable from the phase code.
+- **That this beats a dense table.** It does not: dense is 4.08% better, with **32×** the embedding parameters.
+- That any of it holds at frontier scale. One model size, one token budget, three seeds on one pair only, one language pair, one metric.
+- That validation loss is the right axis. It is the axis most favourable to a dense table; typo robustness, unseen-token handling and vocabulary-independent cost are untested here.
 
-A note on reproducibility discovered the hard way: `torch.rand` is not portable across platforms, and `cos`/`sin` differ in their last bits between MSVC and glibc. The codec's phase tables are therefore generated from NumPy's PCG64 and pinned **exactly**; the resulting codes are pinned **by value at 1e-4**. Develop on one OS and train on another without this, and the trained model uses a different codec than the one audited — silently.
+**Withdrawn.** An earlier finding that wave is insensitive to `pos_dim` — and that smaller wave codes are monotonically better — does not survive the measured seed variance (1.5 sd).
+
+A reproducibility note found the hard way: `torch.rand` is not portable across platforms, and `cos`/`sin` differ in their last bits between MSVC and glibc. The codec's phase tables are therefore generated from NumPy's PCG64 and pinned exactly, with codes pinned by value at 1e-4.
 
 ---
 
-## 7. Reproduce
+## 10. Reproduce
 
 ```bash
-python -m venv .venv && source .venv/bin/activate     # Scripts/activate on Windows
-pip install -e .
-pytest -q                                              # 16 contract tests
+pip install -e . && pytest -q                          # 23 contract tests
 
-# Layer 1 — no GPU, ~2 minutes
+# layer 1 — no GPU, ~2 minutes
 python experiments/m1_collision_audit.py --byte-source both
 python experiments/m1_separation_demo.py
 
-# Layer 2 — ~5 GPU-hours total on one RTX 3060
+# layers 2-4 — ~20 GPU-hours total on one RTX 3060
 python experiments/m2_build_tables.py
 python experiments/m2_prepare_data.py --hf --tokens 100_000_000
 for a in onehot wave_sqrtlen wave_l2 wave_znorm dense; do
-  python experiments/m2_tiny_train.py --config configs/m2_$a.yaml
-done
-python experiments/m2_report.py
+  python experiments/m2_tiny_train.py --config configs/m2_$a.yaml; done
+python experiments/m4_build_tables.py --pos-dims 12 24 32
+for c in m4_p12_onehot m4_p12_wave m4_p24_onehot m4_p24_wave m4_p32_onehot m4_p32_wave; do
+  python experiments/m2_tiny_train.py --config configs/$c.yaml; done
+python experiments/m5_build_tables.py
+for c in m5_s1338_onehot m5_s1338_wave m5_s1339_onehot m5_s1339_wave; do
+  python experiments/m2_tiny_train.py --config configs/$c.yaml; done
+for c in m5_rp m5_bag m5_wave1024 m5_wave768; do
+  python experiments/m5_train.py --config configs/$c.yaml; done
 
-# Layer 3 — no training; first call scores and caches, the rest are instant
+# analysis — no training; the first call scores and caches, the rest are instant
 python experiments/m2_bucket_analysis.py --bucket-by prev-collision
-for b in collision length frequency; do
-  python experiments/m2_bucket_analysis.py --bucket-by $b
-done
-python experiments/m2_figures.py                       # regenerates every figure
+python experiments/m3_script_analysis.py
+python experiments/m4_dose_analysis.py
+python experiments/m2_figures.py && python experiments/m5_figures.py
 ```
 
-Every figure in this README is produced by `m2_figures.py` from the CSVs on disk. None is hand-edited.
+Every figure is produced by a script from the CSVs and manifests on disk. None is hand-edited.
 
 ---
 
-## 8. Repository map
+## 11. Repository map
 
 ```
 src/kronecker_v2/
   codecs/base.py        Codec protocol + OneHotCodec (adapter over the published
-                        reference implementation — the baseline is never reimplemented)
+                        reference — the baseline is never reimplemented)
   codecs/wave.py        the phase-bound Fourier codec (frozen, PCG64-seeded)
+  codecs/ablations.py   BagOfBytes and RandomProjectedOneHot — the 2x2
+  codecs/baselines.py   hash embeddings, ALBERT, dense, with matched-budget solvers
   vocab.py              token id -> UTF-8 bytes, raw and decode paths, script tagging
   collisions.py         the audit: exact collisions per script, UTF-8-safe truncation
-  capacity.py           analytic FHRR overlap curve
   embedding.py          frozen code buffer + one trainable projection
-  model.py              nanoGPT (MIT, attributed) with a pluggable wte — the only change
-  tables.py             vectorised table builders, self-verified against the frozen codecs
+  model.py              nanoGPT (MIT, attributed) with a pluggable wte
+  tables.py             vectorised builders, self-verified against the frozen codecs
+  eval/bpb.py           bits per byte
 experiments/            one runner per milestone; thin, all logic imported from src/
 configs/                one YAML per arm; arms differ by the `codec:` block alone
-tests/                  16 contract tests: parameter parity, determinism, shapes
+tests/                  23 contract tests: parameter parity, determinism, shapes, imports
 results/                findings sheets, CSVs, run ledger, per-run manifests
 figures/                regenerated, never hand-edited
 ```
 
-Three rules the repo enforces mechanically: only the embedding changes between arms; parameter parity is a test; every run writes a `manifest.json` with its git SHA, seed, codec fingerprint and body-init hash.
+Three rules enforced mechanically: only the embedding changes between arms; parameter parity is a test; every run writes a `manifest.json` with its git SHA, seed, codec fingerprint and body-init hash.
 
 ---
 
-## 9. Status and roadmap
+## 12. Status and roadmap
 
-| phase | question it settles | status |
+| phase | question | status |
 |---|---|---|
-| M1 | how much does the byte window actually cost, on the real vocabulary? | **closed** · `m1-closed` |
-| M2 | does removing the ceiling help, at equal parameters — and through what mechanism? | **closed** · `m2-closed` |
-| M3 |   does it survive scale, beat the baselines a reviewer will demand, and does the per-script advantage order with collision rate (Malayalam > Devanagari > Latin)?| in progress |
-| M4 | is the collision mechanism **causal**? | designed, ~1 night |
-| M5 | does the co-design claim generalise beyond one tokenizer? | designed, ~1 night |
-| M6 | does the vocabulary-independence advantage show up where it matters? | designed, ~1 night |
-| M7 | does it replicate at the reference paper's own scale and protocol? | needs rented compute |
+| M1 | how much does the byte window cost on the real vocabulary? | **closed** |
+| M2 | does removing the ceiling help at equal parameters, and how? | **closed** |
+| M4 | is the collision mechanism causal? | **closed** — dose-response, placebo at 0.3σ |
+| M5 | what is the advantage made of, and what is the noise floor? | **closed** — 81% spread, seed sd measured |
+| M3 | does it survive scale and beat hash / ALBERT baselines? | next |
+| M6 | does the co-design constraint generalise to other tokenizers? | designed |
+| M7 | 124M replication at the reference protocol | needs rented compute |
 
-What follows is a proposal, not a promise. Each phase states the question, the
-experiment, a **falsifiable prediction written before the run**, and what a
-negative result would mean. Phases M4–M6 each fit in a single overnight session
-on one RTX 3060, because they run at M2's measured ~1.0 h/arm.
+**M3, now better specified by M5.** 38M body, 500M tokens, three languages — English, Hindi and **Malayalam**, the worst-hit script at a 10.13% collision rate, giving a three-point gradient with a falsifiable ordering: *Malayalam > Devanagari > Latin*. Arms: one-hot, wave, dense, **hash embeddings**, **ALBERT**. One number from the design alone: at V = 131,072 a parameter-matched ALBERT gets a **rank-16 bottleneck per token**, because its cost is `V·r`. The codec's cost contains no `V` at all.
 
----
-
-### M3 — Scale and the baselines reviewers demand *(in progress)*
-
-**Question.** M2 established the result at 11M body parameters on 98M tokens.
-Does it hold at ~4× the body and 5× the data, and does it beat the two
-parameter-matched baselines a referee will ask about?
-
-**Experiment.** d_model 512, 12 layers (37.7M body), 500M tokens, five arms:
-one-hot · wave/l2 · dense · **hash embeddings** · **ALBERT factorization**.
-Plus **per-script bits-per-byte** — the first direct measurement of the Indic
-claim, rather than inference from the audit. ~8.3 h/arm, ~42 h total.
-
-**Prediction.** wave/l2 ≤ one-hot at the larger scale, and the crossover point
-arrives *earlier* in token terms than M2's step 1500.
-
-**Already worth reporting from the design alone.** At V = 131,072, a
-parameter-matched ALBERT factorization gets a **rank-16 bottleneck per token**,
-because ALBERT's cost is `V·r`. The codec's cost contains no `V` at all. That
-asymmetry is the structural argument this whole line of work rests on, and M6
-tests it directly.
-
----
-
-### M4 — Dose-response: turning a mechanism into a cause
-
-**This is the highest-value experiment remaining, and it costs one night.**
-
-**Question.** M2 showed that positions following a collided token are 0.355 nats
-worse under one-hot, isolated by difference-in-differences at 45σ. That is
-strong evidence of association. It is not yet proof of cause, because the
-comparison sits at a single `pos_dim`.
-
-**Experiment.** `pos_dim` is a **dose dial with a known dose at every setting**:
-
-| pos_dim | code width D | matched d_complex | collision groups | tokens merged |
-|--------:|-------------:|------------------:|-----------------:|--------------:|
-| 12 | 3,072 | 1,536 | 1,877 | **5,335** |
-| 16 | 4,096 | 2,048 | 380 | **903** |
-| 24 | 6,144 | 3,072 | 39 | **93** |
-| 32 | 8,192 | 4,096 | 0 | **0** |
-
-Train the matched pair (one-hot, wave/l2) at each setting — 8 runs at M2 scale,
-~8 h — and plot the difference-in-differences against the collision count.
-
-**Prediction.** The isolated effect scales monotonically with the number of
-collided tokens, and **vanishes at `pos_dim = 32`**, where the tokenizer
-guarantees zero collisions.
-
-That last row is the part that matters. It is a **built-in placebo**: a dose of
-zero, produced not by us but by the tokenizer's own design constraint. If the
-effect persists at 32 where there is nothing to fix, the mechanism story is
-wrong and M2's result is something else wearing its clothes. If it disappears
-exactly where the collisions do, the causal claim is made on a dose-response
-curve rather than a single contrast — which is the difference between "we
-measured a correlation" and "we can turn the effect on and off."
-
-**If it fails.** The paper loses the causal claim but keeps the audit, the
-matched-parameter win, and the difference-in-differences as association. We
-would then have to explain what else changes with `pos_dim` — and that question
-is worth a section either way.
-
----
-
-### M5 — Does the co-design claim generalise?
-
-**Question.** M1's central reframe is that the 32-byte window is satisfied only
-because BrahmicTokenizer-131K was *built* to satisfy it. That claim currently
-rests on one tokenizer. If it is a general property of the codec, it should be
-visible in any vocabulary nobody constrained.
-
-**Experiment.** Audit off-the-shelf tokenizers that were never designed around a
-byte window — Llama-3, Gemma, mT5 — and count collisions at `pos_dim` 16 and 32.
-Then retokenize a slice of the same corpus and train the matched pair on the one
-with the most collisions. 6 runs at M2 scale, ~6 h plus data prep.
-
-**Prediction.** Unconstrained tokenizers show **non-zero collisions even at
-`pos_dim = 32`**, because nothing stopped them learning long merges — and the
-wave arm's advantage there is *larger* than on the co-designed vocabulary.
-
-**Why this matters to the paper.** It converts a finding about one artifact into
-a property of the method: *the one-hot Kronecker codec cannot be dropped into an
-arbitrary tokenizer without an audit.* That is a claim a practitioner can act
-on, and it is exactly the kind of constraint that should be documented before a
-production model is built on top of it.
-
-**If it fails** — if other tokenizers also happen to stay inside 32 bytes — then
-the constraint is easier to satisfy than argued, and the honest conclusion is
-that the window is a mild rather than a severe restriction. Worth knowing before
-anyone scales it.
-
----
-
-### M6 — Vocabulary independence, tested where it pays
-
-**Question.** The codec's headline structural property is that its parameter
-cost contains no `V`. Every measurement so far holds `V` fixed at 131,072, so
-that property has never actually been exercised.
-
-**Experiment.** Hold the model fixed and vary the vocabulary — 131K and a
-~262K-token vocabulary over the same corpus — for one-hot, wave/l2, dense and
-ALBERT. Report loss per byte (not per token, which is not comparable across
-vocabularies) against total embedding parameters. 6 runs, ~6 h.
-
-**Prediction.** Dense and ALBERT costs double with `V`; both codecs stay flat.
-The interesting quantity is not who wins at 131K but **where the curves cross** —
-and whether Indic fertility gains from the larger vocabulary offset the codec's
-representational cost.
-
-**Why this matters beyond the paper.** This is the decision the V5 model
-actually faces: vocabulary size trades attention compute against embedding
-memory, and a codec whose cost is independent of `V` changes where that optimum
-sits. Section 4 of the session notes puts the V5 minimum near 101K under a
-memory price that assumes a dense table. **If the embedding cost is flat in `V`,
-that optimum moves — and this experiment says by how much.**
-
----
-
-### M7 — Replication at the reference protocol
-
-**Question.** Does any of this survive at the scale the V1 paper reports?
-
-**Experiment.** The V1 protocol exactly — GPT-2 124M, 2.5B tokens, **3 seeds**,
-five arms — but multilingual rather than English-only, plus the typo-robustness
-probe the reference repo already ships (110 prompt pairs, top-1-preserved rate).
-
-**Cost.** Not local. On one RTX 3060 this is roughly 4–6 weeks of continuous
-compute; on rented A100 time it is on the order of $100–200 and a few days.
-This is the one phase that needs a budget decision rather than a night.
-
-**Prediction.** The aggregate gap narrows with scale (the dense table's
-advantage is a capacity argument, and capacity matters less as the body grows),
-while the collision effect **persists undiminished**, because it is a property
-of the input representation rather than of model size.
-
-Three seeds is what turns M2's single-seed direction into a significance claim
-on the aggregate. The bucket-level results are already significant — paired
-standard errors over ~2M positions — but the headline number is not, and the
-paper should not pretend otherwise until this runs.
-
----
-
-### Open questions these phases do **not** answer
-
-Stated so they are not mistaken for oversights.
-
-- **Why does the advantage track frequency rather than byte length?** M2
-  established the fact (flat across 1–4 → 17+ bytes; varying and sign-changing
-  across frequency bands) and no mechanism explains it. The natural next probe
-  is representational: measure the rank and pairwise geometry of each codec's
-  code matrix restricted to frequency bands. Cheap, and currently unplanned.
-- **Where is the phasor-crosstalk ceiling?** VSA theory says bundling `M`
-  components into `D` dimensions degrades retrieval as `√(D/M)`. Long tokens
-  bundle more bytes. M2 hints at this — the wave advantage halves on
-  cropped-but-distinct long tokens — but the capacity curve has not been
-  measured against the analytic bound in `capacity.py`.
-- **Does the codec help generation, not just likelihood?** Nothing here samples
-  from the models. Loss is the only axis, and it is the axis most favourable to
-  a dense table.
-- **Is `l2` the right normalization at scale?** It was selected on a single
-  ablation at 11M parameters. M3 re-tests it implicitly; nothing re-tests it
-  deliberately.
-
----
+**The question M5 opened.** If 81% of the gain is representational spread, the natural next arm is a *learned* dense projection of the byte grid rather than a random one — and the sharper question becomes not "does the phase code win?" but "how cheaply can spread be bought?" That is the experiment this project would run next.
 
 ### What would change the conclusion
 
-The result stops being interesting if any of these hold:
+1. Hash embeddings or ALBERT match the codec at equal parameters (M3).
+2. The efficiency advantage vanishes at 38M body parameters (M3).
+3. Other tokenizers sit naturally inside the window, making the co-design constraint a curiosity (M6).
+4. The 4× parameter advantage does not survive a learned dense projection baseline.
 
-1. The dose-response is flat, or the effect survives at `pos_dim = 32` where no
-   collisions exist (M4).
-2. The advantage vanishes at 38M parameters, i.e. it was a small-model artifact
-   (M3).
-3. Hash embeddings or ALBERT match the codec at equal parameters, making the
-   phase construction unnecessary (M3).
-4. Other tokenizers are all naturally inside the window, making the co-design
-   constraint a curiosity rather than a limitation (M5).
-
-Each of those is a run that has been designed, not a hypothetical. The point of
-listing them is that the project is currently structured so that a negative
-result is publishable rather than fatal — the audit stands regardless, and the
-mechanism is measured against a control in every case.
+Each is a designed run, not a hypothetical. The project is structured so a negative result is publishable rather than fatal — the audit stands regardless, and every mechanism claim is measured against a control.

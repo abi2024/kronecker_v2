@@ -1,0 +1,4 @@
+bucket,val_tokens,m4_p12_wave,m4_p12_wave_SE,m4_p12_wave_sig,m4_p24_onehot,m4_p24_onehot_SE,m4_p24_onehot_sig,m4_p24_wave,m4_p24_wave_SE,m4_p24_wave_sig,m4_p32_onehot,m4_p32_onehot_SE,m4_p32_onehot_sig,m4_p32_wave,m4_p32_wave_SE,m4_p32_wave_sig
+collides @16,19991,-0.2179,0.0066,yes,-0.1886,0.0061,yes,-0.2092,0.0068,yes,-0.1714,0.0061,yes,-0.1944,0.0067,yes
+"cropped, still distinct",22457,-0.1761,0.006,yes,-0.1265,0.0054,yes,-0.1961,0.0061,yes,-0.1404,0.0055,yes,-0.1635,0.006,yes
+fits in window,1957424,-0.1261,0.0006,yes,-0.06,0.0005,yes,-0.1099,0.0006,yes,-0.0457,0.0005,yes,-0.1075,0.0006,yes

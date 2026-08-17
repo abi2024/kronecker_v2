@@ -1,0 +1,4 @@
+extends: m2_shared.yaml
+codec: {name: bag, d_complex: 2048, seed: 0, normalize: l2, table: bag2048_l2}
+# Wave phasors WITHOUT position rotation. Isolates order binding.
+out_root: results/m5

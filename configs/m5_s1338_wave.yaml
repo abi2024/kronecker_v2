@@ -1,0 +1,21 @@
+extends: m2_shared.yaml
+# Seed-variance replicate: identical to M2's arm except the seeds.
+# The full train block is repeated because load_config merges shallowly —
+# a partial block would silently drop batch_size, lr and max_steps.
+codec: {name: wave, d_complex: 2048, seed: 0, normalize: l2, table: wave2048_l2}
+train:
+  device: null
+  batch_size: 4
+  grad_accum: 8
+  max_steps: 3000
+  lr: 6.0e-4
+  warmup: 200
+  min_lr_frac: 0.1
+  weight_decay: 0.1
+  grad_clip: 1.0
+  eval_every: 250
+  eval_iters: 50
+  log_every: 20
+  seed: 1338
+  data_seed: 43
+out_root: results/m5

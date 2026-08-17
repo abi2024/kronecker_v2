@@ -1,0 +1,166 @@
+[m5_bag] device=cuda params={'total': 62924544, 'body': 11020032, 'lm_head': 50331648, 'embedding': 1572864} body_hash=4a6392274148
+[m5_bag] step     0 loss 11.8659 lr 3.00e-06 gn 5.42 proj_gn 0.84 23,399 tok/s
+[m5_bag] step     0 VAL 11.8465
+[m5_bag] step    20 loss 11.1014 lr 6.30e-05 gn 1.45 proj_gn 0.09 29,164 tok/s
+[m5_bag] step    40 loss 10.2671 lr 1.23e-04 gn 1.18 proj_gn 0.06 29,152 tok/s
+[m5_bag] step    60 loss 9.0694 lr 1.83e-04 gn 1.19 proj_gn 0.08 29,181 tok/s
+[m5_bag] step    80 loss 8.0902 lr 2.43e-04 gn 0.84 proj_gn 0.07 29,179 tok/s
+[m5_bag] step   100 loss 7.4572 lr 3.03e-04 gn 0.61 proj_gn 0.09 29,155 tok/s
+[m5_bag] step   120 loss 7.3662 lr 3.63e-04 gn 0.58 proj_gn 0.16 29,142 tok/s
+[m5_bag] step   140 loss 7.0467 lr 4.23e-04 gn 0.45 proj_gn 0.13 29,151 tok/s
+[m5_bag] step   160 loss 7.0788 lr 4.83e-04 gn 0.62 proj_gn 0.24 29,131 tok/s
+[m5_bag] step   180 loss 6.8722 lr 5.43e-04 gn 0.90 proj_gn 0.34 29,164 tok/s
+[m5_bag] step   200 loss 6.7274 lr 6.00e-04 gn 0.68 proj_gn 0.26 29,044 tok/s
+[m5_bag] step   220 loss 6.8460 lr 6.00e-04 gn 0.56 proj_gn 0.18 29,155 tok/s
+[m5_bag] step   240 loss 6.8142 lr 6.00e-04 gn 0.59 proj_gn 0.20 29,178 tok/s
+[m5_bag] step   250 VAL 6.6367
+[m5_bag] step   260 loss 6.5765 lr 5.99e-04 gn 0.77 proj_gn 0.31 29,140 tok/s
+[m5_bag] step   280 loss 6.5825 lr 5.99e-04 gn 0.57 proj_gn 0.19 29,135 tok/s
+[m5_bag] step   300 loss 6.4304 lr 5.98e-04 gn 0.70 proj_gn 0.24 29,165 tok/s
+[m5_bag] step   320 loss 6.4739 lr 5.98e-04 gn 0.50 proj_gn 0.18 29,149 tok/s
+[m5_bag] step   340 loss 6.3213 lr 5.97e-04 gn 0.72 proj_gn 0.28 29,165 tok/s
+[m5_bag] step   360 loss 6.3703 lr 5.96e-04 gn 0.77 proj_gn 0.29 29,147 tok/s
+[m5_bag] step   380 loss 6.3639 lr 5.95e-04 gn 0.58 proj_gn 0.19 29,165 tok/s
+[m5_bag] step   400 loss 6.3945 lr 5.93e-04 gn 0.49 proj_gn 0.16 29,176 tok/s
+[m5_bag] step   420 loss 6.3783 lr 5.92e-04 gn 0.62 proj_gn 0.23 29,152 tok/s
+[m5_bag] step   440 loss 6.1461 lr 5.90e-04 gn 0.64 proj_gn 0.25 29,164 tok/s
+[m5_bag] step   460 loss 6.1834 lr 5.89e-04 gn 0.78 proj_gn 0.31 29,152 tok/s
+[m5_bag] step   480 loss 6.3161 lr 5.87e-04 gn 0.57 proj_gn 0.17 29,156 tok/s
+[m5_bag] step   500 loss 6.2188 lr 5.85e-04 gn 0.60 proj_gn 0.19 29,155 tok/s
+[m5_bag] step   500 VAL 6.0764
+[m5_bag] step   520 loss 6.0926 lr 5.83e-04 gn 0.79 proj_gn 0.32 29,182 tok/s
+[m5_bag] step   540 loss 6.0440 lr 5.81e-04 gn 0.76 proj_gn 0.26 29,147 tok/s
+[m5_bag] step   560 loss 5.9554 lr 5.78e-04 gn 0.70 proj_gn 0.23 29,162 tok/s
+[m5_bag] step   580 loss 6.0376 lr 5.76e-04 gn 0.59 proj_gn 0.19 29,146 tok/s
+[m5_bag] step   600 loss 5.9172 lr 5.73e-04 gn 0.58 proj_gn 0.18 29,179 tok/s
+[m5_bag] step   620 loss 5.9473 lr 5.71e-04 gn 0.51 proj_gn 0.15 29,151 tok/s
+[m5_bag] step   640 loss 5.9287 lr 5.68e-04 gn 0.64 proj_gn 0.18 29,163 tok/s
+[m5_bag] step   660 loss 5.8146 lr 5.65e-04 gn 0.65 proj_gn 0.15 29,179 tok/s
+[m5_bag] step   680 loss 5.9059 lr 5.62e-04 gn 0.60 proj_gn 0.13 29,161 tok/s
+[m5_bag] step   700 loss 5.9724 lr 5.59e-04 gn 0.67 proj_gn 0.18 29,181 tok/s
+[m5_bag] step   720 loss 5.7701 lr 5.55e-04 gn 0.55 proj_gn 0.13 29,161 tok/s
+[m5_bag] step   740 loss 5.7652 lr 5.52e-04 gn 0.53 proj_gn 0.14 29,142 tok/s
+[m5_bag] step   750 VAL 5.7223
+[m5_bag] step   760 loss 5.7683 lr 5.48e-04 gn 0.63 proj_gn 0.14 29,175 tok/s
+[m5_bag] step   780 loss 5.8269 lr 5.45e-04 gn 0.62 proj_gn 0.16 29,156 tok/s
+[m5_bag] step   800 loss 5.7375 lr 5.41e-04 gn 0.64 proj_gn 0.15 29,176 tok/s
+[m5_bag] step   820 loss 5.8340 lr 5.37e-04 gn 0.53 proj_gn 0.12 29,164 tok/s
+[m5_bag] step   840 loss 5.4612 lr 5.33e-04 gn 0.62 proj_gn 0.18 29,154 tok/s
+[m5_bag] step   860 loss 5.6994 lr 5.29e-04 gn 0.68 proj_gn 0.16 29,160 tok/s
+[m5_bag] step   880 loss 5.5312 lr 5.25e-04 gn 0.65 proj_gn 0.18 29,167 tok/s
+[m5_bag] step   900 loss 5.6910 lr 5.21e-04 gn 0.67 proj_gn 0.18 29,150 tok/s
+[m5_bag] step   920 loss 5.5867 lr 5.17e-04 gn 0.60 proj_gn 0.14 29,147 tok/s
+[m5_bag] step   940 loss 5.6203 lr 5.12e-04 gn 0.64 proj_gn 0.15 29,158 tok/s
+[m5_bag] step   960 loss 5.4752 lr 5.08e-04 gn 0.61 proj_gn 0.13 29,169 tok/s
+[m5_bag] step   980 loss 5.4990 lr 5.03e-04 gn 0.64 proj_gn 0.17 29,149 tok/s
+[m5_bag] step  1000 loss 5.5584 lr 4.98e-04 gn 0.64 proj_gn 0.14 29,171 tok/s
+[m5_bag] step  1000 VAL 5.5044
+[m5_bag] step  1020 loss 5.6039 lr 4.94e-04 gn 0.64 proj_gn 0.14 29,141 tok/s
+[m5_bag] step  1040 loss 5.5597 lr 4.89e-04 gn 0.60 proj_gn 0.14 29,170 tok/s
+[m5_bag] step  1060 loss 5.4282 lr 4.84e-04 gn 0.67 proj_gn 0.13 29,160 tok/s
+[m5_bag] step  1080 loss 5.4693 lr 4.79e-04 gn 0.65 proj_gn 0.15 29,157 tok/s
+[m5_bag] step  1100 loss 5.4168 lr 4.74e-04 gn 0.62 proj_gn 0.12 29,172 tok/s
+[m5_bag] step  1120 loss 5.5872 lr 4.68e-04 gn 0.66 proj_gn 0.12 29,145 tok/s
+[m5_bag] step  1140 loss 5.4181 lr 4.63e-04 gn 0.58 proj_gn 0.11 29,149 tok/s
+[m5_bag] step  1160 loss 5.3439 lr 4.58e-04 gn 0.69 proj_gn 0.15 29,166 tok/s
+[m5_bag] step  1180 loss 5.3235 lr 4.53e-04 gn 0.71 proj_gn 0.17 29,135 tok/s
+[m5_bag] step  1200 loss 5.4670 lr 4.47e-04 gn 0.63 proj_gn 0.12 29,163 tok/s
+[m5_bag] step  1220 loss 5.5227 lr 4.42e-04 gn 0.63 proj_gn 0.13 29,162 tok/s
+[m5_bag] step  1240 loss 5.2935 lr 4.36e-04 gn 0.69 proj_gn 0.13 29,171 tok/s
+[m5_bag] step  1250 VAL 5.3435
+[m5_bag] step  1260 loss 5.2858 lr 4.31e-04 gn 0.73 proj_gn 0.13 29,167 tok/s
+[m5_bag] step  1280 loss 5.3288 lr 4.25e-04 gn 0.61 proj_gn 0.12 29,152 tok/s
+[m5_bag] step  1300 loss 5.3044 lr 4.19e-04 gn 0.65 proj_gn 0.12 29,175 tok/s
+[m5_bag] step  1320 loss 5.3262 lr 4.13e-04 gn 0.65 proj_gn 0.13 29,166 tok/s
+[m5_bag] step  1340 loss 5.2102 lr 4.08e-04 gn 0.67 proj_gn 0.16 29,142 tok/s
+[m5_bag] step  1360 loss 5.2970 lr 4.02e-04 gn 0.62 proj_gn 0.12 29,148 tok/s
+[m5_bag] step  1380 loss 5.2612 lr 3.96e-04 gn 0.65 proj_gn 0.12 29,155 tok/s
+[m5_bag] step  1400 loss 5.3197 lr 3.90e-04 gn 0.74 proj_gn 0.13 29,130 tok/s
+[m5_bag] step  1420 loss 5.3900 lr 3.84e-04 gn 0.64 proj_gn 0.11 29,155 tok/s
+[m5_bag] step  1440 loss 5.1856 lr 3.78e-04 gn 0.59 proj_gn 0.09 29,162 tok/s
+[m5_bag] step  1460 loss 5.2273 lr 3.72e-04 gn 0.68 proj_gn 0.11 29,175 tok/s
+[m5_bag] step  1480 loss 5.4593 lr 3.66e-04 gn 0.76 proj_gn 0.11 29,164 tok/s
+[m5_bag] step  1500 loss 5.2221 lr 3.60e-04 gn 0.68 proj_gn 0.11 29,168 tok/s
+[m5_bag] step  1500 VAL 5.2195
+[m5_bag] step  1520 loss 5.1139 lr 3.54e-04 gn 0.65 proj_gn 0.15 29,177 tok/s
+[m5_bag] step  1540 loss 5.2563 lr 3.48e-04 gn 0.67 proj_gn 0.11 29,150 tok/s
+[m5_bag] step  1560 loss 5.1892 lr 3.42e-04 gn 0.73 proj_gn 0.14 29,155 tok/s
+[m5_bag] step  1580 loss 4.9113 lr 3.36e-04 gn 0.72 proj_gn 0.14 29,137 tok/s
+[m5_bag] step  1600 loss 5.1313 lr 3.30e-04 gn 0.79 proj_gn 0.13 29,161 tok/s
+[m5_bag] step  1620 loss 5.2342 lr 3.24e-04 gn 0.69 proj_gn 0.11 29,154 tok/s
+[m5_bag] step  1640 loss 5.1327 lr 3.18e-04 gn 0.63 proj_gn 0.09 29,155 tok/s
+[m5_bag] step  1660 loss 5.2379 lr 3.12e-04 gn 0.73 proj_gn 0.13 29,145 tok/s
+[m5_bag] step  1680 loss 5.3145 lr 3.06e-04 gn 0.72 proj_gn 0.10 29,171 tok/s
+[m5_bag] step  1700 loss 5.1106 lr 3.00e-04 gn 0.79 proj_gn 0.15 29,161 tok/s
+[m5_bag] step  1720 loss 5.1158 lr 2.94e-04 gn 0.73 proj_gn 0.10 29,165 tok/s
+[m5_bag] step  1740 loss 5.1829 lr 2.88e-04 gn 0.73 proj_gn 0.12 29,138 tok/s
+[m5_bag] step  1750 VAL 5.1123
+[m5_bag] step  1760 loss 5.1825 lr 2.82e-04 gn 0.66 proj_gn 0.10 29,161 tok/s
+[m5_bag] step  1780 loss 5.2384 lr 2.76e-04 gn 0.72 proj_gn 0.12 29,155 tok/s
+[m5_bag] step  1800 loss 5.0692 lr 2.70e-04 gn 0.76 proj_gn 0.11 29,145 tok/s
+[m5_bag] step  1820 loss 5.1845 lr 2.64e-04 gn 0.69 proj_gn 0.11 29,176 tok/s
+[m5_bag] step  1840 loss 5.1121 lr 2.58e-04 gn 0.73 proj_gn 0.12 29,167 tok/s
+[m5_bag] step  1860 loss 5.1709 lr 2.52e-04 gn 0.72 proj_gn 0.11 29,163 tok/s
+[m5_bag] step  1880 loss 5.0886 lr 2.47e-04 gn 0.77 proj_gn 0.15 29,162 tok/s
+[m5_bag] step  1900 loss 5.0214 lr 2.41e-04 gn 0.77 proj_gn 0.11 29,138 tok/s
+[m5_bag] step  1920 loss 5.0895 lr 2.35e-04 gn 0.74 proj_gn 0.11 29,111 tok/s
+[m5_bag] step  1940 loss 4.8855 lr 2.29e-04 gn 0.71 proj_gn 0.11 29,175 tok/s
+[m5_bag] step  1960 loss 5.2144 lr 2.24e-04 gn 0.69 proj_gn 0.10 29,145 tok/s
+[m5_bag] step  1980 loss 4.9650 lr 2.18e-04 gn 0.75 proj_gn 0.12 29,162 tok/s
+[m5_bag] step  2000 loss 5.1857 lr 2.13e-04 gn 0.75 proj_gn 0.10 29,154 tok/s
+[m5_bag] step  2000 VAL 5.0233
+[m5_bag] step  2020 loss 5.1007 lr 2.07e-04 gn 0.75 proj_gn 0.11 29,155 tok/s
+[m5_bag] step  2040 loss 5.1862 lr 2.02e-04 gn 0.70 proj_gn 0.10 29,140 tok/s
+[m5_bag] step  2060 loss 4.9736 lr 1.97e-04 gn 0.73 proj_gn 0.11 29,146 tok/s
+[m5_bag] step  2080 loss 5.0767 lr 1.92e-04 gn 0.74 proj_gn 0.12 29,165 tok/s
+[m5_bag] step  2100 loss 5.0376 lr 1.86e-04 gn 0.71 proj_gn 0.09 29,181 tok/s
+[m5_bag] step  2120 loss 5.0895 lr 1.81e-04 gn 0.77 proj_gn 0.11 29,174 tok/s
+[m5_bag] step  2140 loss 5.0531 lr 1.76e-04 gn 0.80 proj_gn 0.11 29,162 tok/s
+[m5_bag] step  2160 loss 5.0447 lr 1.71e-04 gn 0.74 proj_gn 0.11 29,157 tok/s
+[m5_bag] step  2180 loss 4.9603 lr 1.66e-04 gn 0.73 proj_gn 0.10 29,151 tok/s
+[m5_bag] step  2200 loss 4.9891 lr 1.62e-04 gn 0.75 proj_gn 0.11 29,156 tok/s
+[m5_bag] step  2220 loss 5.0282 lr 1.57e-04 gn 0.77 proj_gn 0.11 29,153 tok/s
+[m5_bag] step  2240 loss 5.0458 lr 1.52e-04 gn 0.74 proj_gn 0.10 29,155 tok/s
+[m5_bag] step  2250 VAL 4.9551
+[m5_bag] step  2260 loss 4.8050 lr 1.48e-04 gn 0.77 proj_gn 0.14 29,172 tok/s
+[m5_bag] step  2280 loss 4.8062 lr 1.43e-04 gn 0.92 proj_gn 0.19 29,165 tok/s
+[m5_bag] step  2300 loss 5.2295 lr 1.39e-04 gn 0.77 proj_gn 0.09 29,156 tok/s
+[m5_bag] step  2320 loss 4.9369 lr 1.35e-04 gn 0.83 proj_gn 0.12 29,173 tok/s
+[m5_bag] step  2340 loss 4.8257 lr 1.31e-04 gn 0.79 proj_gn 0.11 29,148 tok/s
+[m5_bag] step  2360 loss 4.9344 lr 1.27e-04 gn 0.80 proj_gn 0.13 29,185 tok/s
+[m5_bag] step  2380 loss 4.8357 lr 1.23e-04 gn 0.76 proj_gn 0.10 29,161 tok/s
+[m5_bag] step  2400 loss 4.9441 lr 1.19e-04 gn 0.72 proj_gn 0.09 29,160 tok/s
+[m5_bag] step  2420 loss 4.9927 lr 1.15e-04 gn 0.77 proj_gn 0.10 29,163 tok/s
+[m5_bag] step  2440 loss 5.0126 lr 1.12e-04 gn 0.76 proj_gn 0.11 29,148 tok/s
+[m5_bag] step  2460 loss 4.8757 lr 1.08e-04 gn 0.77 proj_gn 0.12 29,169 tok/s
+[m5_bag] step  2480 loss 4.8498 lr 1.05e-04 gn 0.84 proj_gn 0.09 29,145 tok/s
+[m5_bag] step  2500 loss 4.8861 lr 1.01e-04 gn 0.74 proj_gn 0.09 29,132 tok/s
+[m5_bag] step  2500 VAL 4.9012
+[m5_bag] step  2520 loss 4.9776 lr 9.82e-05 gn 0.82 proj_gn 0.10 29,162 tok/s
+[m5_bag] step  2540 loss 4.7432 lr 9.52e-05 gn 0.81 proj_gn 0.10 29,157 tok/s
+[m5_bag] step  2560 loss 4.8833 lr 9.22e-05 gn 0.81 proj_gn 0.11 29,159 tok/s
+[m5_bag] step  2580 loss 4.8435 lr 8.94e-05 gn 0.70 proj_gn 0.09 29,168 tok/s
+[m5_bag] step  2600 loss 4.8032 lr 8.67e-05 gn 0.75 proj_gn 0.10 29,180 tok/s
+[m5_bag] step  2620 loss 5.0236 lr 8.42e-05 gn 0.78 proj_gn 0.09 29,156 tok/s
+[m5_bag] step  2640 loss 4.9461 lr 8.17e-05 gn 0.82 proj_gn 0.10 29,162 tok/s
+[m5_bag] step  2660 loss 5.0530 lr 7.94e-05 gn 0.79 proj_gn 0.09 29,158 tok/s
+[m5_bag] step  2680 loss 4.9741 lr 7.72e-05 gn 0.75 proj_gn 0.09 29,152 tok/s
+[m5_bag] step  2700 loss 4.8706 lr 7.52e-05 gn 0.73 proj_gn 0.11 29,161 tok/s
+[m5_bag] step  2720 loss 4.9971 lr 7.32e-05 gn 0.82 proj_gn 0.11 29,188 tok/s
+[m5_bag] step  2740 loss 4.8805 lr 7.14e-05 gn 0.79 proj_gn 0.10 29,169 tok/s
+[m5_bag] step  2750 VAL 4.8621
+[m5_bag] step  2760 loss 4.8219 lr 6.97e-05 gn 0.76 proj_gn 0.08 29,162 tok/s
+[m5_bag] step  2780 loss 4.9137 lr 6.82e-05 gn 0.78 proj_gn 0.10 29,132 tok/s
+[m5_bag] step  2800 loss 4.8492 lr 6.68e-05 gn 0.84 proj_gn 0.09 29,159 tok/s
+[m5_bag] step  2820 loss 4.7336 lr 6.55e-05 gn 0.76 proj_gn 0.11 29,167 tok/s
+[m5_bag] step  2840 loss 4.6097 lr 6.43e-05 gn 0.81 proj_gn 0.10 29,156 tok/s
+[m5_bag] step  2860 loss 4.7019 lr 6.33e-05 gn 0.81 proj_gn 0.10 29,131 tok/s
+[m5_bag] step  2880 loss 4.9770 lr 6.24e-05 gn 0.83 proj_gn 0.10 29,159 tok/s
+[m5_bag] step  2900 loss 4.8835 lr 6.17e-05 gn 0.85 proj_gn 0.11 29,147 tok/s
+[m5_bag] step  2920 loss 4.8430 lr 6.11e-05 gn 0.86 proj_gn 0.10 29,174 tok/s
+[m5_bag] step  2940 loss 4.9333 lr 6.06e-05 gn 0.84 proj_gn 0.10 29,182 tok/s
+[m5_bag] step  2960 loss 4.7438 lr 6.03e-05 gn 0.83 proj_gn 0.12 29,162 tok/s
+[m5_bag] step  2980 loss 4.6398 lr 6.01e-05 gn 0.83 proj_gn 0.11 29,151 tok/s
+[m5_bag] step  2999 loss 4.7808 lr 6.00e-05 gn 0.85 proj_gn 0.09 29,162 tok/s
+[m5_bag] step  2999 VAL 4.8400
+[m5_bag] done: status=ok final_val=4.8400 wall=3406s -> results\m5\m5_bag

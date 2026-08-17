@@ -1,0 +1,166 @@
+[m5_s1338_onehot] device=cuda params={'total': 62924544, 'body': 11020032, 'lm_head': 50331648, 'embedding': 1572864} body_hash=6dfbeacce139
+[m5_s1338_onehot] step     0 loss 11.8582 lr 3.00e-06 gn 0.82 proj_gn 0.60 22,846 tok/s
+[m5_s1338_onehot] step     0 VAL 11.8622
+[m5_s1338_onehot] step    20 loss 11.3701 lr 6.30e-05 gn 1.01 proj_gn 0.44 28,190 tok/s
+[m5_s1338_onehot] step    40 loss 10.3945 lr 1.23e-04 gn 1.05 proj_gn 0.09 28,087 tok/s
+[m5_s1338_onehot] step    60 loss 9.1442 lr 1.83e-04 gn 1.03 proj_gn 0.06 28,114 tok/s
+[m5_s1338_onehot] step    80 loss 8.2509 lr 2.43e-04 gn 0.80 proj_gn 0.08 28,980 tok/s
+[m5_s1338_onehot] step   100 loss 7.5387 lr 3.03e-04 gn 0.39 proj_gn 0.18 29,037 tok/s
+[m5_s1338_onehot] step   120 loss 7.2850 lr 3.63e-04 gn 0.60 proj_gn 0.50 29,025 tok/s
+[m5_s1338_onehot] step   140 loss 7.0187 lr 4.23e-04 gn 0.34 proj_gn 0.24 29,034 tok/s
+[m5_s1338_onehot] step   160 loss 6.7527 lr 4.83e-04 gn 0.51 proj_gn 0.43 29,068 tok/s
+[m5_s1338_onehot] step   180 loss 6.7593 lr 5.43e-04 gn 0.58 proj_gn 0.46 29,003 tok/s
+[m5_s1338_onehot] step   200 loss 6.6065 lr 6.00e-04 gn 0.87 proj_gn 0.80 29,039 tok/s
+[m5_s1338_onehot] step   220 loss 6.5697 lr 6.00e-04 gn 0.57 proj_gn 0.50 29,003 tok/s
+[m5_s1338_onehot] step   240 loss 6.4383 lr 6.00e-04 gn 0.53 proj_gn 0.47 29,029 tok/s
+[m5_s1338_onehot] step   250 VAL 6.3249
+[m5_s1338_onehot] step   260 loss 6.4361 lr 5.99e-04 gn 0.58 proj_gn 0.49 29,025 tok/s
+[m5_s1338_onehot] step   280 loss 6.4581 lr 5.99e-04 gn 0.74 proj_gn 0.67 29,021 tok/s
+[m5_s1338_onehot] step   300 loss 6.0662 lr 5.98e-04 gn 0.63 proj_gn 0.57 29,033 tok/s
+[m5_s1338_onehot] step   320 loss 6.1503 lr 5.98e-04 gn 0.64 proj_gn 0.58 29,032 tok/s
+[m5_s1338_onehot] step   340 loss 6.1116 lr 5.97e-04 gn 0.61 proj_gn 0.54 29,079 tok/s
+[m5_s1338_onehot] step   360 loss 6.0482 lr 5.96e-04 gn 0.61 proj_gn 0.55 28,997 tok/s
+[m5_s1338_onehot] step   380 loss 6.1279 lr 5.95e-04 gn 0.54 proj_gn 0.46 29,023 tok/s
+[m5_s1338_onehot] step   400 loss 5.9051 lr 5.93e-04 gn 0.60 proj_gn 0.53 29,033 tok/s
+[m5_s1338_onehot] step   420 loss 5.8317 lr 5.92e-04 gn 0.68 proj_gn 0.62 29,053 tok/s
+[m5_s1338_onehot] step   440 loss 5.8155 lr 5.90e-04 gn 0.64 proj_gn 0.57 29,029 tok/s
+[m5_s1338_onehot] step   460 loss 5.9938 lr 5.89e-04 gn 0.68 proj_gn 0.61 29,001 tok/s
+[m5_s1338_onehot] step   480 loss 5.8760 lr 5.87e-04 gn 0.61 proj_gn 0.53 29,025 tok/s
+[m5_s1338_onehot] step   500 loss 5.6749 lr 5.85e-04 gn 0.66 proj_gn 0.60 29,079 tok/s
+[m5_s1338_onehot] step   500 VAL 5.8099
+[m5_s1338_onehot] step   520 loss 5.8386 lr 5.83e-04 gn 0.87 proj_gn 0.81 29,079 tok/s
+[m5_s1338_onehot] step   540 loss 5.7898 lr 5.81e-04 gn 0.59 proj_gn 0.53 29,116 tok/s
+[m5_s1338_onehot] step   560 loss 5.7570 lr 5.78e-04 gn 0.65 proj_gn 0.57 29,086 tok/s
+[m5_s1338_onehot] step   580 loss 5.7788 lr 5.76e-04 gn 0.61 proj_gn 0.53 29,043 tok/s
+[m5_s1338_onehot] step   600 loss 5.5130 lr 5.73e-04 gn 0.77 proj_gn 0.70 29,043 tok/s
+[m5_s1338_onehot] step   620 loss 5.7627 lr 5.71e-04 gn 0.59 proj_gn 0.50 29,036 tok/s
+[m5_s1338_onehot] step   640 loss 5.7328 lr 5.68e-04 gn 0.76 proj_gn 0.67 29,032 tok/s
+[m5_s1338_onehot] step   660 loss 5.7830 lr 5.65e-04 gn 0.62 proj_gn 0.54 29,078 tok/s
+[m5_s1338_onehot] step   680 loss 5.7198 lr 5.62e-04 gn 0.60 proj_gn 0.53 29,039 tok/s
+[m5_s1338_onehot] step   700 loss 5.6895 lr 5.59e-04 gn 0.67 proj_gn 0.59 29,065 tok/s
+[m5_s1338_onehot] step   720 loss 5.7437 lr 5.55e-04 gn 0.77 proj_gn 0.65 29,063 tok/s
+[m5_s1338_onehot] step   740 loss 5.6452 lr 5.52e-04 gn 0.65 proj_gn 0.58 29,076 tok/s
+[m5_s1338_onehot] step   750 VAL 5.5745
+[m5_s1338_onehot] step   760 loss 5.6818 lr 5.48e-04 gn 0.71 proj_gn 0.61 29,133 tok/s
+[m5_s1338_onehot] step   780 loss 5.5582 lr 5.45e-04 gn 0.65 proj_gn 0.57 29,057 tok/s
+[m5_s1338_onehot] step   800 loss 5.8400 lr 5.41e-04 gn 0.66 proj_gn 0.56 29,062 tok/s
+[m5_s1338_onehot] step   820 loss 5.5796 lr 5.37e-04 gn 0.67 proj_gn 0.59 29,058 tok/s
+[m5_s1338_onehot] step   840 loss 5.5983 lr 5.33e-04 gn 0.69 proj_gn 0.61 29,056 tok/s
+[m5_s1338_onehot] step   860 loss 5.4929 lr 5.29e-04 gn 0.70 proj_gn 0.62 29,051 tok/s
+[m5_s1338_onehot] step   880 loss 5.5391 lr 5.25e-04 gn 0.72 proj_gn 0.64 29,080 tok/s
+[m5_s1338_onehot] step   900 loss 5.3694 lr 5.21e-04 gn 0.83 proj_gn 0.75 29,088 tok/s
+[m5_s1338_onehot] step   920 loss 5.5713 lr 5.17e-04 gn 0.63 proj_gn 0.54 29,123 tok/s
+[m5_s1338_onehot] step   940 loss 5.4035 lr 5.12e-04 gn 0.92 proj_gn 0.85 29,108 tok/s
+[m5_s1338_onehot] step   960 loss 5.5761 lr 5.08e-04 gn 0.87 proj_gn 0.79 29,077 tok/s
+[m5_s1338_onehot] step   980 loss 5.4698 lr 5.03e-04 gn 0.92 proj_gn 0.85 29,099 tok/s
+[m5_s1338_onehot] step  1000 loss 5.5384 lr 4.98e-04 gn 1.04 proj_gn 0.96 29,141 tok/s
+[m5_s1338_onehot] step  1000 VAL 5.4037
+[m5_s1338_onehot] step  1020 loss 5.2654 lr 4.94e-04 gn 0.70 proj_gn 0.62 29,126 tok/s
+[m5_s1338_onehot] step  1040 loss 5.5633 lr 4.89e-04 gn 1.85 proj_gn 1.80 29,147 tok/s
+[m5_s1338_onehot] step  1060 loss 5.4139 lr 4.84e-04 gn 1.04 proj_gn 0.96 29,160 tok/s
+[m5_s1338_onehot] step  1080 loss 5.4000 lr 4.79e-04 gn 0.83 proj_gn 0.74 29,160 tok/s
+[m5_s1338_onehot] step  1100 loss 5.4172 lr 4.74e-04 gn 0.82 proj_gn 0.74 29,145 tok/s
+[m5_s1338_onehot] step  1120 loss 5.2801 lr 4.68e-04 gn 0.90 proj_gn 0.82 29,160 tok/s
+[m5_s1338_onehot] step  1140 loss 5.2440 lr 4.63e-04 gn 0.87 proj_gn 0.79 29,115 tok/s
+[m5_s1338_onehot] step  1160 loss 5.5263 lr 4.58e-04 gn 0.92 proj_gn 0.83 29,155 tok/s
+[m5_s1338_onehot] step  1180 loss 5.4149 lr 4.53e-04 gn 0.72 proj_gn 0.62 29,153 tok/s
+[m5_s1338_onehot] step  1200 loss 5.2301 lr 4.47e-04 gn 0.74 proj_gn 0.66 29,162 tok/s
+[m5_s1338_onehot] step  1220 loss 5.3097 lr 4.42e-04 gn 0.74 proj_gn 0.63 29,149 tok/s
+[m5_s1338_onehot] step  1240 loss 5.3261 lr 4.36e-04 gn 0.88 proj_gn 0.80 29,136 tok/s
+[m5_s1338_onehot] step  1250 VAL 5.2719
+[m5_s1338_onehot] step  1260 loss 5.3604 lr 4.31e-04 gn 1.06 proj_gn 0.98 29,170 tok/s
+[m5_s1338_onehot] step  1280 loss 5.2530 lr 4.25e-04 gn 0.84 proj_gn 0.75 29,157 tok/s
+[m5_s1338_onehot] step  1300 loss 5.2037 lr 4.19e-04 gn 0.93 proj_gn 0.86 29,167 tok/s
+[m5_s1338_onehot] step  1320 loss 5.2087 lr 4.13e-04 gn 0.92 proj_gn 0.83 29,189 tok/s
+[m5_s1338_onehot] step  1340 loss 5.1509 lr 4.08e-04 gn 1.15 proj_gn 1.08 29,191 tok/s
+[m5_s1338_onehot] step  1360 loss 5.1920 lr 4.02e-04 gn 1.13 proj_gn 1.07 29,196 tok/s
+[m5_s1338_onehot] step  1380 loss 5.3043 lr 3.96e-04 gn 1.02 proj_gn 0.93 29,173 tok/s
+[m5_s1338_onehot] step  1400 loss 5.2647 lr 3.90e-04 gn 1.19 proj_gn 1.12 29,171 tok/s
+[m5_s1338_onehot] step  1420 loss 5.2788 lr 3.84e-04 gn 2.00 proj_gn 1.95 29,171 tok/s
+[m5_s1338_onehot] step  1440 loss 5.2533 lr 3.78e-04 gn 0.86 proj_gn 0.76 29,177 tok/s
+[m5_s1338_onehot] step  1460 loss 5.2772 lr 3.72e-04 gn 0.82 proj_gn 0.70 29,190 tok/s
+[m5_s1338_onehot] step  1480 loss 5.1918 lr 3.66e-04 gn 1.07 proj_gn 0.99 29,170 tok/s
+[m5_s1338_onehot] step  1500 loss 5.1986 lr 3.60e-04 gn 0.95 proj_gn 0.84 29,199 tok/s
+[m5_s1338_onehot] step  1500 VAL 5.1542
+[m5_s1338_onehot] step  1520 loss 5.1147 lr 3.54e-04 gn 0.97 proj_gn 0.88 29,184 tok/s
+[m5_s1338_onehot] step  1540 loss 5.2153 lr 3.48e-04 gn 0.83 proj_gn 0.73 29,189 tok/s
+[m5_s1338_onehot] step  1560 loss 5.3144 lr 3.42e-04 gn 1.06 proj_gn 0.95 29,191 tok/s
+[m5_s1338_onehot] step  1580 loss 5.2439 lr 3.36e-04 gn 0.85 proj_gn 0.75 29,163 tok/s
+[m5_s1338_onehot] step  1600 loss 5.0346 lr 3.30e-04 gn 0.94 proj_gn 0.84 29,196 tok/s
+[m5_s1338_onehot] step  1620 loss 4.9458 lr 3.24e-04 gn 1.26 proj_gn 1.18 29,165 tok/s
+[m5_s1338_onehot] step  1640 loss 5.1315 lr 3.18e-04 gn 1.32 proj_gn 1.23 29,171 tok/s
+[m5_s1338_onehot] step  1660 loss 4.9618 lr 3.12e-04 gn 0.91 proj_gn 0.81 29,197 tok/s
+[m5_s1338_onehot] step  1680 loss 5.1176 lr 3.06e-04 gn 1.02 proj_gn 0.90 29,203 tok/s
+[m5_s1338_onehot] step  1700 loss 5.1625 lr 3.00e-04 gn 1.04 proj_gn 0.95 29,173 tok/s
+[m5_s1338_onehot] step  1720 loss 5.0933 lr 2.94e-04 gn 1.18 proj_gn 1.09 29,192 tok/s
+[m5_s1338_onehot] step  1740 loss 5.0725 lr 2.88e-04 gn 1.02 proj_gn 0.88 29,211 tok/s
+[m5_s1338_onehot] step  1750 VAL 5.0559
+[m5_s1338_onehot] step  1760 loss 5.0034 lr 2.82e-04 gn 1.18 proj_gn 1.08 29,197 tok/s
+[m5_s1338_onehot] step  1780 loss 4.8088 lr 2.76e-04 gn 1.04 proj_gn 0.93 29,202 tok/s
+[m5_s1338_onehot] step  1800 loss 5.0504 lr 2.70e-04 gn 0.85 proj_gn 0.73 29,209 tok/s
+[m5_s1338_onehot] step  1820 loss 5.0025 lr 2.64e-04 gn 1.09 proj_gn 0.99 29,189 tok/s
+[m5_s1338_onehot] step  1840 loss 5.1037 lr 2.58e-04 gn 0.92 proj_gn 0.82 29,155 tok/s
+[m5_s1338_onehot] step  1860 loss 4.8125 lr 2.52e-04 gn 1.18 proj_gn 1.09 29,203 tok/s
+[m5_s1338_onehot] step  1880 loss 5.0863 lr 2.47e-04 gn 1.20 proj_gn 1.10 29,188 tok/s
+[m5_s1338_onehot] step  1900 loss 4.9995 lr 2.41e-04 gn 0.98 proj_gn 0.89 29,195 tok/s
+[m5_s1338_onehot] step  1920 loss 4.8497 lr 2.35e-04 gn 0.88 proj_gn 0.77 29,187 tok/s
+[m5_s1338_onehot] step  1940 loss 4.8881 lr 2.29e-04 gn 1.31 proj_gn 1.22 29,216 tok/s
+[m5_s1338_onehot] step  1960 loss 4.9850 lr 2.24e-04 gn 1.10 proj_gn 1.00 29,229 tok/s
+[m5_s1338_onehot] step  1980 loss 4.9868 lr 2.18e-04 gn 1.25 proj_gn 1.15 29,189 tok/s
+[m5_s1338_onehot] step  2000 loss 5.1141 lr 2.13e-04 gn 0.87 proj_gn 0.75 29,200 tok/s
+[m5_s1338_onehot] step  2000 VAL 4.9743
+[m5_s1338_onehot] step  2020 loss 4.7714 lr 2.07e-04 gn 1.37 proj_gn 1.28 29,180 tok/s
+[m5_s1338_onehot] step  2040 loss 5.0056 lr 2.02e-04 gn 1.26 proj_gn 1.17 29,192 tok/s
+[m5_s1338_onehot] step  2060 loss 4.7713 lr 1.97e-04 gn 1.15 proj_gn 1.05 29,209 tok/s
+[m5_s1338_onehot] step  2080 loss 4.8515 lr 1.92e-04 gn 0.96 proj_gn 0.83 29,173 tok/s
+[m5_s1338_onehot] step  2100 loss 5.0143 lr 1.86e-04 gn 1.02 proj_gn 0.92 29,205 tok/s
+[m5_s1338_onehot] step  2120 loss 4.8842 lr 1.81e-04 gn 0.94 proj_gn 0.82 29,202 tok/s
+[m5_s1338_onehot] step  2140 loss 5.0765 lr 1.76e-04 gn 1.46 proj_gn 1.36 29,187 tok/s
+[m5_s1338_onehot] step  2160 loss 5.1284 lr 1.71e-04 gn 0.87 proj_gn 0.74 29,202 tok/s
+[m5_s1338_onehot] step  2180 loss 5.0288 lr 1.66e-04 gn 0.98 proj_gn 0.85 29,188 tok/s
+[m5_s1338_onehot] step  2200 loss 4.9118 lr 1.62e-04 gn 0.99 proj_gn 0.85 29,182 tok/s
+[m5_s1338_onehot] step  2220 loss 4.8137 lr 1.57e-04 gn 1.25 proj_gn 1.15 29,187 tok/s
+[m5_s1338_onehot] step  2240 loss 4.9066 lr 1.52e-04 gn 0.99 proj_gn 0.87 29,209 tok/s
+[m5_s1338_onehot] step  2250 VAL 4.9159
+[m5_s1338_onehot] step  2260 loss 5.0125 lr 1.48e-04 gn 1.22 proj_gn 1.09 29,189 tok/s
+[m5_s1338_onehot] step  2280 loss 4.9634 lr 1.43e-04 gn 1.34 proj_gn 1.25 29,189 tok/s
+[m5_s1338_onehot] step  2300 loss 5.0385 lr 1.39e-04 gn 1.04 proj_gn 0.90 29,198 tok/s
+[m5_s1338_onehot] step  2320 loss 5.0040 lr 1.35e-04 gn 0.97 proj_gn 0.84 29,203 tok/s
+[m5_s1338_onehot] step  2340 loss 4.8659 lr 1.31e-04 gn 1.06 proj_gn 0.95 29,221 tok/s
+[m5_s1338_onehot] step  2360 loss 4.8012 lr 1.27e-04 gn 0.91 proj_gn 0.78 29,226 tok/s
+[m5_s1338_onehot] step  2380 loss 4.7301 lr 1.23e-04 gn 1.18 proj_gn 1.00 29,214 tok/s
+[m5_s1338_onehot] step  2400 loss 4.9834 lr 1.19e-04 gn 1.05 proj_gn 0.91 29,211 tok/s
+[m5_s1338_onehot] step  2420 loss 4.8586 lr 1.15e-04 gn 1.14 proj_gn 1.03 29,200 tok/s
+[m5_s1338_onehot] step  2440 loss 4.9029 lr 1.12e-04 gn 1.09 proj_gn 0.98 29,175 tok/s
+[m5_s1338_onehot] step  2460 loss 4.9921 lr 1.08e-04 gn 1.08 proj_gn 0.96 29,194 tok/s
+[m5_s1338_onehot] step  2480 loss 4.7433 lr 1.05e-04 gn 0.97 proj_gn 0.84 29,199 tok/s
+[m5_s1338_onehot] step  2500 loss 4.7422 lr 1.01e-04 gn 0.93 proj_gn 0.81 29,193 tok/s
+[m5_s1338_onehot] step  2500 VAL 4.8651
+[m5_s1338_onehot] step  2520 loss 4.8937 lr 9.82e-05 gn 1.01 proj_gn 0.88 29,206 tok/s
+[m5_s1338_onehot] step  2540 loss 4.9047 lr 9.52e-05 gn 0.97 proj_gn 0.84 29,178 tok/s
+[m5_s1338_onehot] step  2560 loss 4.7718 lr 9.22e-05 gn 1.10 proj_gn 0.99 29,146 tok/s
+[m5_s1338_onehot] step  2580 loss 4.8474 lr 8.94e-05 gn 1.00 proj_gn 0.87 29,172 tok/s
+[m5_s1338_onehot] step  2600 loss 4.7857 lr 8.67e-05 gn 0.98 proj_gn 0.85 29,199 tok/s
+[m5_s1338_onehot] step  2620 loss 4.7535 lr 8.42e-05 gn 0.97 proj_gn 0.83 29,201 tok/s
+[m5_s1338_onehot] step  2640 loss 4.8245 lr 8.17e-05 gn 1.08 proj_gn 0.96 29,185 tok/s
+[m5_s1338_onehot] step  2660 loss 4.7486 lr 7.94e-05 gn 1.00 proj_gn 0.86 29,211 tok/s
+[m5_s1338_onehot] step  2680 loss 4.9506 lr 7.72e-05 gn 1.31 proj_gn 1.17 29,184 tok/s
+[m5_s1338_onehot] step  2700 loss 4.9675 lr 7.52e-05 gn 1.06 proj_gn 0.93 29,217 tok/s
+[m5_s1338_onehot] step  2720 loss 4.4482 lr 7.32e-05 gn 1.09 proj_gn 0.97 29,167 tok/s
+[m5_s1338_onehot] step  2740 loss 4.8164 lr 7.14e-05 gn 1.13 proj_gn 1.01 29,187 tok/s
+[m5_s1338_onehot] step  2750 VAL 4.8324
+[m5_s1338_onehot] step  2760 loss 4.7097 lr 6.97e-05 gn 1.05 proj_gn 0.92 29,199 tok/s
+[m5_s1338_onehot] step  2780 loss 4.9161 lr 6.82e-05 gn 1.05 proj_gn 0.92 29,205 tok/s
+[m5_s1338_onehot] step  2800 loss 4.8273 lr 6.68e-05 gn 0.98 proj_gn 0.83 29,212 tok/s
+[m5_s1338_onehot] step  2820 loss 4.8165 lr 6.55e-05 gn 0.98 proj_gn 0.84 29,225 tok/s
+[m5_s1338_onehot] step  2840 loss 4.7697 lr 6.43e-05 gn 0.95 proj_gn 0.80 29,202 tok/s
+[m5_s1338_onehot] step  2860 loss 4.9272 lr 6.33e-05 gn 1.02 proj_gn 0.86 29,186 tok/s
+[m5_s1338_onehot] step  2880 loss 4.7086 lr 6.24e-05 gn 1.06 proj_gn 0.94 29,185 tok/s
+[m5_s1338_onehot] step  2900 loss 4.9463 lr 6.17e-05 gn 0.98 proj_gn 0.83 29,225 tok/s
+[m5_s1338_onehot] step  2920 loss 4.8280 lr 6.11e-05 gn 0.96 proj_gn 0.82 29,200 tok/s
+[m5_s1338_onehot] step  2940 loss 4.8563 lr 6.06e-05 gn 1.18 proj_gn 1.06 29,186 tok/s
+[m5_s1338_onehot] step  2960 loss 4.9784 lr 6.03e-05 gn 1.06 proj_gn 0.92 29,204 tok/s
+[m5_s1338_onehot] step  2980 loss 4.7846 lr 6.01e-05 gn 0.98 proj_gn 0.83 29,205 tok/s
+[m5_s1338_onehot] step  2999 loss 4.7606 lr 6.00e-05 gn 1.08 proj_gn 0.92 29,192 tok/s
+[m5_s1338_onehot] step  2999 VAL 4.8122
+[m5_s1338_onehot] done: status=ok final_val=4.8122 wall=3414s -> results\m5\m5_s1338_onehot

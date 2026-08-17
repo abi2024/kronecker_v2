@@ -1,0 +1,166 @@
+[m4_p24_wave] device=cuda params={'total': 63710976, 'body': 11020032, 'lm_head': 50331648, 'embedding': 2359296} body_hash=4a6392274148
+[m4_p24_wave] step     0 loss 11.8714 lr 3.00e-06 gn 5.63 proj_gn 0.94 22,850 tok/s
+[m4_p24_wave] step     0 VAL 11.8467
+[m4_p24_wave] step    20 loss 11.1111 lr 6.30e-05 gn 1.47 proj_gn 0.11 28,046 tok/s
+[m4_p24_wave] step    40 loss 10.2797 lr 1.23e-04 gn 1.20 proj_gn 0.07 27,928 tok/s
+[m4_p24_wave] step    60 loss 9.0782 lr 1.83e-04 gn 1.16 proj_gn 0.04 27,773 tok/s
+[m4_p24_wave] step    80 loss 8.1082 lr 2.43e-04 gn 0.83 proj_gn 0.06 27,932 tok/s
+[m4_p24_wave] step   100 loss 7.4513 lr 3.03e-04 gn 0.86 proj_gn 0.17 27,970 tok/s
+[m4_p24_wave] step   120 loss 7.3251 lr 3.63e-04 gn 0.35 proj_gn 0.13 27,925 tok/s
+[m4_p24_wave] step   140 loss 6.9627 lr 4.23e-04 gn 0.47 proj_gn 0.19 28,149 tok/s
+[m4_p24_wave] step   160 loss 6.9960 lr 4.83e-04 gn 0.84 proj_gn 0.32 27,958 tok/s
+[m4_p24_wave] step   180 loss 6.7681 lr 5.43e-04 gn 0.57 proj_gn 0.24 27,988 tok/s
+[m4_p24_wave] step   200 loss 6.6238 lr 6.00e-04 gn 0.50 proj_gn 0.20 27,958 tok/s
+[m4_p24_wave] step   220 loss 6.7682 lr 6.00e-04 gn 0.60 proj_gn 0.23 27,933 tok/s
+[m4_p24_wave] step   240 loss 6.7128 lr 6.00e-04 gn 0.46 proj_gn 0.18 28,002 tok/s
+[m4_p24_wave] step   250 VAL 6.5422
+[m4_p24_wave] step   260 loss 6.4823 lr 5.99e-04 gn 0.57 proj_gn 0.26 27,956 tok/s
+[m4_p24_wave] step   280 loss 6.4957 lr 5.99e-04 gn 0.53 proj_gn 0.23 27,929 tok/s
+[m4_p24_wave] step   300 loss 6.3642 lr 5.98e-04 gn 0.49 proj_gn 0.20 27,959 tok/s
+[m4_p24_wave] step   320 loss 6.4073 lr 5.98e-04 gn 0.48 proj_gn 0.21 27,928 tok/s
+[m4_p24_wave] step   340 loss 6.2295 lr 5.97e-04 gn 0.62 proj_gn 0.29 28,108 tok/s
+[m4_p24_wave] step   360 loss 6.2950 lr 5.96e-04 gn 0.55 proj_gn 0.25 27,927 tok/s
+[m4_p24_wave] step   380 loss 6.3012 lr 5.95e-04 gn 0.53 proj_gn 0.22 28,034 tok/s
+[m4_p24_wave] step   400 loss 6.3194 lr 5.93e-04 gn 0.44 proj_gn 0.18 27,906 tok/s
+[m4_p24_wave] step   420 loss 6.3199 lr 5.92e-04 gn 0.74 proj_gn 0.38 27,978 tok/s
+[m4_p24_wave] step   440 loss 6.0638 lr 5.90e-04 gn 0.56 proj_gn 0.21 27,954 tok/s
+[m4_p24_wave] step   460 loss 6.1085 lr 5.89e-04 gn 0.48 proj_gn 0.19 27,945 tok/s
+[m4_p24_wave] step   480 loss 6.2645 lr 5.87e-04 gn 0.53 proj_gn 0.19 28,088 tok/s
+[m4_p24_wave] step   500 loss 6.1578 lr 5.85e-04 gn 0.53 proj_gn 0.21 27,965 tok/s
+[m4_p24_wave] step   500 VAL 6.0127
+[m4_p24_wave] step   520 loss 6.0378 lr 5.83e-04 gn 0.60 proj_gn 0.25 27,936 tok/s
+[m4_p24_wave] step   540 loss 5.9678 lr 5.81e-04 gn 0.52 proj_gn 0.22 28,065 tok/s
+[m4_p24_wave] step   560 loss 5.8920 lr 5.78e-04 gn 0.46 proj_gn 0.17 27,956 tok/s
+[m4_p24_wave] step   580 loss 5.9914 lr 5.76e-04 gn 0.55 proj_gn 0.22 28,092 tok/s
+[m4_p24_wave] step   600 loss 5.8768 lr 5.73e-04 gn 0.50 proj_gn 0.18 27,937 tok/s
+[m4_p24_wave] step   620 loss 5.9169 lr 5.71e-04 gn 0.59 proj_gn 0.21 27,975 tok/s
+[m4_p24_wave] step   640 loss 5.8899 lr 5.68e-04 gn 0.62 proj_gn 0.21 27,943 tok/s
+[m4_p24_wave] step   660 loss 5.7707 lr 5.65e-04 gn 0.69 proj_gn 0.24 27,943 tok/s
+[m4_p24_wave] step   680 loss 5.8729 lr 5.62e-04 gn 0.68 proj_gn 0.23 27,957 tok/s
+[m4_p24_wave] step   700 loss 5.9174 lr 5.59e-04 gn 0.53 proj_gn 0.17 27,938 tok/s
+[m4_p24_wave] step   720 loss 5.7340 lr 5.55e-04 gn 0.54 proj_gn 0.17 28,111 tok/s
+[m4_p24_wave] step   740 loss 5.7317 lr 5.52e-04 gn 0.59 proj_gn 0.21 27,938 tok/s
+[m4_p24_wave] step   750 VAL 5.6743
+[m4_p24_wave] step   760 loss 5.7350 lr 5.48e-04 gn 0.62 proj_gn 0.19 27,943 tok/s
+[m4_p24_wave] step   780 loss 5.7765 lr 5.45e-04 gn 0.58 proj_gn 0.16 28,086 tok/s
+[m4_p24_wave] step   800 loss 5.6981 lr 5.41e-04 gn 0.64 proj_gn 0.19 27,931 tok/s
+[m4_p24_wave] step   820 loss 5.7884 lr 5.37e-04 gn 0.55 proj_gn 0.15 28,011 tok/s
+[m4_p24_wave] step   840 loss 5.4181 lr 5.33e-04 gn 0.58 proj_gn 0.19 27,940 tok/s
+[m4_p24_wave] step   860 loss 5.6420 lr 5.29e-04 gn 0.57 proj_gn 0.16 27,926 tok/s
+[m4_p24_wave] step   880 loss 5.4996 lr 5.25e-04 gn 0.69 proj_gn 0.24 27,931 tok/s
+[m4_p24_wave] step   900 loss 5.6471 lr 5.21e-04 gn 0.60 proj_gn 0.17 27,948 tok/s
+[m4_p24_wave] step   920 loss 5.5443 lr 5.17e-04 gn 0.64 proj_gn 0.17 28,061 tok/s
+[m4_p24_wave] step   940 loss 5.5637 lr 5.12e-04 gn 0.62 proj_gn 0.17 27,969 tok/s
+[m4_p24_wave] step   960 loss 5.4290 lr 5.08e-04 gn 0.63 proj_gn 0.18 28,098 tok/s
+[m4_p24_wave] step   980 loss 5.4386 lr 5.03e-04 gn 0.58 proj_gn 0.16 27,958 tok/s
+[m4_p24_wave] step  1000 loss 5.5109 lr 4.98e-04 gn 0.67 proj_gn 0.17 28,004 tok/s
+[m4_p24_wave] step  1000 VAL 5.4581
+[m4_p24_wave] step  1020 loss 5.5475 lr 4.94e-04 gn 0.60 proj_gn 0.15 28,096 tok/s
+[m4_p24_wave] step  1040 loss 5.5038 lr 4.89e-04 gn 0.59 proj_gn 0.14 27,954 tok/s
+[m4_p24_wave] step  1060 loss 5.3734 lr 4.84e-04 gn 0.67 proj_gn 0.20 27,989 tok/s
+[m4_p24_wave] step  1080 loss 5.4280 lr 4.79e-04 gn 0.70 proj_gn 0.19 27,937 tok/s
+[m4_p24_wave] step  1100 loss 5.3797 lr 4.74e-04 gn 0.62 proj_gn 0.17 27,967 tok/s
+[m4_p24_wave] step  1120 loss 5.5326 lr 4.68e-04 gn 0.62 proj_gn 0.15 27,989 tok/s
+[m4_p24_wave] step  1140 loss 5.3769 lr 4.63e-04 gn 0.62 proj_gn 0.16 27,939 tok/s
+[m4_p24_wave] step  1160 loss 5.2874 lr 4.58e-04 gn 0.65 proj_gn 0.14 28,093 tok/s
+[m4_p24_wave] step  1180 loss 5.2831 lr 4.53e-04 gn 0.72 proj_gn 0.17 27,952 tok/s
+[m4_p24_wave] step  1200 loss 5.4027 lr 4.47e-04 gn 0.63 proj_gn 0.16 27,989 tok/s
+[m4_p24_wave] step  1220 loss 5.4601 lr 4.42e-04 gn 0.58 proj_gn 0.13 27,933 tok/s
+[m4_p24_wave] step  1240 loss 5.2419 lr 4.36e-04 gn 0.71 proj_gn 0.18 27,967 tok/s
+[m4_p24_wave] step  1250 VAL 5.2897
+[m4_p24_wave] step  1260 loss 5.2347 lr 4.31e-04 gn 0.68 proj_gn 0.16 28,011 tok/s
+[m4_p24_wave] step  1280 loss 5.2735 lr 4.25e-04 gn 0.67 proj_gn 0.13 27,967 tok/s
+[m4_p24_wave] step  1300 loss 5.2482 lr 4.19e-04 gn 0.62 proj_gn 0.13 27,923 tok/s
+[m4_p24_wave] step  1320 loss 5.2608 lr 4.13e-04 gn 0.68 proj_gn 0.19 27,950 tok/s
+[m4_p24_wave] step  1340 loss 5.1479 lr 4.08e-04 gn 0.70 proj_gn 0.15 27,967 tok/s
+[m4_p24_wave] step  1360 loss 5.2322 lr 4.02e-04 gn 0.66 proj_gn 0.14 28,089 tok/s
+[m4_p24_wave] step  1380 loss 5.1956 lr 3.96e-04 gn 0.67 proj_gn 0.14 27,964 tok/s
+[m4_p24_wave] step  1400 loss 5.2620 lr 3.90e-04 gn 0.74 proj_gn 0.15 28,076 tok/s
+[m4_p24_wave] step  1420 loss 5.3324 lr 3.84e-04 gn 0.66 proj_gn 0.13 28,028 tok/s
+[m4_p24_wave] step  1440 loss 5.1214 lr 3.78e-04 gn 0.61 proj_gn 0.13 27,941 tok/s
+[m4_p24_wave] step  1460 loss 5.1663 lr 3.72e-04 gn 0.72 proj_gn 0.14 27,949 tok/s
+[m4_p24_wave] step  1480 loss 5.3936 lr 3.66e-04 gn 0.71 proj_gn 0.15 27,990 tok/s
+[m4_p24_wave] step  1500 loss 5.1483 lr 3.60e-04 gn 0.72 proj_gn 0.14 28,034 tok/s
+[m4_p24_wave] step  1500 VAL 5.1478
+[m4_p24_wave] step  1520 loss 5.0440 lr 3.54e-04 gn 0.60 proj_gn 0.12 28,047 tok/s
+[m4_p24_wave] step  1540 loss 5.1854 lr 3.48e-04 gn 0.70 proj_gn 0.15 27,932 tok/s
+[m4_p24_wave] step  1560 loss 5.1290 lr 3.42e-04 gn 0.78 proj_gn 0.18 28,075 tok/s
+[m4_p24_wave] step  1580 loss 4.8452 lr 3.36e-04 gn 0.72 proj_gn 0.17 27,918 tok/s
+[m4_p24_wave] step  1600 loss 5.0594 lr 3.30e-04 gn 0.80 proj_gn 0.18 28,061 tok/s
+[m4_p24_wave] step  1620 loss 5.1601 lr 3.24e-04 gn 0.70 proj_gn 0.14 27,931 tok/s
+[m4_p24_wave] step  1640 loss 5.0686 lr 3.18e-04 gn 0.71 proj_gn 0.13 27,937 tok/s
+[m4_p24_wave] step  1660 loss 5.1637 lr 3.12e-04 gn 0.73 proj_gn 0.14 27,952 tok/s
+[m4_p24_wave] step  1680 loss 5.2475 lr 3.06e-04 gn 0.73 proj_gn 0.13 27,961 tok/s
+[m4_p24_wave] step  1700 loss 5.0470 lr 3.00e-04 gn 0.73 proj_gn 0.14 28,017 tok/s
+[m4_p24_wave] step  1720 loss 5.0533 lr 2.94e-04 gn 0.63 proj_gn 0.12 27,966 tok/s
+[m4_p24_wave] step  1740 loss 5.1063 lr 2.88e-04 gn 0.71 proj_gn 0.14 28,079 tok/s
+[m4_p24_wave] step  1750 VAL 5.0370
+[m4_p24_wave] step  1760 loss 5.1165 lr 2.82e-04 gn 0.73 proj_gn 0.14 28,062 tok/s
+[m4_p24_wave] step  1780 loss 5.1663 lr 2.76e-04 gn 0.73 proj_gn 0.14 27,909 tok/s
+[m4_p24_wave] step  1800 loss 4.9917 lr 2.70e-04 gn 0.76 proj_gn 0.12 28,054 tok/s
+[m4_p24_wave] step  1820 loss 5.1021 lr 2.64e-04 gn 0.65 proj_gn 0.11 27,966 tok/s
+[m4_p24_wave] step  1840 loss 5.0515 lr 2.58e-04 gn 0.76 proj_gn 0.17 27,956 tok/s
+[m4_p24_wave] step  1860 loss 5.1009 lr 2.52e-04 gn 0.77 proj_gn 0.14 27,960 tok/s
+[m4_p24_wave] step  1880 loss 5.0166 lr 2.47e-04 gn 0.81 proj_gn 0.15 27,926 tok/s
+[m4_p24_wave] step  1900 loss 4.9432 lr 2.41e-04 gn 0.74 proj_gn 0.13 28,035 tok/s
+[m4_p24_wave] step  1920 loss 5.0087 lr 2.35e-04 gn 0.76 proj_gn 0.13 27,981 tok/s
+[m4_p24_wave] step  1940 loss 4.8047 lr 2.29e-04 gn 0.69 proj_gn 0.12 28,105 tok/s
+[m4_p24_wave] step  1960 loss 5.1411 lr 2.24e-04 gn 0.75 proj_gn 0.12 27,927 tok/s
+[m4_p24_wave] step  1980 loss 4.8809 lr 2.18e-04 gn 0.74 proj_gn 0.13 27,984 tok/s
+[m4_p24_wave] step  2000 loss 5.1072 lr 2.13e-04 gn 0.71 proj_gn 0.12 27,973 tok/s
+[m4_p24_wave] step  2000 VAL 4.9444
+[m4_p24_wave] step  2020 loss 5.0181 lr 2.07e-04 gn 0.70 proj_gn 0.12 27,955 tok/s
+[m4_p24_wave] step  2040 loss 5.1148 lr 2.02e-04 gn 0.75 proj_gn 0.15 27,945 tok/s
+[m4_p24_wave] step  2060 loss 4.8935 lr 1.97e-04 gn 0.74 proj_gn 0.13 27,909 tok/s
+[m4_p24_wave] step  2080 loss 5.0082 lr 1.92e-04 gn 0.76 proj_gn 0.14 27,925 tok/s
+[m4_p24_wave] step  2100 loss 4.9680 lr 1.86e-04 gn 0.80 proj_gn 0.13 28,025 tok/s
+[m4_p24_wave] step  2120 loss 5.0154 lr 1.81e-04 gn 0.78 proj_gn 0.13 27,928 tok/s
+[m4_p24_wave] step  2140 loss 4.9781 lr 1.76e-04 gn 0.74 proj_gn 0.12 28,090 tok/s
+[m4_p24_wave] step  2160 loss 4.9770 lr 1.71e-04 gn 0.74 proj_gn 0.13 27,972 tok/s
+[m4_p24_wave] step  2180 loss 4.8859 lr 1.66e-04 gn 0.81 proj_gn 0.13 27,978 tok/s
+[m4_p24_wave] step  2200 loss 4.9204 lr 1.62e-04 gn 0.78 proj_gn 0.13 27,965 tok/s
+[m4_p24_wave] step  2220 loss 4.9475 lr 1.57e-04 gn 0.73 proj_gn 0.12 27,963 tok/s
+[m4_p24_wave] step  2240 loss 4.9739 lr 1.52e-04 gn 0.88 proj_gn 0.15 27,956 tok/s
+[m4_p24_wave] step  2250 VAL 4.8737
+[m4_p24_wave] step  2260 loss 4.7215 lr 1.48e-04 gn 0.73 proj_gn 0.12 27,949 tok/s
+[m4_p24_wave] step  2280 loss 4.7246 lr 1.43e-04 gn 0.85 proj_gn 0.15 27,950 tok/s
+[m4_p24_wave] step  2300 loss 5.1513 lr 1.39e-04 gn 0.75 proj_gn 0.12 28,042 tok/s
+[m4_p24_wave] step  2320 loss 4.8574 lr 1.35e-04 gn 0.76 proj_gn 0.12 27,947 tok/s
+[m4_p24_wave] step  2340 loss 4.7454 lr 1.31e-04 gn 0.79 proj_gn 0.13 28,134 tok/s
+[m4_p24_wave] step  2360 loss 4.8478 lr 1.27e-04 gn 0.76 proj_gn 0.12 27,924 tok/s
+[m4_p24_wave] step  2380 loss 4.7681 lr 1.23e-04 gn 0.77 proj_gn 0.12 27,980 tok/s
+[m4_p24_wave] step  2400 loss 4.8726 lr 1.19e-04 gn 0.75 proj_gn 0.13 27,946 tok/s
+[m4_p24_wave] step  2420 loss 4.9137 lr 1.15e-04 gn 0.79 proj_gn 0.13 27,955 tok/s
+[m4_p24_wave] step  2440 loss 4.9305 lr 1.12e-04 gn 0.81 proj_gn 0.15 27,967 tok/s
+[m4_p24_wave] step  2460 loss 4.7970 lr 1.08e-04 gn 0.73 proj_gn 0.11 27,934 tok/s
+[m4_p24_wave] step  2480 loss 4.7681 lr 1.05e-04 gn 0.82 proj_gn 0.12 28,105 tok/s
+[m4_p24_wave] step  2500 loss 4.8105 lr 1.01e-04 gn 0.78 proj_gn 0.12 27,938 tok/s
+[m4_p24_wave] step  2500 VAL 4.8211
+[m4_p24_wave] step  2520 loss 4.8996 lr 9.82e-05 gn 0.89 proj_gn 0.15 27,961 tok/s
+[m4_p24_wave] step  2540 loss 4.6599 lr 9.52e-05 gn 0.84 proj_gn 0.15 28,112 tok/s
+[m4_p24_wave] step  2560 loss 4.7945 lr 9.22e-05 gn 0.79 proj_gn 0.13 27,961 tok/s
+[m4_p24_wave] step  2580 loss 4.7644 lr 8.94e-05 gn 0.74 proj_gn 0.11 28,010 tok/s
+[m4_p24_wave] step  2600 loss 4.7351 lr 8.67e-05 gn 0.78 proj_gn 0.12 27,976 tok/s
+[m4_p24_wave] step  2620 loss 4.9538 lr 8.42e-05 gn 0.80 proj_gn 0.12 27,950 tok/s
+[m4_p24_wave] step  2640 loss 4.8624 lr 8.17e-05 gn 0.77 proj_gn 0.12 28,028 tok/s
+[m4_p24_wave] step  2660 loss 4.9794 lr 7.94e-05 gn 0.82 proj_gn 0.12 27,940 tok/s
+[m4_p24_wave] step  2680 loss 4.8955 lr 7.72e-05 gn 0.82 proj_gn 0.13 28,107 tok/s
+[m4_p24_wave] step  2700 loss 4.7925 lr 7.52e-05 gn 0.77 proj_gn 0.14 27,959 tok/s
+[m4_p24_wave] step  2720 loss 4.9151 lr 7.32e-05 gn 0.78 proj_gn 0.12 27,952 tok/s
+[m4_p24_wave] step  2740 loss 4.8050 lr 7.14e-05 gn 0.78 proj_gn 0.11 27,993 tok/s
+[m4_p24_wave] step  2750 VAL 4.7821
+[m4_p24_wave] step  2760 loss 4.7416 lr 6.97e-05 gn 0.77 proj_gn 0.12 27,947 tok/s
+[m4_p24_wave] step  2780 loss 4.8407 lr 6.82e-05 gn 0.74 proj_gn 0.11 28,029 tok/s
+[m4_p24_wave] step  2800 loss 4.7661 lr 6.68e-05 gn 0.80 proj_gn 0.12 27,951 tok/s
+[m4_p24_wave] step  2820 loss 4.6628 lr 6.55e-05 gn 0.75 proj_gn 0.12 27,920 tok/s
+[m4_p24_wave] step  2840 loss 4.5328 lr 6.43e-05 gn 0.91 proj_gn 0.17 28,031 tok/s
+[m4_p24_wave] step  2860 loss 4.6167 lr 6.33e-05 gn 0.76 proj_gn 0.13 27,956 tok/s
+[m4_p24_wave] step  2880 loss 4.8979 lr 6.24e-05 gn 0.82 proj_gn 0.13 28,094 tok/s
+[m4_p24_wave] step  2900 loss 4.8008 lr 6.17e-05 gn 0.86 proj_gn 0.13 27,962 tok/s
+[m4_p24_wave] step  2920 loss 4.7658 lr 6.11e-05 gn 0.83 proj_gn 0.13 28,051 tok/s
+[m4_p24_wave] step  2940 loss 4.8569 lr 6.06e-05 gn 0.81 proj_gn 0.12 27,933 tok/s
+[m4_p24_wave] step  2960 loss 4.6569 lr 6.03e-05 gn 0.84 proj_gn 0.13 27,961 tok/s
+[m4_p24_wave] step  2980 loss 4.5643 lr 6.01e-05 gn 0.87 proj_gn 0.14 28,019 tok/s
+[m4_p24_wave] step  2999 loss 4.6997 lr 6.00e-05 gn 0.81 proj_gn 0.11 27,920 tok/s
+[m4_p24_wave] step  2999 VAL 4.7570
+[m4_p24_wave] done: status=ok final_val=4.7570 wall=3550s -> results\m4\m4_p24_wave

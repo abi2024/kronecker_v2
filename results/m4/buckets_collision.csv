@@ -1,0 +1,4 @@
+bucket,vocab_tokens,val_tokens,val_share_%,m4_p12_onehot,m4_p12_wave,m4_p24_onehot,m4_p24_wave,m4_p32_onehot,m4_p32_wave
+collides @16,903,19991,1.0,6.068,5.8501,5.8794,5.8587,5.8966,5.8736
+"cropped, still distinct",887,22457,1.12,5.79,5.6139,5.6635,5.594,5.6497,5.6266
+fits in window,129282,1957424,97.88,4.8892,4.7631,4.8293,4.7794,4.8435,4.7817

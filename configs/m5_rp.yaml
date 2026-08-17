@@ -1,0 +1,4 @@
+extends: m2_shared.yaml
+codec: {name: rp, pos_dim: 16, seed: 0, normalize: l2, table: rp16_l2}
+# One-hot information, spread densely. Isolates effective dimensionality.
+out_root: results/m5

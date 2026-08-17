@@ -1,0 +1,4 @@
+extends: m2_shared.yaml
+codec: {name: wave, d_complex: 1024, seed: 0, normalize: l2, table: wave1024_l2}
+# Efficiency sweep: M4 found wave improves as the code narrows.
+out_root: results/m5

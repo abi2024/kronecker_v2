@@ -1,0 +1,12 @@
+09:20:07  results\m5   GPU 0% busy | 0.9/12.0 GB | 61C
+--------------------------------------------------------------
+DONE m5_s1338_onehot     val 4.8122  57 min
+DONE m5_s1338_wave       val 4.7343  57 min
+DONE m5_s1339_onehot     val 4.8217  57 min
+DONE m5_s1339_wave       val 4.7588  57 min
+DONE m5_rp               val 4.7612  57 min
+DONE m5_bag              val 4.8400  57 min
+DONE m5_wave1024         val 4.7552  56 min
+DONE m5_wave768          val 4.7152  56 min
+--------------------------------------------------------------
+8 done, 0 running, 0 queued
