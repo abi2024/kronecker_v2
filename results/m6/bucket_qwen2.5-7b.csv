@@ -1,0 +1,4 @@
+arm,val_loss,bits_per_byte
+m6_qwen2.5-7b_onehot,2.703,1.1811
+m6_qwen2.5-7b_wave,2.6092,1.1401
+m6_qwen2.5-7b_wave768,2.5993,1.1358

@@ -1,0 +1,15 @@
+cached m6_qwen2.5-7b_onehot…
+cached m6_qwen2.5-7b_wave…
+scoring m6_qwen2.5-7b_wave768…
+extracting bytes for Qwen/Qwen2.5-7B…
+  treatment 1,068 tokens (10 positions, 0.00% of stream)  |  control 602 tokens (11 positions)  |  duplicate-alias 0 tokens (0.00% of stream, excluded)
+NOTE: too few bucket positions for a DiD (treatment 10, control 11) — aggregate and BPB are still valid
+
+=== qwen2.5-7b (byte-bpe) — aggregate, BPB, and input-side collision DiD vs m6_qwen2.5-7b_onehot ===
+                  arm  val_loss  bits_per_byte
+ m6_qwen2.5-7b_onehot    2.7030         1.1811
+   m6_qwen2.5-7b_wave    2.6092         1.1401
+m6_qwen2.5-7b_wave768    2.5993         1.1358
+
+wrote C:\Users\ANT-PC\Desktop\ERA V5\kroneker_v2\results\m6/bucket_qwen2.5-7b.csv
+note: bits_per_byte is the ONLY column comparable across tokenizers.

@@ -1,0 +1,61 @@
+{
+  "git_sha": "06b4394",
+  "torch": "2.13.0+cu126",
+  "device": "NVIDIA GeForce RTX 3060",
+  "written_at": "2026-08-18 20:59:51",
+  "milestone": "m2",
+  "config": "configs\\m6_qwen2.5-7b_wave768.yaml",
+  "cfg": {
+    "model": {
+      "block_size": 1024,
+      "vocab_size": 151665,
+      "n_layer": 6,
+      "n_head": 6,
+      "d_model": 384,
+      "dropout": 0.0
+    },
+    "data": {
+      "dir": "data/m6/qwen2.5-7b",
+      "tables_dir": "data/tables/m6_qwen2.5-7b"
+    },
+    "codec": {
+      "name": "wave",
+      "d_complex": 768,
+      "seed": 0,
+      "normalize": "l2",
+      "table": "wave768_l2"
+    },
+    "train": {
+      "device": null,
+      "batch_size": 4,
+      "grad_accum": 8,
+      "max_steps": 3000,
+      "lr": 0.0006,
+      "warmup": 200,
+      "min_lr_frac": 0.1,
+      "weight_decay": 0.1,
+      "grad_clip": 1.0,
+      "eval_every": 250,
+      "eval_iters": 50,
+      "log_every": 20,
+      "seed": 1337,
+      "data_seed": 42
+    },
+    "out_root": "results/m6"
+  },
+  "seed": 1337,
+  "data_seed": 42,
+  "param_counts": {
+    "total": 69849216,
+    "body": 11020032,
+    "lm_head": 58239360,
+    "embedding": 589824
+  },
+  "body_state_hash": "74afce4bb9bd7b3c8ef8a480969fa1fa35cf072f320661d02d78d2db4f1e48e4",
+  "table": "wave768_l2",
+  "status": "ok",
+  "final_val_loss": 2.6469855093955994,
+  "best_val_loss": 2.6469855093955994,
+  "wall_seconds": 4217.5,
+  "tokens_seen": 98304000
+}

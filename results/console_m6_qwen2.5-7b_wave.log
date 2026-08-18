@@ -1,0 +1,166 @@
+[m6_qwen2.5-7b_wave] device=cuda params={'total': 70832256, 'body': 11020032, 'lm_head': 58239360, 'embedding': 1572864} body_hash=74afce4bb9bd
+[m6_qwen2.5-7b_wave] step     0 loss 11.9777 lr 3.00e-06 gn 9.64 proj_gn 1.50 19,516 tok/s
+[m6_qwen2.5-7b_wave] step     0 VAL 11.9286
+[m6_qwen2.5-7b_wave] step    20 loss 10.5040 lr 6.30e-05 gn 3.12 proj_gn 0.34 23,505 tok/s
+[m6_qwen2.5-7b_wave] step    40 loss 9.5915 lr 1.23e-04 gn 2.11 proj_gn 0.30 23,468 tok/s
+[m6_qwen2.5-7b_wave] step    60 loss 7.7342 lr 1.83e-04 gn 2.07 proj_gn 0.14 23,424 tok/s
+[m6_qwen2.5-7b_wave] step    80 loss 5.9524 lr 2.43e-04 gn 1.47 proj_gn 0.17 23,434 tok/s
+[m6_qwen2.5-7b_wave] step   100 loss 4.9575 lr 3.03e-04 gn 0.63 proj_gn 0.12 23,474 tok/s
+[m6_qwen2.5-7b_wave] step   120 loss 4.9583 lr 3.63e-04 gn 0.59 proj_gn 0.21 23,462 tok/s
+[m6_qwen2.5-7b_wave] step   140 loss 4.5256 lr 4.23e-04 gn 0.47 proj_gn 0.15 23,433 tok/s
+[m6_qwen2.5-7b_wave] step   160 loss 4.6906 lr 4.83e-04 gn 0.64 proj_gn 0.24 23,463 tok/s
+[m6_qwen2.5-7b_wave] step   180 loss 4.6385 lr 5.43e-04 gn 0.41 proj_gn 0.15 23,477 tok/s
+[m6_qwen2.5-7b_wave] step   200 loss 4.3790 lr 6.00e-04 gn 0.48 proj_gn 0.17 23,475 tok/s
+[m6_qwen2.5-7b_wave] step   220 loss 4.4928 lr 6.00e-04 gn 0.42 proj_gn 0.15 23,529 tok/s
+[m6_qwen2.5-7b_wave] step   240 loss 4.2645 lr 6.00e-04 gn 0.44 proj_gn 0.14 23,561 tok/s
+[m6_qwen2.5-7b_wave] step   250 VAL 3.9685
+[m6_qwen2.5-7b_wave] step   260 loss 4.5760 lr 5.99e-04 gn 0.35 proj_gn 0.11 23,400 tok/s
+[m6_qwen2.5-7b_wave] step   280 loss 4.4711 lr 5.99e-04 gn 0.36 proj_gn 0.14 23,437 tok/s
+[m6_qwen2.5-7b_wave] step   300 loss 3.8938 lr 5.98e-04 gn 0.43 proj_gn 0.13 23,408 tok/s
+[m6_qwen2.5-7b_wave] step   320 loss 3.4601 lr 5.98e-04 gn 0.37 proj_gn 0.14 23,411 tok/s
+[m6_qwen2.5-7b_wave] step   340 loss 4.2999 lr 5.97e-04 gn 0.48 proj_gn 0.15 23,460 tok/s
+[m6_qwen2.5-7b_wave] step   360 loss 4.1901 lr 5.96e-04 gn 0.36 proj_gn 0.12 23,452 tok/s
+[m6_qwen2.5-7b_wave] step   380 loss 3.3024 lr 5.95e-04 gn 0.38 proj_gn 0.12 23,492 tok/s
+[m6_qwen2.5-7b_wave] step   400 loss 3.8045 lr 5.93e-04 gn 0.32 proj_gn 0.09 23,504 tok/s
+[m6_qwen2.5-7b_wave] step   420 loss 4.0215 lr 5.92e-04 gn 0.32 proj_gn 0.11 23,484 tok/s
+[m6_qwen2.5-7b_wave] step   440 loss 3.7953 lr 5.90e-04 gn 0.36 proj_gn 0.11 23,501 tok/s
+[m6_qwen2.5-7b_wave] step   460 loss 3.9411 lr 5.89e-04 gn 0.33 proj_gn 0.13 23,482 tok/s
+[m6_qwen2.5-7b_wave] step   480 loss 4.0009 lr 5.87e-04 gn 0.37 proj_gn 0.13 23,435 tok/s
+[m6_qwen2.5-7b_wave] step   500 loss 3.5496 lr 5.85e-04 gn 0.39 proj_gn 0.12 23,459 tok/s
+[m6_qwen2.5-7b_wave] step   500 VAL 3.8175
+[m6_qwen2.5-7b_wave] step   520 loss 3.6846 lr 5.83e-04 gn 0.33 proj_gn 0.12 23,455 tok/s
+[m6_qwen2.5-7b_wave] step   540 loss 3.9906 lr 5.81e-04 gn 0.41 proj_gn 0.13 23,223 tok/s
+[m6_qwen2.5-7b_wave] step   560 loss 4.0918 lr 5.78e-04 gn 0.39 proj_gn 0.16 23,535 tok/s
+[m6_qwen2.5-7b_wave] step   580 loss 3.9115 lr 5.76e-04 gn 0.38 proj_gn 0.13 23,487 tok/s
+[m6_qwen2.5-7b_wave] step   600 loss 3.7947 lr 5.73e-04 gn 0.40 proj_gn 0.14 23,516 tok/s
+[m6_qwen2.5-7b_wave] step   620 loss 3.9013 lr 5.71e-04 gn 0.38 proj_gn 0.11 23,659 tok/s
+[m6_qwen2.5-7b_wave] step   640 loss 4.4834 lr 5.68e-04 gn 0.41 proj_gn 0.13 23,514 tok/s
+[m6_qwen2.5-7b_wave] step   660 loss 4.2970 lr 5.65e-04 gn 0.47 proj_gn 0.16 23,618 tok/s
+[m6_qwen2.5-7b_wave] step   680 loss 3.6309 lr 5.62e-04 gn 0.51 proj_gn 0.16 23,764 tok/s
+[m6_qwen2.5-7b_wave] step   700 loss 3.7230 lr 5.59e-04 gn 0.55 proj_gn 0.16 23,465 tok/s
+[m6_qwen2.5-7b_wave] step   720 loss 3.8006 lr 5.55e-04 gn 0.55 proj_gn 0.16 23,454 tok/s
+[m6_qwen2.5-7b_wave] step   740 loss 4.1183 lr 5.52e-04 gn 0.66 proj_gn 0.15 23,405 tok/s
+[m6_qwen2.5-7b_wave] step   750 VAL 3.5272
+[m6_qwen2.5-7b_wave] step   760 loss 3.3904 lr 5.48e-04 gn 0.76 proj_gn 0.21 23,500 tok/s
+[m6_qwen2.5-7b_wave] step   780 loss 3.5287 lr 5.45e-04 gn 1.02 proj_gn 0.27 23,542 tok/s
+[m6_qwen2.5-7b_wave] step   800 loss 3.7869 lr 5.41e-04 gn 0.79 proj_gn 0.19 23,495 tok/s
+[m6_qwen2.5-7b_wave] step   820 loss 3.3925 lr 5.37e-04 gn 0.69 proj_gn 0.14 23,460 tok/s
+[m6_qwen2.5-7b_wave] step   840 loss 3.1851 lr 5.33e-04 gn 0.87 proj_gn 0.19 23,490 tok/s
+[m6_qwen2.5-7b_wave] step   860 loss 3.7355 lr 5.29e-04 gn 0.72 proj_gn 0.16 23,470 tok/s
+[m6_qwen2.5-7b_wave] step   880 loss 3.3910 lr 5.25e-04 gn 0.67 proj_gn 0.14 23,450 tok/s
+[m6_qwen2.5-7b_wave] step   900 loss 3.7413 lr 5.21e-04 gn 0.66 proj_gn 0.15 23,446 tok/s
+[m6_qwen2.5-7b_wave] step   920 loss 3.4239 lr 5.17e-04 gn 0.68 proj_gn 0.14 23,429 tok/s
+[m6_qwen2.5-7b_wave] step   940 loss 3.9493 lr 5.12e-04 gn 0.64 proj_gn 0.14 23,447 tok/s
+[m6_qwen2.5-7b_wave] step   960 loss 3.6541 lr 5.08e-04 gn 0.73 proj_gn 0.15 23,409 tok/s
+[m6_qwen2.5-7b_wave] step   980 loss 2.9447 lr 5.03e-04 gn 0.76 proj_gn 0.16 23,434 tok/s
+[m6_qwen2.5-7b_wave] step  1000 loss 2.9178 lr 4.98e-04 gn 0.73 proj_gn 0.13 23,313 tok/s
+[m6_qwen2.5-7b_wave] step  1000 VAL 3.2152
+[m6_qwen2.5-7b_wave] step  1020 loss 3.3813 lr 4.94e-04 gn 0.76 proj_gn 0.15 23,555 tok/s
+[m6_qwen2.5-7b_wave] step  1040 loss 3.0810 lr 4.89e-04 gn 0.80 proj_gn 0.18 23,495 tok/s
+[m6_qwen2.5-7b_wave] step  1060 loss 3.7447 lr 4.84e-04 gn 0.68 proj_gn 0.15 23,504 tok/s
+[m6_qwen2.5-7b_wave] step  1080 loss 4.0210 lr 4.79e-04 gn 0.69 proj_gn 0.13 23,443 tok/s
+[m6_qwen2.5-7b_wave] step  1100 loss 3.0478 lr 4.74e-04 gn 0.77 proj_gn 0.12 23,406 tok/s
+[m6_qwen2.5-7b_wave] step  1120 loss 3.5750 lr 4.68e-04 gn 0.86 proj_gn 0.16 23,424 tok/s
+[m6_qwen2.5-7b_wave] step  1140 loss 3.5704 lr 4.63e-04 gn 0.74 proj_gn 0.16 23,438 tok/s
+[m6_qwen2.5-7b_wave] step  1160 loss 2.8617 lr 4.58e-04 gn 0.72 proj_gn 0.12 23,443 tok/s
+[m6_qwen2.5-7b_wave] step  1180 loss 2.8883 lr 4.53e-04 gn 0.75 proj_gn 0.12 23,723 tok/s
+[m6_qwen2.5-7b_wave] step  1200 loss 3.1528 lr 4.47e-04 gn 0.78 proj_gn 0.14 23,422 tok/s
+[m6_qwen2.5-7b_wave] step  1220 loss 2.7468 lr 4.42e-04 gn 0.79 proj_gn 0.11 23,403 tok/s
+[m6_qwen2.5-7b_wave] step  1240 loss 3.2115 lr 4.36e-04 gn 0.73 proj_gn 0.17 23,421 tok/s
+[m6_qwen2.5-7b_wave] step  1250 VAL 3.0152
+[m6_qwen2.5-7b_wave] step  1260 loss 3.5346 lr 4.31e-04 gn 0.73 proj_gn 0.14 23,489 tok/s
+[m6_qwen2.5-7b_wave] step  1280 loss 3.1320 lr 4.25e-04 gn 0.79 proj_gn 0.12 23,462 tok/s
+[m6_qwen2.5-7b_wave] step  1300 loss 3.1142 lr 4.19e-04 gn 0.76 proj_gn 0.13 23,432 tok/s
+[m6_qwen2.5-7b_wave] step  1320 loss 2.4890 lr 4.13e-04 gn 0.76 proj_gn 0.11 23,396 tok/s
+[m6_qwen2.5-7b_wave] step  1340 loss 2.9243 lr 4.08e-04 gn 0.74 proj_gn 0.12 23,359 tok/s
+[m6_qwen2.5-7b_wave] step  1360 loss 3.2206 lr 4.02e-04 gn 0.69 proj_gn 0.12 23,701 tok/s
+[m6_qwen2.5-7b_wave] step  1380 loss 3.2626 lr 3.96e-04 gn 0.67 proj_gn 0.11 23,414 tok/s
+[m6_qwen2.5-7b_wave] step  1400 loss 3.3174 lr 3.90e-04 gn 0.84 proj_gn 0.17 23,106 tok/s
+[m6_qwen2.5-7b_wave] step  1420 loss 2.9716 lr 3.84e-04 gn 0.65 proj_gn 0.10 23,380 tok/s
+[m6_qwen2.5-7b_wave] step  1440 loss 3.2153 lr 3.78e-04 gn 0.65 proj_gn 0.09 23,404 tok/s
+[m6_qwen2.5-7b_wave] step  1460 loss 3.3024 lr 3.72e-04 gn 0.66 proj_gn 0.10 23,402 tok/s
+[m6_qwen2.5-7b_wave] step  1480 loss 3.1918 lr 3.66e-04 gn 0.70 proj_gn 0.11 23,402 tok/s
+[m6_qwen2.5-7b_wave] step  1500 loss 3.0421 lr 3.60e-04 gn 0.79 proj_gn 0.12 23,470 tok/s
+[m6_qwen2.5-7b_wave] step  1500 VAL 2.9009
+[m6_qwen2.5-7b_wave] step  1520 loss 3.0789 lr 3.54e-04 gn 0.63 proj_gn 0.08 23,396 tok/s
+[m6_qwen2.5-7b_wave] step  1540 loss 2.4263 lr 3.48e-04 gn 0.72 proj_gn 0.11 23,412 tok/s
+[m6_qwen2.5-7b_wave] step  1560 loss 3.1650 lr 3.42e-04 gn 0.64 proj_gn 0.10 23,404 tok/s
+[m6_qwen2.5-7b_wave] step  1580 loss 3.2116 lr 3.36e-04 gn 0.72 proj_gn 0.11 23,132 tok/s
+[m6_qwen2.5-7b_wave] step  1600 loss 2.9664 lr 3.30e-04 gn 0.80 proj_gn 0.14 23,293 tok/s
+[m6_qwen2.5-7b_wave] step  1620 loss 3.2020 lr 3.24e-04 gn 0.69 proj_gn 0.12 23,399 tok/s
+[m6_qwen2.5-7b_wave] step  1640 loss 3.6044 lr 3.18e-04 gn 0.64 proj_gn 0.11 23,402 tok/s
+[m6_qwen2.5-7b_wave] step  1660 loss 3.3153 lr 3.12e-04 gn 0.65 proj_gn 0.10 23,700 tok/s
+[m6_qwen2.5-7b_wave] step  1680 loss 3.4899 lr 3.06e-04 gn 0.63 proj_gn 0.09 23,411 tok/s
+[m6_qwen2.5-7b_wave] step  1700 loss 2.9527 lr 3.00e-04 gn 0.66 proj_gn 0.10 23,435 tok/s
+[m6_qwen2.5-7b_wave] step  1720 loss 3.4651 lr 2.94e-04 gn 0.74 proj_gn 0.13 23,905 tok/s
+[m6_qwen2.5-7b_wave] step  1740 loss 2.6712 lr 2.88e-04 gn 0.71 proj_gn 0.10 23,837 tok/s
+[m6_qwen2.5-7b_wave] step  1750 VAL 2.8281
+[m6_qwen2.5-7b_wave] step  1760 loss 3.3691 lr 2.82e-04 gn 0.62 proj_gn 0.09 23,945 tok/s
+[m6_qwen2.5-7b_wave] step  1780 loss 3.4461 lr 2.76e-04 gn 0.67 proj_gn 0.10 23,971 tok/s
+[m6_qwen2.5-7b_wave] step  1800 loss 3.3067 lr 2.70e-04 gn 0.81 proj_gn 0.12 23,936 tok/s
+[m6_qwen2.5-7b_wave] step  1820 loss 2.9023 lr 2.64e-04 gn 0.77 proj_gn 0.12 23,966 tok/s
+[m6_qwen2.5-7b_wave] step  1840 loss 3.3352 lr 2.58e-04 gn 0.62 proj_gn 0.09 23,944 tok/s
+[m6_qwen2.5-7b_wave] step  1860 loss 3.5737 lr 2.52e-04 gn 0.71 proj_gn 0.12 23,931 tok/s
+[m6_qwen2.5-7b_wave] step  1880 loss 2.8103 lr 2.47e-04 gn 0.66 proj_gn 0.09 23,958 tok/s
+[m6_qwen2.5-7b_wave] step  1900 loss 2.7313 lr 2.41e-04 gn 0.65 proj_gn 0.08 23,901 tok/s
+[m6_qwen2.5-7b_wave] step  1920 loss 3.3392 lr 2.35e-04 gn 0.62 proj_gn 0.09 23,929 tok/s
+[m6_qwen2.5-7b_wave] step  1940 loss 2.4187 lr 2.29e-04 gn 0.67 proj_gn 0.09 23,915 tok/s
+[m6_qwen2.5-7b_wave] step  1960 loss 2.8604 lr 2.24e-04 gn 0.61 proj_gn 0.09 23,920 tok/s
+[m6_qwen2.5-7b_wave] step  1980 loss 3.1269 lr 2.18e-04 gn 0.60 proj_gn 0.08 23,946 tok/s
+[m6_qwen2.5-7b_wave] step  2000 loss 2.7752 lr 2.13e-04 gn 0.74 proj_gn 0.09 23,945 tok/s
+[m6_qwen2.5-7b_wave] step  2000 VAL 2.7709
+[m6_qwen2.5-7b_wave] step  2020 loss 3.0132 lr 2.07e-04 gn 0.63 proj_gn 0.10 24,076 tok/s
+[m6_qwen2.5-7b_wave] step  2040 loss 2.9529 lr 2.02e-04 gn 0.97 proj_gn 0.15 23,963 tok/s
+[m6_qwen2.5-7b_wave] step  2060 loss 2.7989 lr 1.97e-04 gn 0.68 proj_gn 0.09 23,959 tok/s
+[m6_qwen2.5-7b_wave] step  2080 loss 2.9456 lr 1.92e-04 gn 0.68 proj_gn 0.09 23,961 tok/s
+[m6_qwen2.5-7b_wave] step  2100 loss 3.0392 lr 1.86e-04 gn 0.68 proj_gn 0.10 23,949 tok/s
+[m6_qwen2.5-7b_wave] step  2120 loss 3.0657 lr 1.81e-04 gn 0.66 proj_gn 0.09 23,936 tok/s
+[m6_qwen2.5-7b_wave] step  2140 loss 2.8291 lr 1.76e-04 gn 0.70 proj_gn 0.11 23,966 tok/s
+[m6_qwen2.5-7b_wave] step  2160 loss 3.4194 lr 1.71e-04 gn 0.68 proj_gn 0.10 23,976 tok/s
+[m6_qwen2.5-7b_wave] step  2180 loss 3.0279 lr 1.66e-04 gn 0.67 proj_gn 0.09 23,922 tok/s
+[m6_qwen2.5-7b_wave] step  2200 loss 2.7573 lr 1.62e-04 gn 0.72 proj_gn 0.10 23,947 tok/s
+[m6_qwen2.5-7b_wave] step  2220 loss 2.8773 lr 1.57e-04 gn 0.69 proj_gn 0.09 23,926 tok/s
+[m6_qwen2.5-7b_wave] step  2240 loss 2.8624 lr 1.52e-04 gn 0.67 proj_gn 0.09 23,965 tok/s
+[m6_qwen2.5-7b_wave] step  2250 VAL 2.7250
+[m6_qwen2.5-7b_wave] step  2260 loss 2.8581 lr 1.48e-04 gn 0.65 proj_gn 0.10 23,930 tok/s
+[m6_qwen2.5-7b_wave] step  2280 loss 3.3424 lr 1.43e-04 gn 0.68 proj_gn 0.10 23,939 tok/s
+[m6_qwen2.5-7b_wave] step  2300 loss 2.9283 lr 1.39e-04 gn 0.66 proj_gn 0.09 23,956 tok/s
+[m6_qwen2.5-7b_wave] step  2320 loss 2.5409 lr 1.35e-04 gn 0.69 proj_gn 0.09 23,955 tok/s
+[m6_qwen2.5-7b_wave] step  2340 loss 2.8656 lr 1.31e-04 gn 0.66 proj_gn 0.09 23,930 tok/s
+[m6_qwen2.5-7b_wave] step  2360 loss 3.1532 lr 1.27e-04 gn 0.66 proj_gn 0.09 23,960 tok/s
+[m6_qwen2.5-7b_wave] step  2380 loss 3.0564 lr 1.23e-04 gn 0.70 proj_gn 0.10 23,910 tok/s
+[m6_qwen2.5-7b_wave] step  2400 loss 3.1651 lr 1.19e-04 gn 0.67 proj_gn 0.08 23,922 tok/s
+[m6_qwen2.5-7b_wave] step  2420 loss 2.7451 lr 1.15e-04 gn 0.66 proj_gn 0.08 23,914 tok/s
+[m6_qwen2.5-7b_wave] step  2440 loss 3.1922 lr 1.12e-04 gn 0.66 proj_gn 0.10 23,940 tok/s
+[m6_qwen2.5-7b_wave] step  2460 loss 2.5018 lr 1.08e-04 gn 0.64 proj_gn 0.08 23,927 tok/s
+[m6_qwen2.5-7b_wave] step  2480 loss 3.1475 lr 1.05e-04 gn 0.66 proj_gn 0.09 23,983 tok/s
+[m6_qwen2.5-7b_wave] step  2500 loss 2.7094 lr 1.01e-04 gn 0.68 proj_gn 0.09 23,976 tok/s
+[m6_qwen2.5-7b_wave] step  2500 VAL 2.6937
+[m6_qwen2.5-7b_wave] step  2520 loss 2.8822 lr 9.82e-05 gn 0.69 proj_gn 0.10 23,959 tok/s
+[m6_qwen2.5-7b_wave] step  2540 loss 3.3618 lr 9.52e-05 gn 0.66 proj_gn 0.10 23,887 tok/s
+[m6_qwen2.5-7b_wave] step  2560 loss 3.0154 lr 9.22e-05 gn 0.65 proj_gn 0.09 23,953 tok/s
+[m6_qwen2.5-7b_wave] step  2580 loss 2.8879 lr 8.94e-05 gn 0.62 proj_gn 0.08 23,983 tok/s
+[m6_qwen2.5-7b_wave] step  2600 loss 2.5551 lr 8.67e-05 gn 0.62 proj_gn 0.09 24,108 tok/s
+[m6_qwen2.5-7b_wave] step  2620 loss 2.8617 lr 8.42e-05 gn 0.68 proj_gn 0.09 23,952 tok/s
+[m6_qwen2.5-7b_wave] step  2640 loss 2.4509 lr 8.17e-05 gn 0.64 proj_gn 0.07 23,956 tok/s
+[m6_qwen2.5-7b_wave] step  2660 loss 2.5557 lr 7.94e-05 gn 0.58 proj_gn 0.07 23,937 tok/s
+[m6_qwen2.5-7b_wave] step  2680 loss 2.9078 lr 7.72e-05 gn 0.68 proj_gn 0.09 23,980 tok/s
+[m6_qwen2.5-7b_wave] step  2700 loss 2.6702 lr 7.52e-05 gn 0.65 proj_gn 0.09 23,909 tok/s
+[m6_qwen2.5-7b_wave] step  2720 loss 2.9119 lr 7.32e-05 gn 0.64 proj_gn 0.09 23,935 tok/s
+[m6_qwen2.5-7b_wave] step  2740 loss 3.0480 lr 7.14e-05 gn 0.66 proj_gn 0.09 24,222 tok/s
+[m6_qwen2.5-7b_wave] step  2750 VAL 2.6716
+[m6_qwen2.5-7b_wave] step  2760 loss 2.7296 lr 6.97e-05 gn 0.61 proj_gn 0.07 23,939 tok/s
+[m6_qwen2.5-7b_wave] step  2780 loss 2.2825 lr 6.82e-05 gn 0.61 proj_gn 0.08 23,931 tok/s
+[m6_qwen2.5-7b_wave] step  2800 loss 3.2779 lr 6.68e-05 gn 0.66 proj_gn 0.09 24,254 tok/s
+[m6_qwen2.5-7b_wave] step  2820 loss 2.9278 lr 6.55e-05 gn 0.69 proj_gn 0.08 23,936 tok/s
+[m6_qwen2.5-7b_wave] step  2840 loss 2.5347 lr 6.43e-05 gn 0.65 proj_gn 0.08 23,976 tok/s
+[m6_qwen2.5-7b_wave] step  2860 loss 2.4223 lr 6.33e-05 gn 0.64 proj_gn 0.08 23,969 tok/s
+[m6_qwen2.5-7b_wave] step  2880 loss 3.0430 lr 6.24e-05 gn 0.65 proj_gn 0.09 23,982 tok/s
+[m6_qwen2.5-7b_wave] step  2900 loss 2.7708 lr 6.17e-05 gn 0.65 proj_gn 0.08 23,950 tok/s
+[m6_qwen2.5-7b_wave] step  2920 loss 3.0880 lr 6.11e-05 gn 0.64 proj_gn 0.08 23,945 tok/s
+[m6_qwen2.5-7b_wave] step  2940 loss 2.6711 lr 6.06e-05 gn 0.66 proj_gn 0.08 23,925 tok/s
+[m6_qwen2.5-7b_wave] step  2960 loss 2.9824 lr 6.03e-05 gn 0.65 proj_gn 0.08 24,186 tok/s
+[m6_qwen2.5-7b_wave] step  2980 loss 2.8830 lr 6.01e-05 gn 0.71 proj_gn 0.10 23,925 tok/s
+[m6_qwen2.5-7b_wave] step  2999 loss 2.9403 lr 6.00e-05 gn 0.64 proj_gn 0.09 23,986 tok/s
+[m6_qwen2.5-7b_wave] step  2999 VAL 2.6568
+[m6_qwen2.5-7b_wave] done: status=ok final_val=2.6568 wall=4201s -> results\m6\m6_qwen2.5-7b_wave

@@ -1,0 +1,142 @@
+{
+  "ranking": [
+    {
+      "name": "google/gemma-2-9b",
+      "vocab": 256000,
+      "family": "sentencepiece",
+      "mappable": 0.3158,
+      "max_bytes": 48,
+      "over16": 1707,
+      "over32": 9,
+      "n_special": 7,
+      "collided@12": 6340,
+      "collided@16": 1309,
+      "collided@24": 342,
+      "collided@32": 254,
+      "top_scripts@16": [
+        [
+          "CYRILLIC",
+          832
+        ],
+        [
+          "NonAlpha",
+          212
+        ],
+        [
+          "LATIN",
+          110
+        ]
+      ]
+    },
+    {
+      "name": "Qwen/Qwen2.5-7B",
+      "vocab": 151665,
+      "family": "byte-bpe",
+      "mappable": 1.0,
+      "max_bytes": 128,
+      "over16": 1920,
+      "over32": 240,
+      "n_special": 14,
+      "collided@12": 3431,
+      "collided@16": 1068,
+      "collided@24": 289,
+      "collided@32": 209,
+      "top_scripts@16": [
+        [
+          "THAI",
+          391
+        ],
+        [
+          "NonAlpha",
+          308
+        ],
+        [
+          "CYRILLIC",
+          243
+        ]
+      ]
+    },
+    {
+      "name": "mistralai/Mistral-7B-v0.1",
+      "vocab": 32000,
+      "family": "sentencepiece",
+      "mappable": 0.3805,
+      "max_bytes": 25,
+      "over16": 20,
+      "over32": 0,
+      "n_special": 3,
+      "collided@12": 443,
+      "collided@16": 254,
+      "collided@24": 250,
+      "collided@32": 250,
+      "top_scripts@16": [
+        [
+          "NonAlpha",
+          146
+        ],
+        [
+          "LATIN",
+          104
+        ],
+        [
+          "CYRILLIC",
+          4
+        ]
+      ]
+    },
+    {
+      "name": "gpt2",
+      "vocab": 50257,
+      "family": "byte-bpe",
+      "mappable": 1.0,
+      "max_bytes": 128,
+      "over16": 72,
+      "over32": 14,
+      "n_special": 1,
+      "collided@12": 682,
+      "collided@16": 44,
+      "collided@24": 22,
+      "collided@32": 17,
+      "top_scripts@16": [
+        [
+          "NonAlpha",
+          38
+        ],
+        [
+          "LATIN",
+          6
+        ]
+      ]
+    }
+  ],
+  "control": [
+    {
+      "name": "theschoolofai/BrahmicTokenizer-131K",
+      "vocab": 131072,
+      "family": "byte-bpe",
+      "mappable": 1.0,
+      "max_bytes": 32,
+      "over16": 1532,
+      "over32": 0,
+      "n_special": 4,
+      "collided@12": 5335,
+      "collided@16": 903,
+      "collided@24": 93,
+      "collided@32": 0,
+      "top_scripts@16": [
+        [
+          "DEVANAGARI",
+          253
+        ],
+        [
+          "MALAYALAM",
+          182
+        ],
+        [
+          "BENGALI",
+          101
+        ]
+      ]
+    }
+  ]
+}

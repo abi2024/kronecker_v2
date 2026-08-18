@@ -1,0 +1,14 @@
+cached m6_gemma-2-9b_onehot…
+cached m6_gemma-2-9b_wave…
+cached m6_gemma-2-9b_wave768…
+extracting bytes for google/gemma-2-9b…
+  treatment 1,059 tokens (4,568 positions, 0.19% of stream)  |  control 373 tokens (1,617 positions)  |  duplicate-alias 250 tokens (13.52% of stream, excluded)
+
+=== gemma-2-9b (sentencepiece) — aggregate, BPB, and input-side collision DiD vs m6_gemma-2-9b_onehot ===
+                  arm  val_loss  bits_per_byte  after_treat  after_ctrl     DiD     SE  sigma
+ m6_gemma-2-9b_onehot    4.4438         1.1585          NaN         NaN     NaN    NaN    NaN
+   m6_gemma-2-9b_wave    4.3484         1.1336      -0.2180      0.0299 -0.2479 0.0205   12.1
+m6_gemma-2-9b_wave768    4.3328         1.1296      -0.2415      0.0364 -0.2779 0.0203   13.7
+
+wrote C:\Users\ANT-PC\Desktop\ERA V5\kroneker_v2\results\m6/bucket_gemma-2-9b.csv
+note: bits_per_byte is the ONLY column comparable across tokenizers.

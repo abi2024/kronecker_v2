@@ -1,0 +1,166 @@
+[m6_gemma-2-9b_onehot] device=cuda params={'total': 110896896, 'body': 11020032, 'lm_head': 98304000, 'embedding': 1572864} body_hash=167dc8c02dc8
+[m6_gemma-2-9b_onehot] step     0 loss 12.5218 lr 3.00e-06 gn 0.93 proj_gn 0.69 13,641 tok/s
+[m6_gemma-2-9b_onehot] step     0 VAL 12.5197
+[m6_gemma-2-9b_onehot] step    20 loss 12.0142 lr 6.30e-05 gn 0.95 proj_gn 0.45 15,317 tok/s
+[m6_gemma-2-9b_onehot] step    40 loss 10.8893 lr 1.23e-04 gn 1.21 proj_gn 0.13 15,316 tok/s
+[m6_gemma-2-9b_onehot] step    60 loss 9.3742 lr 1.83e-04 gn 1.11 proj_gn 0.07 15,304 tok/s
+[m6_gemma-2-9b_onehot] step    80 loss 7.7285 lr 2.43e-04 gn 0.89 proj_gn 0.13 15,284 tok/s
+[m6_gemma-2-9b_onehot] step   100 loss 7.1447 lr 3.03e-04 gn 0.44 proj_gn 0.21 15,274 tok/s
+[m6_gemma-2-9b_onehot] step   120 loss 6.8328 lr 3.63e-04 gn 0.53 proj_gn 0.37 15,298 tok/s
+[m6_gemma-2-9b_onehot] step   140 loss 6.6622 lr 4.23e-04 gn 0.42 proj_gn 0.27 15,308 tok/s
+[m6_gemma-2-9b_onehot] step   160 loss 6.3239 lr 4.83e-04 gn 0.80 proj_gn 0.70 15,336 tok/s
+[m6_gemma-2-9b_onehot] step   180 loss 6.2270 lr 5.43e-04 gn 0.54 proj_gn 0.44 15,298 tok/s
+[m6_gemma-2-9b_onehot] step   200 loss 6.1270 lr 6.00e-04 gn 0.62 proj_gn 0.55 15,278 tok/s
+[m6_gemma-2-9b_onehot] step   220 loss 5.9050 lr 6.00e-04 gn 0.56 proj_gn 0.48 15,292 tok/s
+[m6_gemma-2-9b_onehot] step   240 loss 5.9412 lr 6.00e-04 gn 0.55 proj_gn 0.48 15,286 tok/s
+[m6_gemma-2-9b_onehot] step   250 VAL 5.8143
+[m6_gemma-2-9b_onehot] step   260 loss 5.8974 lr 5.99e-04 gn 0.59 proj_gn 0.52 15,268 tok/s
+[m6_gemma-2-9b_onehot] step   280 loss 5.8313 lr 5.99e-04 gn 0.62 proj_gn 0.53 15,303 tok/s
+[m6_gemma-2-9b_onehot] step   300 loss 5.7868 lr 5.98e-04 gn 0.63 proj_gn 0.55 15,290 tok/s
+[m6_gemma-2-9b_onehot] step   320 loss 5.4898 lr 5.98e-04 gn 0.58 proj_gn 0.52 15,295 tok/s
+[m6_gemma-2-9b_onehot] step   340 loss 5.6398 lr 5.97e-04 gn 0.82 proj_gn 0.76 15,296 tok/s
+[m6_gemma-2-9b_onehot] step   360 loss 5.5642 lr 5.96e-04 gn 0.56 proj_gn 0.51 15,315 tok/s
+[m6_gemma-2-9b_onehot] step   380 loss 5.3689 lr 5.95e-04 gn 0.71 proj_gn 0.64 15,281 tok/s
+[m6_gemma-2-9b_onehot] step   400 loss 5.6492 lr 5.93e-04 gn 0.69 proj_gn 0.62 15,289 tok/s
+[m6_gemma-2-9b_onehot] step   420 loss 5.5128 lr 5.92e-04 gn 0.65 proj_gn 0.58 15,284 tok/s
+[m6_gemma-2-9b_onehot] step   440 loss 5.7538 lr 5.90e-04 gn 0.66 proj_gn 0.59 15,292 tok/s
+[m6_gemma-2-9b_onehot] step   460 loss 5.4106 lr 5.89e-04 gn 0.61 proj_gn 0.54 15,279 tok/s
+[m6_gemma-2-9b_onehot] step   480 loss 5.6253 lr 5.87e-04 gn 0.53 proj_gn 0.45 15,312 tok/s
+[m6_gemma-2-9b_onehot] step   500 loss 5.5699 lr 5.85e-04 gn 0.54 proj_gn 0.47 15,288 tok/s
+[m6_gemma-2-9b_onehot] step   500 VAL 5.4237
+[m6_gemma-2-9b_onehot] step   520 loss 5.7634 lr 5.83e-04 gn 0.67 proj_gn 0.57 15,285 tok/s
+[m6_gemma-2-9b_onehot] step   540 loss 5.6834 lr 5.81e-04 gn 0.52 proj_gn 0.44 15,297 tok/s
+[m6_gemma-2-9b_onehot] step   560 loss 5.2129 lr 5.78e-04 gn 0.53 proj_gn 0.46 15,329 tok/s
+[m6_gemma-2-9b_onehot] step   580 loss 5.4460 lr 5.76e-04 gn 0.58 proj_gn 0.50 15,304 tok/s
+[m6_gemma-2-9b_onehot] step   600 loss 5.4117 lr 5.73e-04 gn 0.69 proj_gn 0.63 15,279 tok/s
+[m6_gemma-2-9b_onehot] step   620 loss 5.3463 lr 5.71e-04 gn 0.58 proj_gn 0.51 15,273 tok/s
+[m6_gemma-2-9b_onehot] step   640 loss 5.3179 lr 5.68e-04 gn 0.55 proj_gn 0.47 15,282 tok/s
+[m6_gemma-2-9b_onehot] step   660 loss 5.3834 lr 5.65e-04 gn 0.55 proj_gn 0.48 15,285 tok/s
+[m6_gemma-2-9b_onehot] step   680 loss 5.2726 lr 5.62e-04 gn 0.62 proj_gn 0.53 15,306 tok/s
+[m6_gemma-2-9b_onehot] step   700 loss 5.5815 lr 5.59e-04 gn 0.64 proj_gn 0.55 15,319 tok/s
+[m6_gemma-2-9b_onehot] step   720 loss 5.5573 lr 5.55e-04 gn 0.58 proj_gn 0.49 15,311 tok/s
+[m6_gemma-2-9b_onehot] step   740 loss 5.3205 lr 5.52e-04 gn 0.61 proj_gn 0.54 15,294 tok/s
+[m6_gemma-2-9b_onehot] step   750 VAL 5.2481
+[m6_gemma-2-9b_onehot] step   760 loss 5.1496 lr 5.48e-04 gn 0.73 proj_gn 0.65 15,324 tok/s
+[m6_gemma-2-9b_onehot] step   780 loss 5.1981 lr 5.45e-04 gn 0.69 proj_gn 0.61 15,306 tok/s
+[m6_gemma-2-9b_onehot] step   800 loss 5.1333 lr 5.41e-04 gn 0.63 proj_gn 0.56 15,271 tok/s
+[m6_gemma-2-9b_onehot] step   820 loss 5.2515 lr 5.37e-04 gn 0.71 proj_gn 0.64 15,278 tok/s
+[m6_gemma-2-9b_onehot] step   840 loss 4.8182 lr 5.33e-04 gn 0.79 proj_gn 0.72 15,274 tok/s
+[m6_gemma-2-9b_onehot] step   860 loss 5.1487 lr 5.29e-04 gn 0.63 proj_gn 0.56 15,292 tok/s
+[m6_gemma-2-9b_onehot] step   880 loss 5.1924 lr 5.25e-04 gn 0.62 proj_gn 0.54 15,306 tok/s
+[m6_gemma-2-9b_onehot] step   900 loss 5.1367 lr 5.21e-04 gn 0.66 proj_gn 0.58 15,324 tok/s
+[m6_gemma-2-9b_onehot] step   920 loss 5.2829 lr 5.17e-04 gn 0.72 proj_gn 0.65 15,296 tok/s
+[m6_gemma-2-9b_onehot] step   940 loss 5.1263 lr 5.12e-04 gn 0.84 proj_gn 0.77 15,277 tok/s
+[m6_gemma-2-9b_onehot] step   960 loss 4.9449 lr 5.08e-04 gn 0.74 proj_gn 0.68 15,295 tok/s
+[m6_gemma-2-9b_onehot] step   980 loss 4.9743 lr 5.03e-04 gn 0.67 proj_gn 0.60 15,291 tok/s
+[m6_gemma-2-9b_onehot] step  1000 loss 5.0603 lr 4.98e-04 gn 0.65 proj_gn 0.57 15,292 tok/s
+[m6_gemma-2-9b_onehot] step  1000 VAL 5.1102
+[m6_gemma-2-9b_onehot] step  1020 loss 5.0882 lr 4.94e-04 gn 0.96 proj_gn 0.91 15,303 tok/s
+[m6_gemma-2-9b_onehot] step  1040 loss 5.0046 lr 4.89e-04 gn 0.74 proj_gn 0.67 15,291 tok/s
+[m6_gemma-2-9b_onehot] step  1060 loss 5.3932 lr 4.84e-04 gn 1.10 proj_gn 1.03 15,307 tok/s
+[m6_gemma-2-9b_onehot] step  1080 loss 4.8347 lr 4.79e-04 gn 1.91 proj_gn 1.87 15,298 tok/s
+[m6_gemma-2-9b_onehot] step  1100 loss 5.2547 lr 4.74e-04 gn 1.05 proj_gn 0.98 15,314 tok/s
+[m6_gemma-2-9b_onehot] step  1120 loss 4.9114 lr 4.68e-04 gn 0.76 proj_gn 0.69 15,298 tok/s
+[m6_gemma-2-9b_onehot] step  1140 loss 4.9823 lr 4.63e-04 gn 0.70 proj_gn 0.62 15,273 tok/s
+[m6_gemma-2-9b_onehot] step  1160 loss 5.1230 lr 4.58e-04 gn 1.06 proj_gn 1.01 15,288 tok/s
+[m6_gemma-2-9b_onehot] step  1180 loss 5.0015 lr 4.53e-04 gn 1.67 proj_gn 1.62 15,282 tok/s
+[m6_gemma-2-9b_onehot] step  1200 loss 5.1060 lr 4.47e-04 gn 1.30 proj_gn 1.24 15,284 tok/s
+[m6_gemma-2-9b_onehot] step  1220 loss 4.9475 lr 4.42e-04 gn 1.37 proj_gn 1.33 15,326 tok/s
+[m6_gemma-2-9b_onehot] step  1240 loss 4.8805 lr 4.36e-04 gn 0.85 proj_gn 0.77 15,301 tok/s
+[m6_gemma-2-9b_onehot] step  1250 VAL 4.9601
+[m6_gemma-2-9b_onehot] step  1260 loss 5.2303 lr 4.31e-04 gn 0.84 proj_gn 0.74 15,278 tok/s
+[m6_gemma-2-9b_onehot] step  1280 loss 5.0443 lr 4.25e-04 gn 0.97 proj_gn 0.91 15,314 tok/s
+[m6_gemma-2-9b_onehot] step  1300 loss 4.9307 lr 4.19e-04 gn 0.91 proj_gn 0.81 15,317 tok/s
+[m6_gemma-2-9b_onehot] step  1320 loss 4.9060 lr 4.13e-04 gn 1.24 proj_gn 1.18 15,286 tok/s
+[m6_gemma-2-9b_onehot] step  1340 loss 5.1810 lr 4.08e-04 gn 1.34 proj_gn 1.28 15,291 tok/s
+[m6_gemma-2-9b_onehot] step  1360 loss 4.8596 lr 4.02e-04 gn 1.36 proj_gn 1.30 15,293 tok/s
+[m6_gemma-2-9b_onehot] step  1380 loss 5.0457 lr 3.96e-04 gn 1.98 proj_gn 1.93 15,280 tok/s
+[m6_gemma-2-9b_onehot] step  1400 loss 4.9074 lr 3.90e-04 gn 1.30 proj_gn 1.24 15,296 tok/s
+[m6_gemma-2-9b_onehot] step  1420 loss 4.8983 lr 3.84e-04 gn 1.18 proj_gn 1.11 15,306 tok/s
+[m6_gemma-2-9b_onehot] step  1440 loss 4.8057 lr 3.78e-04 gn 0.81 proj_gn 0.71 15,307 tok/s
+[m6_gemma-2-9b_onehot] step  1460 loss 4.9332 lr 3.72e-04 gn 0.93 proj_gn 0.83 15,301 tok/s
+[m6_gemma-2-9b_onehot] step  1480 loss 4.6882 lr 3.66e-04 gn 0.85 proj_gn 0.76 15,288 tok/s
+[m6_gemma-2-9b_onehot] step  1500 loss 4.9180 lr 3.60e-04 gn 1.16 proj_gn 1.07 15,285 tok/s
+[m6_gemma-2-9b_onehot] step  1500 VAL 4.8298
+[m6_gemma-2-9b_onehot] step  1520 loss 4.5940 lr 3.54e-04 gn 1.22 proj_gn 1.14 15,288 tok/s
+[m6_gemma-2-9b_onehot] step  1540 loss 4.9263 lr 3.48e-04 gn 1.09 proj_gn 1.00 15,291 tok/s
+[m6_gemma-2-9b_onehot] step  1560 loss 4.9148 lr 3.42e-04 gn 1.01 proj_gn 0.91 15,286 tok/s
+[m6_gemma-2-9b_onehot] step  1580 loss 4.9106 lr 3.36e-04 gn 1.25 proj_gn 1.15 15,284 tok/s
+[m6_gemma-2-9b_onehot] step  1600 loss 4.5161 lr 3.30e-04 gn 2.31 proj_gn 2.26 15,278 tok/s
+[m6_gemma-2-9b_onehot] step  1620 loss 4.9001 lr 3.24e-04 gn 1.81 proj_gn 1.75 15,309 tok/s
+[m6_gemma-2-9b_onehot] step  1640 loss 4.8552 lr 3.18e-04 gn 1.03 proj_gn 0.92 15,313 tok/s
+[m6_gemma-2-9b_onehot] step  1660 loss 4.8629 lr 3.12e-04 gn 1.61 proj_gn 1.53 15,287 tok/s
+[m6_gemma-2-9b_onehot] step  1680 loss 4.7083 lr 3.06e-04 gn 1.82 proj_gn 1.74 15,299 tok/s
+[m6_gemma-2-9b_onehot] step  1700 loss 4.7005 lr 3.00e-04 gn 1.34 proj_gn 1.25 15,277 tok/s
+[m6_gemma-2-9b_onehot] step  1720 loss 5.0515 lr 2.94e-04 gn 1.79 proj_gn 1.71 15,286 tok/s
+[m6_gemma-2-9b_onehot] step  1740 loss 4.6127 lr 2.88e-04 gn 1.64 proj_gn 1.55 15,291 tok/s
+[m6_gemma-2-9b_onehot] step  1750 VAL 4.7025
+[m6_gemma-2-9b_onehot] step  1760 loss 4.7133 lr 2.82e-04 gn 1.69 proj_gn 1.62 15,291 tok/s
+[m6_gemma-2-9b_onehot] step  1780 loss 4.5886 lr 2.76e-04 gn 1.24 proj_gn 1.15 15,277 tok/s
+[m6_gemma-2-9b_onehot] step  1800 loss 4.7836 lr 2.70e-04 gn 0.96 proj_gn 0.84 15,294 tok/s
+[m6_gemma-2-9b_onehot] step  1820 loss 4.5218 lr 2.64e-04 gn 1.69 proj_gn 1.62 15,323 tok/s
+[m6_gemma-2-9b_onehot] step  1840 loss 4.7342 lr 2.58e-04 gn 1.10 proj_gn 0.99 15,295 tok/s
+[m6_gemma-2-9b_onehot] step  1860 loss 4.6224 lr 2.52e-04 gn 1.03 proj_gn 0.91 15,285 tok/s
+[m6_gemma-2-9b_onehot] step  1880 loss 4.3319 lr 2.47e-04 gn 1.50 proj_gn 1.39 15,276 tok/s
+[m6_gemma-2-9b_onehot] step  1900 loss 4.4423 lr 2.41e-04 gn 1.89 proj_gn 1.81 15,302 tok/s
+[m6_gemma-2-9b_onehot] step  1920 loss 4.4772 lr 2.35e-04 gn 1.15 proj_gn 1.03 15,274 tok/s
+[m6_gemma-2-9b_onehot] step  1940 loss 4.8750 lr 2.29e-04 gn 1.17 proj_gn 1.08 15,293 tok/s
+[m6_gemma-2-9b_onehot] step  1960 loss 4.7055 lr 2.24e-04 gn 1.18 proj_gn 1.05 15,316 tok/s
+[m6_gemma-2-9b_onehot] step  1980 loss 4.6661 lr 2.18e-04 gn 1.15 proj_gn 1.03 15,305 tok/s
+[m6_gemma-2-9b_onehot] step  2000 loss 4.6045 lr 2.13e-04 gn 1.94 proj_gn 1.84 15,297 tok/s
+[m6_gemma-2-9b_onehot] step  2000 VAL 4.6103
+[m6_gemma-2-9b_onehot] step  2020 loss 4.6090 lr 2.07e-04 gn 1.39 proj_gn 1.30 15,307 tok/s
+[m6_gemma-2-9b_onehot] step  2040 loss 4.7468 lr 2.02e-04 gn 1.51 proj_gn 1.42 15,285 tok/s
+[m6_gemma-2-9b_onehot] step  2060 loss 4.7681 lr 1.97e-04 gn 1.34 proj_gn 1.24 15,292 tok/s
+[m6_gemma-2-9b_onehot] step  2080 loss 4.4657 lr 1.92e-04 gn 1.23 proj_gn 1.09 15,290 tok/s
+[m6_gemma-2-9b_onehot] step  2100 loss 4.3911 lr 1.86e-04 gn 1.03 proj_gn 0.89 15,294 tok/s
+[m6_gemma-2-9b_onehot] step  2120 loss 4.4269 lr 1.81e-04 gn 1.03 proj_gn 0.88 15,291 tok/s
+[m6_gemma-2-9b_onehot] step  2140 loss 4.4144 lr 1.76e-04 gn 1.65 proj_gn 1.55 15,308 tok/s
+[m6_gemma-2-9b_onehot] step  2160 loss 4.5654 lr 1.71e-04 gn 1.22 proj_gn 1.10 15,331 tok/s
+[m6_gemma-2-9b_onehot] step  2180 loss 4.3729 lr 1.66e-04 gn 1.19 proj_gn 1.06 15,279 tok/s
+[m6_gemma-2-9b_onehot] step  2200 loss 4.9228 lr 1.62e-04 gn 1.21 proj_gn 1.09 15,285 tok/s
+[m6_gemma-2-9b_onehot] step  2220 loss 4.7454 lr 1.57e-04 gn 1.06 proj_gn 0.93 15,277 tok/s
+[m6_gemma-2-9b_onehot] step  2240 loss 4.6138 lr 1.52e-04 gn 1.37 proj_gn 1.20 15,270 tok/s
+[m6_gemma-2-9b_onehot] step  2250 VAL 4.5267
+[m6_gemma-2-9b_onehot] step  2260 loss 4.4372 lr 1.48e-04 gn 1.71 proj_gn 1.59 15,291 tok/s
+[m6_gemma-2-9b_onehot] step  2280 loss 4.4356 lr 1.43e-04 gn 1.92 proj_gn 1.84 15,284 tok/s
+[m6_gemma-2-9b_onehot] step  2300 loss 4.5992 lr 1.39e-04 gn 1.43 proj_gn 1.32 15,288 tok/s
+[m6_gemma-2-9b_onehot] step  2320 loss 4.3655 lr 1.35e-04 gn 1.31 proj_gn 1.17 15,302 tok/s
+[m6_gemma-2-9b_onehot] step  2340 loss 4.6024 lr 1.31e-04 gn 1.64 proj_gn 1.53 15,295 tok/s
+[m6_gemma-2-9b_onehot] step  2360 loss 4.5356 lr 1.27e-04 gn 1.15 proj_gn 1.00 15,312 tok/s
+[m6_gemma-2-9b_onehot] step  2380 loss 4.5395 lr 1.23e-04 gn 1.16 proj_gn 1.02 15,287 tok/s
+[m6_gemma-2-9b_onehot] step  2400 loss 4.5381 lr 1.19e-04 gn 1.06 proj_gn 0.90 15,297 tok/s
+[m6_gemma-2-9b_onehot] step  2420 loss 4.5194 lr 1.15e-04 gn 1.06 proj_gn 0.92 15,286 tok/s
+[m6_gemma-2-9b_onehot] step  2440 loss 4.5458 lr 1.12e-04 gn 1.03 proj_gn 0.88 15,312 tok/s
+[m6_gemma-2-9b_onehot] step  2460 loss 4.5706 lr 1.08e-04 gn 1.35 proj_gn 1.23 15,289 tok/s
+[m6_gemma-2-9b_onehot] step  2480 loss 4.7436 lr 1.05e-04 gn 1.17 proj_gn 0.99 15,316 tok/s
+[m6_gemma-2-9b_onehot] step  2500 loss 4.5424 lr 1.01e-04 gn 1.29 proj_gn 1.14 15,303 tok/s
+[m6_gemma-2-9b_onehot] step  2500 VAL 4.4692
+[m6_gemma-2-9b_onehot] step  2520 loss 4.5900 lr 9.82e-05 gn 1.18 proj_gn 1.04 15,302 tok/s
+[m6_gemma-2-9b_onehot] step  2540 loss 4.3571 lr 9.52e-05 gn 1.14 proj_gn 1.02 15,313 tok/s
+[m6_gemma-2-9b_onehot] step  2560 loss 4.4851 lr 9.22e-05 gn 1.06 proj_gn 0.92 15,304 tok/s
+[m6_gemma-2-9b_onehot] step  2580 loss 4.6111 lr 8.94e-05 gn 1.09 proj_gn 0.95 15,299 tok/s
+[m6_gemma-2-9b_onehot] step  2600 loss 4.5311 lr 8.67e-05 gn 1.16 proj_gn 1.03 15,282 tok/s
+[m6_gemma-2-9b_onehot] step  2620 loss 4.3491 lr 8.42e-05 gn 1.10 proj_gn 0.95 15,293 tok/s
+[m6_gemma-2-9b_onehot] step  2640 loss 4.4299 lr 8.17e-05 gn 1.18 proj_gn 1.07 15,296 tok/s
+[m6_gemma-2-9b_onehot] step  2660 loss 4.2612 lr 7.94e-05 gn 1.30 proj_gn 1.15 15,293 tok/s
+[m6_gemma-2-9b_onehot] step  2680 loss 4.5178 lr 7.72e-05 gn 1.25 proj_gn 1.11 15,304 tok/s
+[m6_gemma-2-9b_onehot] step  2700 loss 4.5827 lr 7.52e-05 gn 1.14 proj_gn 0.98 15,297 tok/s
+[m6_gemma-2-9b_onehot] step  2720 loss 4.4473 lr 7.32e-05 gn 1.39 proj_gn 1.26 15,308 tok/s
+[m6_gemma-2-9b_onehot] step  2740 loss 4.3883 lr 7.14e-05 gn 1.23 proj_gn 1.10 15,283 tok/s
+[m6_gemma-2-9b_onehot] step  2750 VAL 4.4281
+[m6_gemma-2-9b_onehot] step  2760 loss 4.3475 lr 6.97e-05 gn 1.34 proj_gn 1.21 15,300 tok/s
+[m6_gemma-2-9b_onehot] step  2780 loss 4.4544 lr 6.82e-05 gn 1.07 proj_gn 0.92 15,276 tok/s
+[m6_gemma-2-9b_onehot] step  2800 loss 4.5892 lr 6.68e-05 gn 1.07 proj_gn 0.92 15,284 tok/s
+[m6_gemma-2-9b_onehot] step  2820 loss 4.3829 lr 6.55e-05 gn 1.16 proj_gn 1.01 15,284 tok/s
+[m6_gemma-2-9b_onehot] step  2840 loss 4.6558 lr 6.43e-05 gn 1.12 proj_gn 0.95 15,279 tok/s
+[m6_gemma-2-9b_onehot] step  2860 loss 4.4698 lr 6.33e-05 gn 1.08 proj_gn 0.93 15,296 tok/s
+[m6_gemma-2-9b_onehot] step  2880 loss 4.1546 lr 6.24e-05 gn 1.10 proj_gn 0.95 15,316 tok/s
+[m6_gemma-2-9b_onehot] step  2900 loss 4.4792 lr 6.17e-05 gn 1.32 proj_gn 1.19 15,295 tok/s
+[m6_gemma-2-9b_onehot] step  2920 loss 4.4476 lr 6.11e-05 gn 1.48 proj_gn 1.36 15,296 tok/s
+[m6_gemma-2-9b_onehot] step  2940 loss 4.2976 lr 6.06e-05 gn 1.25 proj_gn 1.09 15,296 tok/s
+[m6_gemma-2-9b_onehot] step  2960 loss 4.3775 lr 6.03e-05 gn 1.37 proj_gn 1.23 15,294 tok/s
+[m6_gemma-2-9b_onehot] step  2980 loss 4.3625 lr 6.01e-05 gn 1.15 proj_gn 0.99 15,286 tok/s
+[m6_gemma-2-9b_onehot] step  2999 loss 4.4537 lr 6.00e-05 gn 1.22 proj_gn 1.08 15,305 tok/s
+[m6_gemma-2-9b_onehot] step  2999 VAL 4.4028
+[m6_gemma-2-9b_onehot] done: status=ok final_val=4.4028 wall=6460s -> results\m6\m6_gemma-2-9b_onehot

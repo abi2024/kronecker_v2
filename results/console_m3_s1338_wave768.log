@@ -1,0 +1,172 @@
+d_model=512, code_dim=4096, V=131,072
+  codec  (onehot / wave)     2,097,152   target
+  albert                   2,105,344   +0.39%   rank=16
+  hash                     2,097,152   +0.00%   buckets=3584
+  dense (reference)       67,108,864   32x
+
+[m3_s1338_wave768] device=cuda params={'total': 106193920, 'body': 38298624, 'lm_head': 67108864, 'embedding': 786432} body_hash=f2710faa97c6
+[m3_s1338_wave768] step     0 loss 11.9035 lr 3.00e-06 gn 9.98 proj_gn 0.65 16,806 tok/s
+[m3_s1338_wave768] step     0 VAL 11.8365
+[m3_s1338_wave768] step    20 loss 10.9220 lr 6.30e-05 gn 1.30 proj_gn 0.06 19,410 tok/s
+[m3_s1338_wave768] step    40 loss 9.8017 lr 1.23e-04 gn 1.15 proj_gn 0.10 19,483 tok/s
+[m3_s1338_wave768] step    60 loss 8.4369 lr 1.83e-04 gn 0.94 proj_gn 0.14 19,483 tok/s
+[m3_s1338_wave768] step    80 loss 7.6723 lr 2.43e-04 gn 0.67 proj_gn 0.15 19,422 tok/s
+[m3_s1338_wave768] step   100 loss 7.3366 lr 3.03e-04 gn 0.65 proj_gn 0.17 19,476 tok/s
+[m3_s1338_wave768] step   120 loss 7.0787 lr 3.63e-04 gn 0.82 proj_gn 0.41 19,461 tok/s
+[m3_s1338_wave768] step   140 loss 6.8417 lr 4.23e-04 gn 0.91 proj_gn 0.49 19,457 tok/s
+[m3_s1338_wave768] step   160 loss 6.6541 lr 4.83e-04 gn 0.94 proj_gn 0.50 19,462 tok/s
+[m3_s1338_wave768] step   180 loss 6.6519 lr 5.43e-04 gn 0.83 proj_gn 0.44 19,448 tok/s
+[m3_s1338_wave768] step   200 loss 6.5277 lr 6.00e-04 gn 0.79 proj_gn 0.46 19,415 tok/s
+[m3_s1338_wave768] step   220 loss 6.4700 lr 6.00e-04 gn 0.64 proj_gn 0.34 19,453 tok/s
+[m3_s1338_wave768] step   240 loss 6.4462 lr 6.00e-04 gn 0.61 proj_gn 0.30 19,511 tok/s
+[m3_s1338_wave768] step   250 VAL 6.3307
+[m3_s1338_wave768] step   260 loss 6.2859 lr 5.99e-04 gn 0.71 proj_gn 0.39 19,441 tok/s
+[m3_s1338_wave768] step   280 loss 6.2975 lr 5.99e-04 gn 0.70 proj_gn 0.41 19,498 tok/s
+[m3_s1338_wave768] step   300 loss 6.4083 lr 5.98e-04 gn 0.48 proj_gn 0.22 19,444 tok/s
+[m3_s1338_wave768] step   320 loss 6.2965 lr 5.98e-04 gn 0.76 proj_gn 0.35 19,427 tok/s
+[m3_s1338_wave768] step   340 loss 6.0384 lr 5.97e-04 gn 0.59 proj_gn 0.30 19,493 tok/s
+[m3_s1338_wave768] step   360 loss 6.2022 lr 5.96e-04 gn 0.50 proj_gn 0.26 19,449 tok/s
+[m3_s1338_wave768] step   380 loss 6.1414 lr 5.95e-04 gn 0.58 proj_gn 0.31 19,424 tok/s
+[m3_s1338_wave768] step   400 loss 5.9362 lr 5.93e-04 gn 0.58 proj_gn 0.32 19,489 tok/s
+[m3_s1338_wave768] step   420 loss 5.8371 lr 5.92e-04 gn 0.50 proj_gn 0.22 19,491 tok/s
+[m3_s1338_wave768] step   440 loss 5.9712 lr 5.90e-04 gn 0.54 proj_gn 0.23 19,460 tok/s
+[m3_s1338_wave768] step   460 loss 5.8241 lr 5.89e-04 gn 0.47 proj_gn 0.22 19,492 tok/s
+[m3_s1338_wave768] step   480 loss 5.6361 lr 5.87e-04 gn 0.50 proj_gn 0.24 19,461 tok/s
+[m3_s1338_wave768] step   500 loss 5.9348 lr 5.85e-04 gn 0.47 proj_gn 0.21 19,435 tok/s
+[m3_s1338_wave768] step   500 VAL 5.7430
+[m3_s1338_wave768] step   520 loss 5.8482 lr 5.83e-04 gn 0.48 proj_gn 0.20 19,462 tok/s
+[m3_s1338_wave768] step   540 loss 5.6968 lr 5.81e-04 gn 0.48 proj_gn 0.23 19,461 tok/s
+[m3_s1338_wave768] step   560 loss 5.6769 lr 5.78e-04 gn 0.53 proj_gn 0.25 19,466 tok/s
+[m3_s1338_wave768] step   580 loss 5.8800 lr 5.76e-04 gn 0.54 proj_gn 0.24 19,447 tok/s
+[m3_s1338_wave768] step   600 loss 5.7036 lr 5.73e-04 gn 0.46 proj_gn 0.20 19,472 tok/s
+[m3_s1338_wave768] step   620 loss 5.8041 lr 5.71e-04 gn 0.52 proj_gn 0.23 19,501 tok/s
+[m3_s1338_wave768] step   640 loss 5.7596 lr 5.68e-04 gn 0.52 proj_gn 0.24 19,487 tok/s
+[m3_s1338_wave768] step   660 loss 5.5970 lr 5.65e-04 gn 0.52 proj_gn 0.22 19,466 tok/s
+[m3_s1338_wave768] step   680 loss 5.5806 lr 5.62e-04 gn 0.45 proj_gn 0.17 19,480 tok/s
+[m3_s1338_wave768] step   700 loss 5.4870 lr 5.59e-04 gn 0.44 proj_gn 0.18 19,449 tok/s
+[m3_s1338_wave768] step   720 loss 5.3637 lr 5.55e-04 gn 0.44 proj_gn 0.19 19,472 tok/s
+[m3_s1338_wave768] step   740 loss 5.7186 lr 5.52e-04 gn 0.46 proj_gn 0.18 19,494 tok/s
+[m3_s1338_wave768] step   750 VAL 5.4118
+[m3_s1338_wave768] step   760 loss 5.3349 lr 5.48e-04 gn 0.43 proj_gn 0.17 19,452 tok/s
+[m3_s1338_wave768] step   780 loss 5.2041 lr 5.45e-04 gn 0.46 proj_gn 0.18 19,477 tok/s
+[m3_s1338_wave768] step   800 loss 5.5845 lr 5.41e-04 gn 0.51 proj_gn 0.19 19,441 tok/s
+[m3_s1338_wave768] step   820 loss 5.4190 lr 5.37e-04 gn 0.46 proj_gn 0.17 19,480 tok/s
+[m3_s1338_wave768] step   840 loss 5.5948 lr 5.33e-04 gn 0.43 proj_gn 0.14 19,502 tok/s
+[m3_s1338_wave768] step   860 loss 5.2657 lr 5.29e-04 gn 0.46 proj_gn 0.18 19,431 tok/s
+[m3_s1338_wave768] step   880 loss 5.3687 lr 5.25e-04 gn 0.42 proj_gn 0.15 19,490 tok/s
+[m3_s1338_wave768] step   900 loss 5.2551 lr 5.21e-04 gn 0.46 proj_gn 0.16 19,497 tok/s
+[m3_s1338_wave768] step   920 loss 5.4196 lr 5.17e-04 gn 0.50 proj_gn 0.18 19,451 tok/s
+[m3_s1338_wave768] step   940 loss 5.2413 lr 5.12e-04 gn 0.47 proj_gn 0.16 19,532 tok/s
+[m3_s1338_wave768] step   960 loss 5.3591 lr 5.08e-04 gn 0.52 proj_gn 0.19 19,460 tok/s
+[m3_s1338_wave768] step   980 loss 5.1011 lr 5.03e-04 gn 0.47 proj_gn 0.19 19,461 tok/s
+[m3_s1338_wave768] step  1000 loss 5.3352 lr 4.98e-04 gn 0.45 proj_gn 0.16 19,528 tok/s
+[m3_s1338_wave768] step  1000 VAL 5.1664
+[m3_s1338_wave768] step  1020 loss 5.1912 lr 4.94e-04 gn 0.45 proj_gn 0.16 19,458 tok/s
+[m3_s1338_wave768] step  1040 loss 4.9602 lr 4.89e-04 gn 0.51 proj_gn 0.19 19,549 tok/s
+[m3_s1338_wave768] step  1060 loss 5.1321 lr 4.84e-04 gn 0.48 proj_gn 0.18 19,445 tok/s
+[m3_s1338_wave768] step  1080 loss 5.3458 lr 4.79e-04 gn 0.48 proj_gn 0.16 19,503 tok/s
+[m3_s1338_wave768] step  1100 loss 5.1160 lr 4.74e-04 gn 0.46 proj_gn 0.16 19,520 tok/s
+[m3_s1338_wave768] step  1120 loss 5.1189 lr 4.68e-04 gn 0.52 proj_gn 0.19 19,435 tok/s
+[m3_s1338_wave768] step  1140 loss 5.2999 lr 4.63e-04 gn 0.49 proj_gn 0.14 19,521 tok/s
+[m3_s1338_wave768] step  1160 loss 4.9350 lr 4.58e-04 gn 0.48 proj_gn 0.15 19,519 tok/s
+[m3_s1338_wave768] step  1180 loss 5.0099 lr 4.53e-04 gn 0.49 proj_gn 0.16 19,487 tok/s
+[m3_s1338_wave768] step  1200 loss 5.0189 lr 4.47e-04 gn 0.44 proj_gn 0.12 19,489 tok/s
+[m3_s1338_wave768] step  1220 loss 5.1289 lr 4.42e-04 gn 0.49 proj_gn 0.16 19,440 tok/s
+[m3_s1338_wave768] step  1240 loss 4.7867 lr 4.36e-04 gn 0.49 proj_gn 0.15 19,533 tok/s
+[m3_s1338_wave768] step  1250 VAL 4.9523
+[m3_s1338_wave768] step  1260 loss 5.0143 lr 4.31e-04 gn 0.50 proj_gn 0.16 19,457 tok/s
+[m3_s1338_wave768] step  1280 loss 4.9356 lr 4.25e-04 gn 0.51 proj_gn 0.15 19,492 tok/s
+[m3_s1338_wave768] step  1300 loss 5.0071 lr 4.19e-04 gn 0.55 proj_gn 0.20 19,503 tok/s
+[m3_s1338_wave768] step  1320 loss 5.0456 lr 4.13e-04 gn 0.54 proj_gn 0.15 19,465 tok/s
+[m3_s1338_wave768] step  1340 loss 4.9552 lr 4.08e-04 gn 0.63 proj_gn 0.23 19,535 tok/s
+[m3_s1338_wave768] step  1360 loss 5.1174 lr 4.02e-04 gn 0.61 proj_gn 0.19 19,454 tok/s
+[m3_s1338_wave768] step  1380 loss 5.0441 lr 3.96e-04 gn 0.52 proj_gn 0.15 19,505 tok/s
+[m3_s1338_wave768] step  1400 loss 5.1058 lr 3.90e-04 gn 0.52 proj_gn 0.13 19,532 tok/s
+[m3_s1338_wave768] step  1420 loss 4.8972 lr 3.84e-04 gn 0.48 proj_gn 0.14 19,413 tok/s
+[m3_s1338_wave768] step  1440 loss 4.8410 lr 3.78e-04 gn 0.54 proj_gn 0.14 19,557 tok/s
+[m3_s1338_wave768] step  1460 loss 4.9209 lr 3.72e-04 gn 0.57 proj_gn 0.16 19,493 tok/s
+[m3_s1338_wave768] step  1480 loss 4.7390 lr 3.66e-04 gn 0.52 proj_gn 0.15 19,468 tok/s
+[m3_s1338_wave768] step  1500 loss 4.8083 lr 3.60e-04 gn 0.49 proj_gn 0.13 19,524 tok/s
+[m3_s1338_wave768] step  1500 VAL 4.7601
+[m3_s1338_wave768] step  1520 loss 4.7906 lr 3.54e-04 gn 0.52 proj_gn 0.14 19,496 tok/s
+[m3_s1338_wave768] step  1540 loss 4.7359 lr 3.48e-04 gn 0.54 proj_gn 0.16 19,531 tok/s
+[m3_s1338_wave768] step  1560 loss 4.8922 lr 3.42e-04 gn 0.52 proj_gn 0.13 19,446 tok/s
+[m3_s1338_wave768] step  1580 loss 4.7422 lr 3.36e-04 gn 0.54 proj_gn 0.16 19,505 tok/s
+[m3_s1338_wave768] step  1600 loss 4.7348 lr 3.30e-04 gn 0.50 proj_gn 0.11 19,507 tok/s
+[m3_s1338_wave768] step  1620 loss 4.7326 lr 3.24e-04 gn 0.52 proj_gn 0.13 19,486 tok/s
+[m3_s1338_wave768] step  1640 loss 4.8508 lr 3.18e-04 gn 0.50 proj_gn 0.13 19,520 tok/s
+[m3_s1338_wave768] step  1660 loss 4.7799 lr 3.12e-04 gn 0.53 proj_gn 0.14 19,447 tok/s
+[m3_s1338_wave768] step  1680 loss 4.7689 lr 3.06e-04 gn 0.53 proj_gn 0.12 19,538 tok/s
+[m3_s1338_wave768] step  1700 loss 4.7577 lr 3.00e-04 gn 0.52 proj_gn 0.13 19,514 tok/s
+[m3_s1338_wave768] step  1720 loss 4.7270 lr 2.94e-04 gn 0.52 proj_gn 0.14 19,486 tok/s
+[m3_s1338_wave768] step  1740 loss 4.7074 lr 2.88e-04 gn 0.55 proj_gn 0.14 19,529 tok/s
+[m3_s1338_wave768] step  1750 VAL 4.6103
+[m3_s1338_wave768] step  1760 loss 4.6321 lr 2.82e-04 gn 0.52 proj_gn 0.13 19,504 tok/s
+[m3_s1338_wave768] step  1780 loss 4.8080 lr 2.76e-04 gn 0.56 proj_gn 0.14 19,554 tok/s
+[m3_s1338_wave768] step  1800 loss 4.6832 lr 2.70e-04 gn 0.53 proj_gn 0.14 19,457 tok/s
+[m3_s1338_wave768] step  1820 loss 4.5648 lr 2.64e-04 gn 0.56 proj_gn 0.13 19,517 tok/s
+[m3_s1338_wave768] step  1840 loss 4.7133 lr 2.58e-04 gn 0.58 proj_gn 0.14 19,489 tok/s
+[m3_s1338_wave768] step  1860 loss 4.7917 lr 2.52e-04 gn 0.59 proj_gn 0.16 19,492 tok/s
+[m3_s1338_wave768] step  1880 loss 4.9111 lr 2.47e-04 gn 0.62 proj_gn 0.15 19,508 tok/s
+[m3_s1338_wave768] step  1900 loss 4.6492 lr 2.41e-04 gn 0.52 proj_gn 0.12 19,458 tok/s
+[m3_s1338_wave768] step  1920 loss 4.5253 lr 2.35e-04 gn 0.56 proj_gn 0.13 19,529 tok/s
+[m3_s1338_wave768] step  1940 loss 4.7066 lr 2.29e-04 gn 0.56 proj_gn 0.14 19,542 tok/s
+[m3_s1338_wave768] step  1960 loss 4.7262 lr 2.24e-04 gn 0.57 proj_gn 0.14 19,493 tok/s
+[m3_s1338_wave768] step  1980 loss 4.6046 lr 2.18e-04 gn 0.55 proj_gn 0.12 19,550 tok/s
+[m3_s1338_wave768] step  2000 loss 4.5284 lr 2.13e-04 gn 0.58 proj_gn 0.14 19,465 tok/s
+[m3_s1338_wave768] step  2000 VAL 4.4927
+[m3_s1338_wave768] step  2020 loss 4.4862 lr 2.07e-04 gn 0.59 proj_gn 0.15 19,546 tok/s
+[m3_s1338_wave768] step  2040 loss 4.6615 lr 2.02e-04 gn 0.58 proj_gn 0.13 19,499 tok/s
+[m3_s1338_wave768] step  2060 loss 4.5854 lr 1.97e-04 gn 0.53 proj_gn 0.12 19,539 tok/s
+[m3_s1338_wave768] step  2080 loss 4.3837 lr 1.92e-04 gn 0.51 proj_gn 0.12 19,465 tok/s
+[m3_s1338_wave768] step  2100 loss 4.5754 lr 1.86e-04 gn 0.59 proj_gn 0.14 19,527 tok/s
+[m3_s1338_wave768] step  2120 loss 4.4812 lr 1.81e-04 gn 0.58 proj_gn 0.13 19,505 tok/s
+[m3_s1338_wave768] step  2140 loss 4.3966 lr 1.76e-04 gn 0.59 proj_gn 0.14 19,507 tok/s
+[m3_s1338_wave768] step  2160 loss 4.5797 lr 1.71e-04 gn 0.55 proj_gn 0.13 19,545 tok/s
+[m3_s1338_wave768] step  2180 loss 4.4300 lr 1.66e-04 gn 0.60 proj_gn 0.16 19,453 tok/s
+[m3_s1338_wave768] step  2200 loss 4.4938 lr 1.62e-04 gn 0.56 proj_gn 0.13 19,536 tok/s
+[m3_s1338_wave768] step  2220 loss 4.3610 lr 1.57e-04 gn 0.56 proj_gn 0.13 19,488 tok/s
+[m3_s1338_wave768] step  2240 loss 4.2632 lr 1.52e-04 gn 0.54 proj_gn 0.11 19,510 tok/s
+[m3_s1338_wave768] step  2250 VAL 4.3931
+[m3_s1338_wave768] step  2260 loss 4.5026 lr 1.48e-04 gn 0.60 proj_gn 0.14 19,482 tok/s
+[m3_s1338_wave768] step  2280 loss 4.6331 lr 1.43e-04 gn 0.57 proj_gn 0.12 19,551 tok/s
+[m3_s1338_wave768] step  2300 loss 4.4493 lr 1.39e-04 gn 0.55 proj_gn 0.12 19,553 tok/s
+[m3_s1338_wave768] step  2320 loss 4.5614 lr 1.35e-04 gn 0.53 proj_gn 0.11 19,500 tok/s
+[m3_s1338_wave768] step  2340 loss 4.5521 lr 1.31e-04 gn 0.56 proj_gn 0.12 19,505 tok/s
+[m3_s1338_wave768] step  2360 loss 4.3362 lr 1.27e-04 gn 0.60 proj_gn 0.13 19,446 tok/s
+[m3_s1338_wave768] step  2380 loss 4.6533 lr 1.23e-04 gn 0.56 proj_gn 0.12 19,556 tok/s
+[m3_s1338_wave768] step  2400 loss 4.5381 lr 1.19e-04 gn 0.59 proj_gn 0.12 19,525 tok/s
+[m3_s1338_wave768] step  2420 loss 4.3036 lr 1.15e-04 gn 0.62 proj_gn 0.16 19,515 tok/s
+[m3_s1338_wave768] step  2440 loss 4.6075 lr 1.12e-04 gn 0.62 proj_gn 0.14 19,505 tok/s
+[m3_s1338_wave768] step  2460 loss 4.4356 lr 1.08e-04 gn 0.59 proj_gn 0.12 19,463 tok/s
+[m3_s1338_wave768] step  2480 loss 4.5870 lr 1.05e-04 gn 0.57 proj_gn 0.11 19,526 tok/s
+[m3_s1338_wave768] step  2500 loss 4.5049 lr 1.01e-04 gn 0.58 proj_gn 0.11 19,511 tok/s
+[m3_s1338_wave768] step  2500 VAL 4.3220
+[m3_s1338_wave768] step  2520 loss 4.6047 lr 9.82e-05 gn 0.59 proj_gn 0.13 19,559 tok/s
+[m3_s1338_wave768] step  2540 loss 4.3610 lr 9.52e-05 gn 0.61 proj_gn 0.13 19,482 tok/s
+[m3_s1338_wave768] step  2560 loss 4.7368 lr 9.22e-05 gn 0.61 proj_gn 0.12 19,559 tok/s
+[m3_s1338_wave768] step  2580 loss 4.5078 lr 8.94e-05 gn 0.63 proj_gn 0.14 19,478 tok/s
+[m3_s1338_wave768] step  2600 loss 4.5035 lr 8.67e-05 gn 0.55 proj_gn 0.11 19,532 tok/s
+[m3_s1338_wave768] step  2620 loss 4.5192 lr 8.42e-05 gn 0.57 proj_gn 0.11 19,555 tok/s
+[m3_s1338_wave768] step  2640 loss 4.1328 lr 8.17e-05 gn 0.61 proj_gn 0.13 19,465 tok/s
+[m3_s1338_wave768] step  2660 loss 4.4035 lr 7.94e-05 gn 0.59 proj_gn 0.13 19,535 tok/s
+[m3_s1338_wave768] step  2680 loss 4.4555 lr 7.72e-05 gn 0.62 proj_gn 0.14 19,453 tok/s
+[m3_s1338_wave768] step  2700 loss 4.4412 lr 7.52e-05 gn 0.59 proj_gn 0.12 19,541 tok/s
+[m3_s1338_wave768] step  2720 loss 4.5910 lr 7.32e-05 gn 0.58 proj_gn 0.11 19,535 tok/s
+[m3_s1338_wave768] step  2740 loss 4.2485 lr 7.14e-05 gn 0.60 proj_gn 0.13 19,514 tok/s
+[m3_s1338_wave768] step  2750 VAL 4.2709
+[m3_s1338_wave768] step  2760 loss 4.5366 lr 6.97e-05 gn 0.60 proj_gn 0.12 19,514 tok/s
+[m3_s1338_wave768] step  2780 loss 4.3833 lr 6.82e-05 gn 0.61 proj_gn 0.11 19,547 tok/s
+[m3_s1338_wave768] step  2800 loss 4.2428 lr 6.68e-05 gn 0.62 proj_gn 0.13 19,526 tok/s
+[m3_s1338_wave768] step  2820 loss 4.1850 lr 6.55e-05 gn 0.60 proj_gn 0.12 19,514 tok/s
+[m3_s1338_wave768] step  2840 loss 4.1753 lr 6.43e-05 gn 0.57 proj_gn 0.11 19,527 tok/s
+[m3_s1338_wave768] step  2860 loss 4.2115 lr 6.33e-05 gn 0.59 proj_gn 0.12 19,474 tok/s
+[m3_s1338_wave768] step  2880 loss 4.3470 lr 6.24e-05 gn 0.60 proj_gn 0.12 19,534 tok/s
+[m3_s1338_wave768] step  2900 loss 4.0494 lr 6.17e-05 gn 0.58 proj_gn 0.12 19,505 tok/s
+[m3_s1338_wave768] step  2920 loss 4.1558 lr 6.11e-05 gn 0.60 proj_gn 0.11 19,529 tok/s
+[m3_s1338_wave768] step  2940 loss 4.1080 lr 6.06e-05 gn 0.62 proj_gn 0.12 19,526 tok/s
+[m3_s1338_wave768] step  2960 loss 4.2519 lr 6.03e-05 gn 0.57 proj_gn 0.11 19,458 tok/s
+[m3_s1338_wave768] step  2980 loss 4.2737 lr 6.01e-05 gn 0.63 proj_gn 0.12 19,517 tok/s
+[m3_s1338_wave768] step  2999 loss 4.4205 lr 6.00e-05 gn 0.60 proj_gn 0.12 19,544 tok/s
+[m3_s1338_wave768] step  2999 VAL 4.2417
+[m3_s1338_wave768] done: status=ok final_val=4.2417 wall=5092s -> results\m3_seeds\m3_s1338_wave768

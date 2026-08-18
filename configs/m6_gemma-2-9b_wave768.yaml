@@ -1,0 +1,29 @@
+# M6 arm — external tokenizer google/gemma-2-9b (V=256,000, sentencepiece)
+# Standalone config: load_config merges shallowly, so every block is complete.
+model:
+  block_size: 1024
+  vocab_size: 256000
+  n_layer: 6
+  n_head: 6
+  d_model: 384
+  dropout: 0.0
+data:
+  dir: data/m6/gemma-2-9b
+  tables_dir: data/tables/m6_gemma-2-9b
+codec: {name: wave, d_complex: 768, seed: 0, normalize: l2, table: wave768_l2}
+train:
+  device: null
+  batch_size: 2
+  grad_accum: 16
+  max_steps: 3000
+  lr: 6.0e-4
+  warmup: 200
+  min_lr_frac: 0.1
+  weight_decay: 0.1
+  grad_clip: 1.0
+  eval_every: 250
+  eval_iters: 50
+  log_every: 20
+  seed: 1337
+  data_seed: 42
+out_root: results/m6

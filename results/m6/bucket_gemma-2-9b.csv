@@ -1,0 +1,4 @@
+arm,val_loss,bits_per_byte,after_treat,after_ctrl,DiD,SE,sigma
+m6_gemma-2-9b_onehot,4.4438,1.1585,,,,,
+m6_gemma-2-9b_wave,4.3484,1.1336,-0.218,0.0299,-0.2479,0.0205,12.1
+m6_gemma-2-9b_wave768,4.3328,1.1296,-0.2415,0.0364,-0.2779,0.0203,13.7

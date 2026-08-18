@@ -39,3 +39,25 @@ it was never about collisions and M2's mechanism claim is wrong.
 | 2026-08-17 | m2 | m3_hash | 1337 | 0649478 | dense | 4.3697 | results\m3\m3_hash |
 | 2026-08-17 | m2 | m3_albert | 1337 | 0649478 | dense | 4.2485 | results\m3\m3_albert |
 | 2026-08-17 | m2 | m3_dense | 1337 | 0649478 | dense | 4.1225 | results\m3\m3_dense |
+
+## M6 — predictions registered before the audit
+P1: every unconstrained tokenizer has tokens >32 bytes, and >0 permanent
+    collisions even at pos_dim=32 — zero-at-32 is unique to co-design.
+P2: all show non-zero collisions at pos_dim=16; Indic-capable SentencePiece
+    vocabularies (mT5) collide worst.
+P3: on retokenized corpora, wave beats one-hot at matched width.
+| 2026-08-18 | m2 | m6_gemma-2-9b_onehot | 1337 | 06b4394 | onehot16 | 4.4028 | results\m6\m6_gemma-2-9b_onehot |
+| 2026-08-18 | m2 | m6_gemma-2-9b_wave | 1337 | 06b4394 | wave2048_l2 | 4.3091 | results\m6\m6_gemma-2-9b_wave |
+| 2026-08-18 | m2 | m6_gemma-2-9b_wave768 | 1337 | 06b4394 | wave768_l2 | 4.2904 | results\m6\m6_gemma-2-9b_wave768 |
+| 2026-08-18 | m2 | m6_qwen2.5-7b_onehot | 1337 | 06b4394 | onehot16 | 2.7520 | results\m6\m6_qwen2.5-7b_onehot |
+| 2026-08-18 | m2 | m6_qwen2.5-7b_wave | 1337 | 06b4394 | wave2048_l2 | 2.6568 | results\m6\m6_qwen2.5-7b_wave |
+
+## d512 seed replicates + qwen wave768 — registered before the runs
+P: the paired wave768 - albert gap at d512 stays negative over 3 seeds with
+   |mean| > 2*SE (resolving M3's 1.1-sigma call), and qwen wave768 < wave@2048
+   (a 4th independent setting where the narrow code beats the matched one).
+| 2026-08-18 | m2 | m3_s1338_wave768 | 1338 | 06b4394 | wave768_l2 | 4.2417 | results\m3_seeds\m3_s1338_wave768 |
+| 2026-08-18 | m2 | m3_s1338_albert | 1338 | 06b4394 | dense | 4.2143 | results\m3_seeds\m3_s1338_albert |
+| 2026-08-18 | m2 | m3_s1339_wave768 | 1339 | 06b4394 | wave768_l2 | 4.2187 | results\m3_seeds\m3_s1339_wave768 |
+| 2026-08-18 | m2 | m3_s1339_albert | 1339 | 06b4394 | dense | 4.2343 | results\m3_seeds\m3_s1339_albert |
+| 2026-08-18 | m2 | m6_qwen2.5-7b_wave768 | 1337 | 06b4394 | wave768_l2 | 2.6470 | results\m6\m6_qwen2.5-7b_wave768 |
