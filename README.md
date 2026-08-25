@@ -1,197 +1,132 @@
-# Kronecker V2 — Removing the Byte-Window Limit
+# Kronecker V2: The Byte-Window Constraint in Frozen Byte-Composed Embeddings
 
-**Assignment problem solved: #3** — *"Today Kronecker is limiting to presenting 32 positions for every word… That's a waste of space. How can it be dynamic and not force us to crop a word?"*
+**Phase-coded byte embeddings, a causal account of truncation collisions, and an honest accounting of when the codec matters.**
 
-**[→ Interactive walkthrough](https://abi2024.github.io/kronecker_v2/)** — type a word, watch it get cropped, see why anagrams break plain addition.
-
----
-
-## The problem, in plain words
-
-Kronecker embeddings turn a word into a vector by marking each of its bytes on a grid: *which byte value, in which position*. The grid has a fixed number of position slots — 16 or 32 — and **bytes past the last slot are simply thrown away**.
-
-Here is the part that isn't obvious: if two different words share the same first 16 bytes, they get **the exact same vector**. Not similar — identical. And because this codec is frozen (nothing about it is learned), no amount of training can ever pull them apart. The model literally cannot tell कार्य (*work*), कार्यक्रम (*programme*) and कार्यालय (*office*) apart at the input. They wear the same name tag forever.
-
-**Who pays?** Byte counting is unfair across languages. One English letter costs 1 byte; one Devanagari or Malayalam character costs 3, and a conjunct like क्ष costs 9. So a 16-byte window is ~16 English letters but only ~5 Indic characters. On the real 131,072-token vocabulary:
-
-| script | tokens that get merged at pos_dim=16 |
-|---|---:|
-| Malayalam | **10.13%** of its tokens |
-| Devanagari | 6.29% |
-| Latin (English) | 0.02% |
-
-One more thing the audit found: **the 32-byte version only looks safe because the tokenizer was built to make it safe** — its vocabulary was constrained to never learn a token over 32 bytes. The cost didn't disappear; it was paid upstream, invisibly.
-
-## The fix, in plain words
-
-Stop asking *"which slot?"* and ask *"how much rotation?"*
-
-Give every byte value a fixed random wave (a set of angles). To say "this byte is at position 7," rotate its wave 7 steps. Add up all the rotated waves — that's the word's code. Position is now a *multiplier*, not a *slot*, so there is no last slot to fall off. Position 47 just means "rotate 47 times as far."
-
-The rotation is not decoration. Without it, addition alone makes `dog` and `god` identical (try it in the walkthrough). We trained that stripped version too — it scores **worse than the grid it was meant to replace**. Order is load-bearing.
-
-Everything else stays exactly like V1: the codec is frozen, and only one shared projection matrix is trained.
-
-## How to read our numbers
-
-- **Loss** (in *nats*): how surprised the model is by the correct next token. Lower is better. A gap of 0.05 means the better model gives the right answer about 5% more probability.
-- **Bits per byte (BPB)**: loss per *letter of text* instead of per token — the only fair way to compare across scripts, since Indic tokens cover ~3× the bytes.
-- **Seed**: rerun the same experiment from a different random start. Our measured run-to-run wobble is about **±0.013**. Any difference smaller than that, we refuse to interpret.
-- **sd / σ**: how many times bigger than the wobble a difference is. Below ~2, we call it "not resolved."
+Interactive demo: [abi2024.github.io/kronecker_v2](https://abi2024.github.io/kronecker_v2/) · Evidence sheets: [M1](results/M1_FINDINGS.md) · [M2](results/M2_FINDINGS.md) · [M3](results/M3_FINDINGS.md) · [M4/M5](results/M4_M5_FINDINGS.md) · [M6](results/M6_FINDINGS.md) · [Stability](results/MSTAB_FINDINGS.md)
 
 ---
 
-## The evidence, in five steps
+## Abstract
 
-Each step answers one question. Every claim was written down **before** the run that tested it, and every figure regenerates from a script — none is hand-edited.
+Kronecker byte×position embeddings encode a token's first `pos_dim` bytes on a fixed grid; bytes past the window are dropped. We show this window is not a free parameter but a **tokenizer design constraint**: tokens sharing a truncated prefix receive permanently identical vectors, and the reference vocabulary avoids this at `pos_dim=32` only because it was built to (max token length exactly 32 bytes). At the reference paper's own `pos_dim=16`, 903 of 131,072 tokens collide — 98% of them Indic. Auditing five external tokenizers (Gemma, Qwen, GPT-2, Mistral, plus the co-designed control), **every unconstrained vocabulary carries permanent collisions even at 32 bytes**, and SentencePiece vocabularies additionally ship ~250 exact-duplicate byte strings (byte-fallback aliasing) that no byte codec can separate.
 
-### Step 1 — Count the damage (no training needed, ~2 minutes)
+We establish the collision cost **causally**: it scales near-linearly with a fixed treatment set's merge rate across four window sizes and vanishes (0.3σ) at the tokenizer-built placebo; a natural experiment shows the penalty follows the *information* in the code, not its format — five architectures that can distinguish the merged tokens all rescue ~0.47 nats on collision contexts, while a random projection carrying the grid's exact information rescues 0.04. The cost lands on high-bytes-per-character scripts, ordered exactly as collision rates predict (Malayalam > Devanagari > Latin on the co-designed vocabulary; Cyrillic and Thai on Gemma and Qwen).
 
-`python experiments/m1_collision_audit.py` reproduces the collision tables above from the raw tokenizer file. And a direct check: at identical width, the wave code separates every pair the grid merges — कार्य vs कार्यक्रम goes from **IDENTICAL** to similarity 0.76. Separated, but still *near*: related words should stay neighbours, and they do.
+We replace the grid with a **phase-bound Fourier byte code** (fractional-power HRR): position enters as rotation, so no window exists. Ablations show 81% of its matched-width gain is representational spread rather than the Fourier construction; its distinctive property is achieving spread at low width — matching a learned rank-16 factorization at **37% of the parameter budget** and beating the grid's best setting at 4× fewer embedding parameters. Long-horizon training (750M tokens, 7.7× the comparison budget) contracts the codec's edge ~2.4× before it stabilizes at −0.041 nats, and a **tied-embedding baseline beats every frozen codec in the conventional architecture** — the codec's parameter case is specific to designs with no output head. Across all arms, short-budget gaps compressed 2–3× before plateauing, a calibration factor we propose applying to any embedding comparison made near 1:1 token:parameter ratios.
 
-### Step 2 — A fair race (same everything, only the embedding differs)
+Compute: one RTX 3060, ~55 GPU-hours total. Every headline claim was pre-registered; two registered predictions were falsified and are reported as such.
 
-Small model (11M body), 98M tokens of English+Hindi, five arms. Same tokenizer, same data order, same body initialization — verified by an identical hash of every non-embedding weight. Then repeated across **three seeds**:
+---
 
-| arm | mean loss (3 seeds) |
-|---|---:|
-| **wave** | **4.7488 ± 0.0128** |
-| one-hot grid | 4.8156 ± 0.0053 |
+## Contributions
 
-**Paired gap −0.0668 ± 0.0056 — about 12× the noise.** The wave code wins the fair race. (A dense learned table with 32× the parameters still beats both by ~4%; we never claim otherwise.)
+1. **The co-design constraint.** The byte window survives only where the tokenizer was built around it; the constraint's cost is paid upstream, invisible to the embedding's parameter accounting. Reproducible audit over any Hugging Face tokenizer, with per-family byte extraction validated against a frozen control (§ Results 1).
+2. **A causal, information-bound account of truncation collisions**: dose–response with a built-in placebo, an rp natural experiment, and a 12σ replication on a vocabulary (Gemma) designed with no knowledge of this work (§ Results 2).
+3. **Script-level fairness measurements** in bits per byte, with the gain ordered by each script's collision rate in all six arms tested (§ Results 3).
+4. **A decomposition of the phase code's advantage** — spread vs. order-binding vs. width — via a 2×2 ablation with information held fixed (§ Results 4).
+5. **An honest efficiency claim and its boundary**: parity with ALBERT at 37% of its budget; defeat by weight tying in conventional architectures; a stable long-horizon residual of −0.04 over the grid (§ Results 5).
+6. **A budget-dependence measurement**: all gaps to baseline compress 2–3× between short-budget and plateau, quantified on 93-point training curves (§ Results 6).
+7. **The aliasing floor**: SentencePiece byte-fallback tokens duplicate single-character pieces (~250 per vocabulary, proven by id arithmetic), a collision mechanism independent of the window that no byte codec — including ours — can fix (§ Results 1).
 
-![Grid](figures/fig1_grid.png)
+## Method
 
-### Step 3 — Ask *why* it wins (and accept an uncomfortable answer)
+**Codec.** Each byte value has a fixed random phasor; position `p` multiplies its phase (fractional power encoding, after Plate's HRR). Bind by phase addition, bundle by summation, ℓ2-normalize. The codec is frozen; only a shared projection trains. Removing the rotation (a pure bag of bytes) makes anagrams identical and trains *worse than the grid* — order binding is load-bearing. The code is **suffix-preserving and capacity-limited with graceful degradation**, not losslessly unlimited: cosine separation of long suffix edits decays with token length (measured in `stress_test.py`'s capacity curve), whereas the grid is provably blind to all edits past its window (max |Δlogits| = 0 on collision swaps — a bit-identical-forwards receipt).
 
-Maybe it's not the wave math at all. Two ablations, each removing one ingredient:
+**Protocol.** Arms differ only in the embedding module: same tokenizer, data order, and body initialization, verified by a body-state hash. Matched trainable-parameter budgets (at d512: 2,097,152 → ALBERT rank 16, hash 3,584 buckets). Predictions registered in `results/RUNS.md` before each run. Determinism from NumPy PCG64 throughout, so learned arms rebuild bit-identically from manifests; every code table's SHA-256 is recomputed against disk by `verify_fingerprints.py` (a CI gate). Seed variance measured directly: n=3 at both scales (d384 ±0.0053–0.0128; d512 ±0.0117–0.0172); differences under ~2 seed-sd are reported as unresolved.
 
-- **`rp`** takes the grid's code — collisions, truncation and all — and just *spreads* it across dimensions (the grid concentrates its energy in ~15 of 4,096 dimensions; spreading is free and loses nothing).
-- **`bag`** keeps the waves but removes the rotation (no order).
+## Results
 
-Result: **`rp` recovers 81% of wave's advantage.** At the same width, wave and rp are statistically indistinguishable. So most of the aggregate win is *spread*, not Fourier magic — we say so plainly. (`bag` collapses below the grid: order still matters.)
+### 1 · The window is a tokenizer constraint, and no unconstrained vocabulary satisfies it
 
-![Ablation](figures/fig6_ablation.png)
+| tokenizer | vocab | collided @16 | @32 | of which duplicates |
+|---|---:|---:|---:|---:|
+| Gemma-2-9B (SP) | 256,000 | 1,309 | 254 | ~254 |
+| Qwen2.5-7B (byte-BPE) | 151,665 | 1,068 | 209 | 0 |
+| **BrahmicTokenizer-131K** *(co-designed)* | 131,072 | 903 | **0** | 0 |
+| Mistral-7B (SP) | 32,000 | 254 | 250 | ~250 |
+| GPT-2 (byte-BPE) | 50,257 | 44 | 17 | 0 |
 
-What rescues the wave code: it doesn't *need* the width. At width 1536 it beats the grid's best setting by **0.09 nats with 4× fewer parameters**. Spread can be bought by random projection only at full width; the wave construction gets it cheaply.
+Zero-at-32 is unique to co-design. Mistral's max token is 25 bytes, so its 250 collisions at `pos_dim=32` can only be **exact duplicate byte strings** — confirmed by id arithmetic (`<0xNN>` = id 3+NN in every sampled pair). These aliases sit under 13.5% of Gemma's token stream; they are near-benign (the regular piece is emitted almost always) but unfixable by any byte codec, ours included. At `pos_dim=16` on the co-designed vocabulary: Malayalam loses 10.13% of its tokens, Devanagari 6.29%, Latin 0.02% — UTF-8 charges Indic scripts 3 bytes per character, and a conjunct like क्ष costs nine.
 
-![Efficiency](figures/fig7_efficiency.png)
+### 2 · The collision cost is causal and information-bound
 
-### Step 4 — Turn the effect on and off (the causal test)
+Collisions corrupt a token *as context* (the untied head keeps targets scoreable), so the measurement is loss on positions following a treated token, against a length-matched control that is provably distinct at every window in the sweep, differenced. Holding the same 903 tokens fixed across four window sizes:
 
-If collisions are really the mechanism, the collision penalty should scale with the *number* of collisions and vanish when there are none. `pos_dim` is a dial with a known dose: 5,335 merged tokens at 12, then 903, 93, and **0 at 32** — a placebo built by the tokenizer itself, not by us.
-
-We held the same 903 tokens fixed across all four models and measured the penalty on positions *right after* them (collisions corrupt a word as **context** — the output layer keeps every token scoreable as an answer, which fooled us for a full analysis round):
-
-| dose (tokens merged) | penalty | σ |
+| of the set merged | DiD | σ |
 |---:|---:|---:|
-| 903 of 903 | −0.34 | 25 |
-| 93 of 903 | −0.03 | 2.4 |
-| **0 of 903** | **+0.005** | **0.3** |
+| 100% (pos_dim 12) | −0.7226 | 46 |
+| 100% (16) | −0.3436 | 25 |
+| 10.3% (24) | −0.0333 | 2.4 |
+| **0% (32)** | **+0.0045** | **0.3** |
 
-**The effect is proportional to dose and is exactly zero at zero dose.** That's the difference between a correlation and a cause. (First attempt at this analysis had a contaminated control group that faked a placebo failure — the error and the fix are both preserved in `results/M4_M5_FINDINGS.md`.)
+Near-linear in dose; zero at the placebo the *tokenizer* built. The mechanism is the information, not the format: on collision contexts, dense (−0.456), ALBERT (−0.469), hash (−0.480), and both wave widths (−0.476/−0.478) all rescue, while **rp — the grid's exact information, densified — rescues −0.044**. The effect replicates at 12.1σ on Gemma's vocabulary, on Cyrillic tokens we did not choose, occupying 0.19% of the stream.
 
-![Dose response](figures/fig5_dose_response.png)
+### 3 · The cost lands where collision rates say it will
 
-### Step 5 — Scale it up and test the language claim (M3)
-
-Bigger model (3.6× the body), 539M tokens, and a **third language: Malayalam** — chosen because the audit says it's the worst-hit script, giving a prediction we registered before the data existed: *the gain should order Malayalam > Devanagari > Latin.* Plus the baselines a reviewer demands: hash embeddings and ALBERT at exactly matched parameter budgets.
-
-**The scoreboard** (single seed at this scale):
-
-| arm | emb params | loss | vs grid |
-|---|---:|---:|---:|
-| dense (32× budget, reference) | 67.1M | 4.1225 | −5.2% |
-| **wave, narrow (768)** | **0.79M** | **4.2339** | **−2.6%** |
-| ALBERT (rank 16) | 2.1M | 4.2485 | −2.3% |
-| rp | 2.1M | 4.2620 | −2.0% |
-| wave, matched width | 2.1M | 4.2646 | −1.9% |
-| one-hot grid | 2.1M | 4.3476 | — |
-| hash embeddings | 2.1M | 4.3697 | **+0.5%** |
-
-Three headlines:
-
-**The advantage *grew* with scale.** Every codec gap is larger at 38M than at 11M, and narrow-beats-wide replicated at both scales. The efficiency claim — better loss at 2.7× fewer parameters than the baseline — survived its scale test.
-
-**The script ladder came out exactly as registered, in every single arm** (relative BPB gain vs the grid):
+Relative bits-per-byte gain over the grid, all six M3 arms, ordered as registered before the Malayalam data existed:
 
 | | Latin (0.02% collide) | Devanagari (6.29%) | Malayalam (10.13%) |
 |---|---:|---:|---:|
 | wave768 | −0.06% | −3.9% | **−6.9%** |
-| dense | −3.2% | −6.0% | −8.3% |
+| dense (32× params) | −3.2% | −6.0% | −8.3% |
 
-Honest wrinkle: at matched width the frozen codecs are slightly *worse* than the grid on English — the win is an Indic story. The narrow wave768 breaks even on English while keeping the largest Indic gains of any matched arm.
+At matched width the frozen codecs are slightly *worse* than the grid on Latin; the aggregate win is a high-bytes-per-character story. On external vocabularies the victims are Cyrillic (Gemma) and Thai (Qwen): the window tax is universal, the currency depends on vocabulary composition. Bits per byte is the only cross-tokenizer axis — Qwen's per-token loss is 39% lower than Gemma's on the same text while its per-byte cost is *higher* (1.181 vs 1.159).
 
-**A natural experiment we never designed proved the mechanism best of all.** On positions right after a collided token, every arm that *can* tell those tokens apart — dense, ALBERT, hash, both waves, five unrelated architectures — gains ~0.47 nats. The one arm that provably *cannot* (`rp`, which carries the grid's exact code, just spread out) gains 0.04. **The penalty follows the information in the code, not its format.** It also explains why rp ties wave on the total score: rp is a touch better on the 96% of ordinary positions, wave is far better on the 2% of collision positions, and they cancel.
+### 4 · Most of the matched-width gain is spread, not Fourier structure
 
-Two baseline lessons for free: ALBERT is genuinely strong (per-token learned factors — but its cost grows with vocabulary size, `V·r`, while the codec's doesn't contain `V` at all; whether wave768 beats it is a ~1σ call we won't make on one seed). Hash embeddings *fix* the collisions but lose overall — packing 131K tokens into 3,584 buckets creates a 37-way collision everywhere. Dense codes only help if they don't destroy identity to get there.
+The grid's z-normalized code takes 2 distinct values, concentrating energy in ~15 of 4,096 effective dimensions; the wave code spreads over ~1,000. Passing the grid's code through a fixed invertible Gaussian (`rp`: identical information, collisions included, ~1,436 effective dimensions) recovers **81% of the wave code's gain**, and at matched width rp and wave are indistinguishable (0.9σ) — replicated at a second scale (0.2σ). Removing order (`bag`) lands below the grid. The construction needs both properties; the Fourier form's contribution at full width is nil.
 
----
+### 5 · Where the codec matters — and where it loses
 
-## What we claim — and what we don't
+What the phase construction buys is **spread at low width**. At d512, `wave768` (786K parameters) ties a learned rank-16 factorization (2.1M) — mean gap −0.0009 ± 0.0142 over three paired seeds — and beats the grid's best setting by 0.09–0.12 across scales. Under long-horizon training the edge over the grid contracts from −0.0995 (98M tokens) to a plateau of **−0.041** flat within ±0.0008 over the final 350M tokens: real, stable, modest.
 
-**Claimed.**
-1. The byte window is a hidden tokenizer design constraint; where violated, it merges 903 real tokens permanently, ~98% of them Indic.
-2. The phase code beats the grid by 0.067 ± 0.006 over three seeds, and by 0.09 nats using **4× fewer parameters** at each side's best setting — a gap that *grows* at 3.6× scale.
-3. The collision penalty is **causal** (dose-response, zero at zero dose) and **information-bound** (the rp natural experiment).
-4. The gain orders across scripts exactly as collision rates predict: Malayalam > Devanagari > Latin, in all six arms.
+**In a conventional untied architecture the codec is not the practical choice**: a tied-embedding baseline — a learned input representation borrowing the output head's parameters — beats the grid by −0.123 and wave768 by −0.081 at 745M tokens. Tying is undefined in output-head-free designs, which is precisely the architecture where byte codecs' parameter accounting becomes real (~10–12M total embedding cost against ~0.5B conventional at V=131K, d=4096). The codec's standing claims in conventional settings are structural: no `V` in its cost, no per-token state, compositional codes, and the collision/fairness results above.
 
-**Not claimed.**
-- That the Fourier construction explains the matched-width win — 81% of it is representational spread, and rp ties wave there.
-- That this beats a dense table (it doesn't; dense leads by ~5% with 32× the parameters), or that wave768 beats ALBERT (unresolved at one seed).
-- That anything here transfers to frontier scale, or that validation loss — the metric most favourable to a dense table — is the final word.
+### 6 · Short-budget comparisons overstate every gap
 
-**Withdrawn along the way** (kept in the findings sheets): "wave is insensitive to pos_dim" died at 1.5σ once we measured seed noise; a contaminated control briefly faked a placebo failure in the dose experiment.
+Across three arms and 93 evaluation points each, gaps to the baseline peak by 66–100M tokens and compress **2–3×** before plateauing (wave768: −0.0995 → −0.041; tied: −0.387 → −0.12). The early crossover (codec behind until ~1,200 steps, ahead after) replicated on a new corpus. Any embedding comparison near 1:1 token:parameter ratios should expect contraction of this order before its gaps become claims.
 
----
+## Negative results and withdrawn claims
 
-## Reproduce
+Kept in the main text because they are the credibility of everything above.
+
+- *"The gap at 750M tokens retains ≥50% of its 98M value"* — **registered, failed** (41.6%).
+- *"wave768 beats ALBERT"* — **registered, falsified**: a tie (sign flip at seed 1338), albeit at 37% of ALBERT's budget.
+- *"Wave is insensitive to `pos_dim`" / "smaller wave is monotonically better"* — withdrawn at 1.5σ once seed noise was measured; the narrow-beats-matched *sign* is 4-for-4 across settings but individually unresolved.
+- *"Hash embeddings lose overall" / "ALBERT beats wave@4096"* — downgraded to unresolved at the measured d512 noise floor (~0.021, 1.5× the d384 floor: noise does not transfer down with scale).
+- A contaminated control (66% treated at the highest dose) briefly produced a spurious 3.7σ placebo failure; the error, diagnosis, and fix are preserved in the M4/M5 sheet.
+
+## Limitations
+
+Single seed on most individual arms (three seeds on the four core contrasts); one model family; 11–38M bodies; validation loss and BPB only — the axes where a dense table is strongest and the codec's structural properties (unseen tokens, robustness) are untested; BPB *levels* across scripts are corpus-confounded; the M6 cross-tokenizer BPB comparison is confounded by token-matched (byte-mismatched) training exposure; the aliasing floor's harmlessness is argued from emission rarity, not measured.
+
+## Reproducibility
 
 ```bash
-pip install -e . && pytest -q                     # 23 contract tests
-python experiments/m1_collision_audit.py --byte-source both      # 2 min, no GPU
-
-# training grids (~30 GPU-hours total on one RTX 3060) — see findings sheets
-# M2: configs/m2_*  ·  M4: configs/m4_*  ·  M5: configs/m5_*  ·  M3: configs/m3_*
-# frozen arms train via m2_tiny_train.py; ablations via m5_train.py; M3 via m3_train.py
-
-# analysis (no training; first call caches, the rest are instant)
-python experiments/patched.py m2_bucket_analysis --bucket-by prev-collision \
-    --root results/m3 --data data/m3 --baseline m3_onehot
-python experiments/patched.py m3_script_analysis --root results/m3 --data data/m3 --baseline m3_onehot
-python experiments/m4_dose_analysis.py
-python experiments/m2_figures.py && python experiments/m5_figures.py
+pip install -e . && pytest -q                 # 23 contract tests + fingerprint CI
+python experiments/m1_collision_audit.py --byte-source both     # 2 min, no GPU
+python experiments/m6_tokenizer_audit.py                        # any HF tokenizer
+# training grids: configs/ has one YAML per arm; entry points chain by milestone
+#   m2_tiny_train.py (frozen core) → m5_train.py → m3_train.py → mstab_train.py
+# analyses run under the full codec chain:
+python experiments/patched.py m2_bucket_analysis --bucket-by prev-collision --root results/m3 --data data/m3 --baseline m3_onehot
+python experiments/m4_dose_analysis.py && python experiments/mstab_curves.py
+python experiments/verify_fingerprints.py                       # tables vs disk
 ```
 
-Full commands per milestone: [M1](results/M1_FINDINGS.md) · [M2](results/M2_FINDINGS.md) · [M3](results/M3_FINDINGS.md) · [M4/M5](results/M4_M5_FINDINGS.md)
+Every figure regenerates from manifests and CSVs; none is hand-edited. Per-milestone commands, freezes, and registered predictions: the evidence sheets linked above.
 
-## Repository map
+## Repository
 
 ```
-src/kronecker_v2/       the library: codecs (base, wave, ablations, baselines),
-                        vocab, collisions, embedding, model, tables, eval/bpb
-experiments/            one thin runner per milestone; patched.py runs any
-                        analysis with the full codec chain installed
-configs/                one YAML per arm; arms differ ONLY in the codec block
-tests/                  23 contract tests (parameter parity is a test, not a claim)
-results/                findings sheets + every manifest, log and cache
-figures/                all regenerated by scripts; none hand-edited
+src/kronecker_v2/     codecs (grid adapter, wave, ablations, baselines), vocab,
+                      collisions, embedding, model, tables, eval/bpb
+experiments/          one thin runner per milestone; patched.py installs the
+                      codec chain for any analysis; verify_fingerprints.py (CI)
+configs/              one YAML per arm — arms differ only in the codec block
+results/              evidence sheets, manifests, caches, run ledger (RUNS.md)
 ```
 
-## Status and roadmap
+## Status
 
-| phase | question | status |
-|---|---|---|
-| M1 | how much does the window cost, on the real vocabulary? | **closed** |
-| M2 | does removing it help, at equal parameters? | **closed** — yes, 12× noise |
-| M4 | is the collision mechanism causal? | **closed** — dose-response, placebo clean |
-| M5 | what is the advantage made of, and what's the noise floor? | **closed** — 81% spread; ±0.013 |
-| M3 | does it survive scale, three languages, and real baselines? | **closed** — registered predictions passed |
-| M6 | do other tokenizers (Llama-3, Gemma, mT5) violate the window too? | designed, one night |
-| M7 | 124M × 2.5B-token replication of the reference protocol, 3 seeds | needs ~$100–200 rented compute |
-
-Plus one experiment M5 made necessary: a **learned** dense projection of the grid's code — the sharpest version of "how cheaply can spread be bought?"
-
-### What would change the conclusion
-
-Multi-seed M3 showing wave768 ≤ ALBERT; other tokenizers sitting naturally inside the window (M6); the efficiency gap closing at 124M (M7); or a learned projection matching wave768 at its width. Each is a designed run, not a hypothetical — the project is built so that a negative result is publishable rather than fatal.
+The audit, mechanism, fairness, decomposition, efficiency-boundary, and stability results are closed and frozen (tags `m1`–`m6-closed`, `mstab-closed`). Active direction: **decoder compatibility for the phase code** — an unbinding decode head against the consolidated encoder–decoder (output-head-free) architecture, where this codec's parameter accounting is decisive rather than dominated by tying. Secondary: seed replicates of the tied arm, a byte-matched M6 corpus, and the structural axes (unseen-token handling, robustness) that conventional loss cannot see.
