@@ -1,0 +1,30 @@
+# Stability run — the V1 baseline, long-horizon
+# d384 on the three-language M3 corpus, 7.7x the M2 step budget, val every 250
+# steps: the gap-vs-tokens curve is the result. Standalone config (shallow merge).
+model:
+  block_size: 1024
+  vocab_size: 131072
+  n_layer: 6
+  n_head: 6
+  d_model: 384
+  dropout: 0.0
+data:
+  dir: data/m3
+  tables_dir: data/tables
+codec: {name: onehot, pos_dim: 16, table: onehot16}
+train:
+  device: null
+  batch_size: 4
+  grad_accum: 8
+  max_steps: 23000
+  lr: 6.0e-4
+  warmup: 200
+  min_lr_frac: 0.1
+  weight_decay: 0.1
+  grad_clip: 1.0
+  eval_every: 250
+  eval_iters: 50
+  log_every: 50
+  seed: 1337
+  data_seed: 42
+out_root: results/mstab

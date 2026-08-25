@@ -61,3 +61,30 @@ P: the paired wave768 - albert gap at d512 stays negative over 3 seeds with
 | 2026-08-18 | m2 | m3_s1339_wave768 | 1339 | 06b4394 | wave768_l2 | 4.2187 | results\m3_seeds\m3_s1339_wave768 |
 | 2026-08-18 | m2 | m3_s1339_albert | 1339 | 06b4394 | dense | 4.2343 | results\m3_seeds\m3_s1339_albert |
 | 2026-08-18 | m2 | m6_qwen2.5-7b_wave768 | 1337 | 06b4394 | wave768_l2 | 2.6470 | results\m6\m6_qwen2.5-7b_wave768 |
+
+## Stability day — registered before the run
+P1: the wave768 - onehot gap at 750M tokens is still negative and at least
+    50% of its own value at 100M tokens (stability, self-referenced).
+P2: tied beats onehot. Tied vs wave768 we do NOT predict — it is the open
+    question. If tied <= wave768 on aggregate, the efficiency claim narrows
+    to the structural axes (no V in cost, compositionality) plus fairness.
+P3: wave768 starts behind onehot and crosses within ~2,500 steps, as in M2.
+
+## Stability day — registered before the run
+P1: the wave768 - onehot gap at 750M tokens is still negative and at least
+    50% of its own value at 100M tokens (stability, self-referenced).
+P2: tied beats onehot. Tied vs wave768 we do NOT predict — it is the open
+    question. If tied <= wave768 on aggregate, the efficiency claim narrows
+    to the structural axes (no V in cost, compositionality) plus fairness.
+P3: wave768 starts behind onehot and crosses within ~2,500 steps, as in M2.
+
+## Stability day — registered before the run
+P1: the wave768 - onehot gap at 750M tokens is still negative and at least
+    50% of its own value at 100M tokens (stability, self-referenced).
+P2: tied beats onehot. Tied vs wave768 we do NOT predict — it is the open
+    question. If tied <= wave768 on aggregate, the efficiency claim narrows
+    to the structural axes (no V in cost, compositionality) plus fairness.
+P3: wave768 starts behind onehot and crosses within ~2,500 steps, as in M2.
+| 2026-08-25 | m2 | mstab_onehot | 1337 | de37daa | onehot16 | 3.6356 | results\mstab\mstab_onehot |
+| 2026-08-25 | m2 | mstab_wave768 | 1337 | de37daa | wave768_l2 | 3.5938 | results\mstab\mstab_wave768 |
+| 2026-08-25 | m2 | mstab_tied | 1337 | de37daa | dense | 3.5130 | results\mstab\mstab_tied |

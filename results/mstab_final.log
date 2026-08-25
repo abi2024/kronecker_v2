@@ -1,0 +1,6 @@
+  mstab_onehot      92 evals, through step 22,750 (745M tokens), latest val 3.6372
+  mstab_tied        92 evals, through step 22,750 (745M tokens), latest val 3.5147
+  mstab_wave768     92 evals, through step 22,750 (745M tokens), latest val 3.5952
+  gap tied       last-5-evals mean -0.1225 (sd 0.0007)
+  gap wave768    last-5-evals mean -0.0414 (sd 0.0004)
+wrote results\mstab\stability_curves.png
