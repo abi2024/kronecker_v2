@@ -1,0 +1,29 @@
+# Seed replicate — one-hot baseline at d512, completing the fully paired
+# 3-seed wave768-vs-onehot contrast at scale. Standalone (shallow merge).
+model:
+  block_size: 1024
+  vocab_size: 131072
+  n_layer: 12
+  n_head: 8
+  d_model: 512
+  dropout: 0.0
+data:
+  dir: data/m3
+  tables_dir: data/tables
+codec: {name: onehot, pos_dim: 16, table: onehot16}
+train:
+  device: null
+  batch_size: 4
+  grad_accum: 8
+  max_steps: 3000
+  lr: 6.0e-4
+  warmup: 200
+  min_lr_frac: 0.1
+  weight_decay: 0.1
+  grad_clip: 1.0
+  eval_every: 250
+  eval_iters: 50
+  log_every: 20
+  seed: 1339
+  data_seed: 44
+out_root: results/m3_seeds
