@@ -1,0 +1,246 @@
+{
+  "m2\\m2_dense": {
+    "table": null,
+    "status": "no-table (learned arm)"
+  },
+  "m2\\m2_onehot": {
+    "table": "onehot16",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\onehot16.pt",
+    "sha256": "d5a07e72674e4eae52c9eadd917aa3cf23073a0564320b6d9e471d65b41fda98",
+    "status": "bound"
+  },
+  "m2\\m2_wave_l2": {
+    "table": "wave2048_l2",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\wave2048_l2.pt",
+    "sha256": "9006577a0885990a7d8e1fddb5e0de0d469735fa194660354f27acd6637f3b3d",
+    "status": "bound"
+  },
+  "m2\\m2_wave_sqrtlen": {
+    "table": "wave2048_sqrt_len",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\wave2048_sqrt_len.pt",
+    "sha256": "255a6dac3d7078c66bf7c83687d322996252fd6d1c22f729dcfc2807fe807de6",
+    "status": "bound"
+  },
+  "m2\\m2_wave_znorm": {
+    "table": "wave2048_znorm",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\wave2048_znorm.pt",
+    "sha256": "6d7f6b2f13c72676305a2e1df1ceaa3f09fe0ce24f95668e42843bffa3efdcaf",
+    "status": "bound"
+  },
+  "m3\\m3_albert": {
+    "table": null,
+    "status": "no-table (learned arm)"
+  },
+  "m3\\m3_dense": {
+    "table": null,
+    "status": "no-table (learned arm)"
+  },
+  "m3\\m3_hash": {
+    "table": null,
+    "status": "no-table (learned arm)"
+  },
+  "m3\\m3_onehot": {
+    "table": "onehot16",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\onehot16.pt",
+    "sha256": "d5a07e72674e4eae52c9eadd917aa3cf23073a0564320b6d9e471d65b41fda98",
+    "status": "bound"
+  },
+  "m3\\m3_rp": {
+    "table": "rp16_l2",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\rp16_l2.pt",
+    "sha256": "67b13abe15bfc516431e6d067b5670be9ef20372496a6527f0e197aa96683ed1",
+    "status": "bound"
+  },
+  "m3\\m3_wave": {
+    "table": "wave2048_l2",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\wave2048_l2.pt",
+    "sha256": "9006577a0885990a7d8e1fddb5e0de0d469735fa194660354f27acd6637f3b3d",
+    "status": "bound"
+  },
+  "m3\\m3_wave768": {
+    "table": "wave768_l2",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\wave768_l2.pt",
+    "sha256": "1fc8c5c7f9beef68491e3b2b54ad706872dc5872004d8c64c5c83b93aa368c3b",
+    "status": "bound"
+  },
+  "m3_seeds\\m3_s1338_albert": {
+    "table": null,
+    "status": "no-table (learned arm)"
+  },
+  "m3_seeds\\m3_s1338_onehot": {
+    "table": "onehot16",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\onehot16.pt",
+    "sha256": "d5a07e72674e4eae52c9eadd917aa3cf23073a0564320b6d9e471d65b41fda98",
+    "status": "bound"
+  },
+  "m3_seeds\\m3_s1338_wave768": {
+    "table": "wave768_l2",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\wave768_l2.pt",
+    "sha256": "1fc8c5c7f9beef68491e3b2b54ad706872dc5872004d8c64c5c83b93aa368c3b",
+    "status": "bound"
+  },
+  "m3_seeds\\m3_s1339_albert": {
+    "table": null,
+    "status": "no-table (learned arm)"
+  },
+  "m3_seeds\\m3_s1339_onehot": {
+    "table": "onehot16",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\onehot16.pt",
+    "sha256": "d5a07e72674e4eae52c9eadd917aa3cf23073a0564320b6d9e471d65b41fda98",
+    "status": "bound"
+  },
+  "m3_seeds\\m3_s1339_wave768": {
+    "table": "wave768_l2",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\wave768_l2.pt",
+    "sha256": "1fc8c5c7f9beef68491e3b2b54ad706872dc5872004d8c64c5c83b93aa368c3b",
+    "status": "bound"
+  },
+  "m4\\m4_p12_onehot": {
+    "table": "onehot12",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\onehot12.pt",
+    "sha256": "b67753b9dc8e242a2f70b1dfcd246df8ab1df3aebf487a4c20d843473b9d1d4d",
+    "status": "bound"
+  },
+  "m4\\m4_p12_wave": {
+    "table": "wave1536_l2",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\wave1536_l2.pt",
+    "sha256": "7bf433892302b72cf17493e637687555c91105c49b6e8ba1a56fccf8f6f97c26",
+    "status": "bound"
+  },
+  "m4\\m4_p24_onehot": {
+    "table": "onehot24",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\onehot24.pt",
+    "sha256": "c287b5fd0b38dd1ba2b2bc3b5fcff910b253de68c0507be4989edab87216b1c1",
+    "status": "bound"
+  },
+  "m4\\m4_p24_wave": {
+    "table": "wave3072_l2",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\wave3072_l2.pt",
+    "sha256": "c94260841c160fdb6fa8e38ec789897055cf27dc520cf21869595f8fe6a46142",
+    "status": "bound"
+  },
+  "m4\\m4_p32_onehot": {
+    "table": "onehot32",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\onehot32.pt",
+    "sha256": "1701ef64656a51c91e7fe0ea4ce3aca8771606db029e42ee7fd7a98099ce587f",
+    "status": "bound"
+  },
+  "m4\\m4_p32_wave": {
+    "table": "wave4096_l2",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\wave4096_l2.pt",
+    "sha256": "4853ef9dec08311562058fac809a936ba77fa025e5a4cfd379d68f48e7b34163",
+    "status": "bound"
+  },
+  "m5\\m5_bag": {
+    "table": "bag2048_l2",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\bag2048_l2.pt",
+    "sha256": "e986dfb93d07f60c96978eeee262453618beebe039db12faf8450fc7a6b4365a",
+    "status": "bound"
+  },
+  "m5\\m5_rp": {
+    "table": "rp16_l2",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\rp16_l2.pt",
+    "sha256": "67b13abe15bfc516431e6d067b5670be9ef20372496a6527f0e197aa96683ed1",
+    "status": "bound"
+  },
+  "m5\\m5_s1338_onehot": {
+    "table": "onehot16",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\onehot16.pt",
+    "sha256": "d5a07e72674e4eae52c9eadd917aa3cf23073a0564320b6d9e471d65b41fda98",
+    "status": "bound"
+  },
+  "m5\\m5_s1338_wave": {
+    "table": "wave2048_l2",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\wave2048_l2.pt",
+    "sha256": "9006577a0885990a7d8e1fddb5e0de0d469735fa194660354f27acd6637f3b3d",
+    "status": "bound"
+  },
+  "m5\\m5_s1339_onehot": {
+    "table": "onehot16",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\onehot16.pt",
+    "sha256": "d5a07e72674e4eae52c9eadd917aa3cf23073a0564320b6d9e471d65b41fda98",
+    "status": "bound"
+  },
+  "m5\\m5_s1339_wave": {
+    "table": "wave2048_l2",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\wave2048_l2.pt",
+    "sha256": "9006577a0885990a7d8e1fddb5e0de0d469735fa194660354f27acd6637f3b3d",
+    "status": "bound"
+  },
+  "m5\\m5_wave1024": {
+    "table": "wave1024_l2",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\wave1024_l2.pt",
+    "sha256": "ecd71e9542b06143604ae67373033b020883d78e56a43efdcb1400f567490210",
+    "status": "bound"
+  },
+  "m5\\m5_wave768": {
+    "table": "wave768_l2",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\wave768_l2.pt",
+    "sha256": "1fc8c5c7f9beef68491e3b2b54ad706872dc5872004d8c64c5c83b93aa368c3b",
+    "status": "bound"
+  },
+  "m5_seeds\\m5_s1338_wave768": {
+    "table": "wave768_l2",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\wave768_l2.pt",
+    "sha256": "1fc8c5c7f9beef68491e3b2b54ad706872dc5872004d8c64c5c83b93aa368c3b",
+    "status": "bound"
+  },
+  "m5_seeds\\m5_s1339_wave768": {
+    "table": "wave768_l2",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\wave768_l2.pt",
+    "sha256": "1fc8c5c7f9beef68491e3b2b54ad706872dc5872004d8c64c5c83b93aa368c3b",
+    "status": "bound"
+  },
+  "m6\\m6_gemma-2-9b_onehot": {
+    "table": "onehot16",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\m6_gemma-2-9b\\onehot16.pt",
+    "sha256": "dd2b561c3bacfe59a956c3a32ea642218f8ccebbf3367bb8a5e50192cfcb94b3",
+    "status": "bound"
+  },
+  "m6\\m6_gemma-2-9b_wave": {
+    "table": "wave2048_l2",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\m6_gemma-2-9b\\wave2048_l2.pt",
+    "sha256": "017bdc4ce592bc0b337b92740e1ef56482fa41a9275155ee345ebb6e3aa60c4e",
+    "status": "bound"
+  },
+  "m6\\m6_gemma-2-9b_wave768": {
+    "table": "wave768_l2",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\m6_gemma-2-9b\\wave768_l2.pt",
+    "sha256": "7571566d8c55b33e0090e2de4d053e17d246fee449f1a3430f4a80a5175661a9",
+    "status": "bound"
+  },
+  "m6\\m6_qwen2.5-7b_onehot": {
+    "table": "onehot16",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\m6_qwen2.5-7b\\onehot16.pt",
+    "sha256": "aeb7f6f27788cffa642bdbe4af75fabb3662a860c78c3e805a59dc3d5958d915",
+    "status": "bound"
+  },
+  "m6\\m6_qwen2.5-7b_wave": {
+    "table": "wave2048_l2",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\m6_qwen2.5-7b\\wave2048_l2.pt",
+    "sha256": "006821e167477dd29b8b462470775557fffaf599446bee41c7a691de7904de2c",
+    "status": "bound"
+  },
+  "m6\\m6_qwen2.5-7b_wave768": {
+    "table": "wave768_l2",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\m6_qwen2.5-7b\\wave768_l2.pt",
+    "sha256": "76a0bf763c5a61748300a7e9ce89bbe56a2fbdd28f9fccb84b3d5042f4c22170",
+    "status": "bound"
+  },
+  "mstab\\mstab_onehot": {
+    "table": "onehot16",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\onehot16.pt",
+    "sha256": "d5a07e72674e4eae52c9eadd917aa3cf23073a0564320b6d9e471d65b41fda98",
+    "status": "bound"
+  },
+  "mstab\\mstab_tied": {
+    "table": null,
+    "status": "no-table (learned arm)"
+  },
+  "mstab\\mstab_wave768": {
+    "table": "wave768_l2",
+    "file": "C:\\Users\\ANT-PC\\Desktop\\ERA V5\\kroneker_v2\\data\\tables\\wave768_l2.pt",
+    "sha256": "1fc8c5c7f9beef68491e3b2b54ad706872dc5872004d8c64c5c83b93aa368c3b",
+    "status": "bound"
+  }
+}

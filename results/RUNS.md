@@ -89,3 +89,7 @@ P3: wave768 starts behind onehot and crosses within ~2,500 steps, as in M2.
 | 2026-08-25 | m2 | mstab_wave768 | 1337 | de37daa | wave768_l2 | 3.5938 | results\mstab\mstab_wave768 |
 | 2026-08-25 | m2 | mstab_tied | 1337 | de37daa | dense | 3.5130 | results\mstab\mstab_tied |
 | 2026-08-25 | m2 | m5_s1338_wave768 | 1338 | 1076848 | wave768_l2 | 4.7257 | results\m5_seeds\m5_s1338_wave768 |
+| 2026-08-25 | m2 | m5_s1339_wave768 | 1339 | 638308c | wave768_l2 | 4.7553 | results\m5_seeds\m5_s1339_wave768 |
+| 2026-08-26 | m2 | m5_s1339_wave768 | 1339 | 638308c | wave768_l2 | 4.7480 | results\m5_seeds\m5_s1339_wave768 |
+| 2026-08-26 | m2 | m3_s1338_onehot | 1338 | 638308c | onehot16 | 4.3037 | results\m3_seeds\m3_s1338_onehot |
+| 2026-08-26 | m2 | m3_s1339_onehot | 1339 | 638308c | onehot16 | 4.3179 | results\m3_seeds\m3_s1339_onehot |

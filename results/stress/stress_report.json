@@ -1,0 +1,15 @@
+{
+  "A": 129013,
+  "B": 128645,
+  "C": 30389,
+  "arms": {
+    "m2_onehot": {
+      "gate": "PASS",
+      "occurrences": 0
+    },
+    "m2_wave_l2": {
+      "gate": "PASS",
+      "occurrences": 0
+    }
+  }
+}

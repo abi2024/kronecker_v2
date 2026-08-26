@@ -1,0 +1,16 @@
+14:42:31  results\m5_seeds   GPU 1% busy | 1.0/12.0 GB | 61C
+--------------------------------------------------------------
+DONE m5_s1338_wave768    val 4.7257  60 min
+DONE m5_s1339_wave768    val 4.7480  56 min
+--------------------------------------------------------------
+2 done, 0 running, 0 queued
+14:42:31  results\m3_seeds   GPU 1% busy | 1.0/12.0 GB | 61C
+--------------------------------------------------------------
+DONE m3_s1338_albert     val 4.2143  85 min
+DONE m3_s1338_onehot     val 4.3037  83 min
+DONE m3_s1338_wave768    val 4.2417  85 min
+DONE m3_s1339_albert     val 4.2343  85 min
+DONE m3_s1339_onehot     val 4.3179  83 min
+DONE m3_s1339_wave768    val 4.2187  85 min
+--------------------------------------------------------------
+6 done, 0 running, 0 queued

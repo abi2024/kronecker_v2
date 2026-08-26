@@ -1,0 +1,26 @@
+=== capacity curve ===
+  len  onehot@16  wave@2048   wave@768
+   16     0.9373     0.9375     0.9383
+   24     1.0000     0.9586     0.9586
+   32     1.0000     0.9690     0.9690
+   48     1.0000     0.9791     0.9795
+   64     1.0000     0.9843     0.9844
+   96     1.0000     0.9896     0.9896
+  128     1.0000     0.9922     0.9921
+  192     1.0000     0.9948     0.9947
+  256     1.0000     0.9961     0.9960
+
+one-hot cosine == 1.0 exactly at every length > 16: True  (provably blind to suffix edits past the window)
+wrote C:\Users\ANT-PC\Desktop\ERA V5\kroneker_v2\results\stress/capacity.csv, capacity_curve.png
+
+=== swap probe ===  A=129013 B=128645 (collided@16)  C=30389 (control)
+
+m2_onehot: reconstruction gate |4.8527 - 4.8129| = 0.0399 PASS
+  table rows A,B identical: True
+  no usable occurrences of A in val — probe skipped
+
+m2_wave_l2: reconstruction gate |4.7945 - 4.7532| = 0.0413 PASS
+  table rows A,B identical: False
+  no usable occurrences of A in val — probe skipped
+
+wrote C:\Users\ANT-PC\Desktop\ERA V5\kroneker_v2\results\stress/stress_report.json
