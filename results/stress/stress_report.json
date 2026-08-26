@@ -1,15 +1,32 @@
 {
-  "A": 129013,
-  "B": 128645,
-  "C": 30389,
+  "A": 10048,
+  "B": 43897,
+  "C": 23453,
   "arms": {
     "m2_onehot": {
       "gate": "PASS",
-      "occurrences": 0
+      "occurrences": 8,
+      "collision": {
+        "max_abs_dlogit": 0.0,
+        "mean_dloss": 0.0
+      },
+      "control": {
+        "max_abs_dlogit": 14.786249160766602,
+        "mean_dloss": 0.02233356237411499
+      },
+      "receipt": true
     },
     "m2_wave_l2": {
       "gate": "PASS",
-      "occurrences": 0
+      "occurrences": 8,
+      "collision": {
+        "max_abs_dlogit": 9.03398323059082,
+        "mean_dloss": 0.008753061294555664
+      },
+      "control": {
+        "max_abs_dlogit": 12.263812065124512,
+        "mean_dloss": 0.009177446365356445
+      }
     }
   }
 }

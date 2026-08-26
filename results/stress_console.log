@@ -12,15 +12,19 @@
 
 one-hot cosine == 1.0 exactly at every length > 16: True  (provably blind to suffix edits past the window)
 wrote C:\Users\ANT-PC\Desktop\ERA V5\kroneker_v2\results\stress/capacity.csv, capacity_curve.png
+  A occurs 693x in val  (bytes b' \xe0\xa4\xb8\xe0\xa4\xb0\xe0\xa4\x95\xe0\xa4\xbe\xe0\xa4\xb0' vs b' \xe0\xa4\xb8\xe0\xa4\xb0\xe0\xa4\x95\xe0\xa4\xbe\xe0\xa4\xb0\xe0\xa5\x80')
 
-=== swap probe ===  A=129013 B=128645 (collided@16)  C=30389 (control)
+=== swap probe ===  A=10048 B=43897 (collided@16)  C=23453 (control)
 
 m2_onehot: reconstruction gate |4.8527 - 4.8129| = 0.0399 PASS
   table rows A,B identical: True
-  no usable occurrences of A in val — probe skipped
+  collision  swap A->43897: max|Δlogit| 0.000e+00   meanΔloss +0.0000   (8 contexts)
+  control    swap A->23453: max|Δlogit| 1.479e+01   meanΔloss +0.0223   (8 contexts)
+  RECEIPT (merged codes ⇒ bit-identical forwards): CONFIRMED
 
 m2_wave_l2: reconstruction gate |4.7945 - 4.7532| = 0.0413 PASS
   table rows A,B identical: False
-  no usable occurrences of A in val — probe skipped
+  collision  swap A->43897: max|Δlogit| 9.034e+00   meanΔloss +0.0088   (8 contexts)
+  control    swap A->23453: max|Δlogit| 1.226e+01   meanΔloss +0.0092   (8 contexts)
 
 wrote C:\Users\ANT-PC\Desktop\ERA V5\kroneker_v2\results\stress/stress_report.json

@@ -131,15 +131,31 @@ def load_arm(run_dir: Path, device: str):
     return model, cfg
 
 
-def pick_tokens(tokenizer: str, V: int):
+def pick_tokens(tokenizer: str, V: int, val_ids: np.ndarray):
+    """Pick A = the collided@16 token that actually OCCURS most in val (the
+    largest group is often a rare token that never appears — only A needs
+    occurrences; B and C are swap targets). Exact-duplicate groups are
+    excluded: identical bytes merge in EVERY byte codec, so they carry no
+    onehot-vs-wave contrast."""
     from kronecker_v2.vocab import load_tokenizer, vocab_bytes
     vb = vocab_bytes(load_tokenizer(tokenizer), V, source="raw")
-    groups = sorted(exact_collisions(vb, 16).values(), key=len, reverse=True)
-    A, B = groups[0][0], groups[0][1]
+    counts = np.bincount(val_ids.astype(np.int64), minlength=V)
+    best = None
+    for g in exact_collisions(vb, 16).values():
+        if len({vb[t] for t in g}) < 2:          # exact duplicates — skip
+            continue
+        a = max(g, key=lambda t: counts[t])
+        if counts[a] >= 3 and (best is None or counts[a] > counts[best[0]]):
+            b = max((t for t in g if vb[t] != vb[a]),
+                    key=lambda t: counts[t])
+            best = (a, b)
+    assert best, "no collided@16 token with >=3 val occurrences"
+    A, B = best
     coll = {t for g in exact_collisions(vb, 12).values() for t in g}
     ctrl = [i for i in range(V)
             if len(truncate(vb[i], 16)) < len(vb[i]) and i not in coll]
     C = min(ctrl, key=lambda i: abs(len(vb[i]) - len(vb[A])))
+    print(f"  A occurs {counts[A]}x in val  (bytes {vb[A]!r} vs {vb[B]!r})")
     return A, B, C, vb
 
 
@@ -179,12 +195,13 @@ def main() -> None:
     device = "cuda" if torch.cuda.is_available() else "cpu"
     meta = json.loads((args.data / "meta.json").read_text())
     V = meta["vocab_size"]
+    val_ids = np.memmap(args.data / "val.bin", dtype=np.uint32, mode="r")
     if args.pair:
         A, B = args.pair
         C = args.control
         assert C is not None, "--control required with --pair"
     else:
-        A, B, C, _ = pick_tokens(args.tokenizer, V)
+        A, B, C, _ = pick_tokens(args.tokenizer, V, np.asarray(val_ids))
     print(f"\n=== swap probe ===  A={A} B={B} (collided@16)  C={C} (control)")
 
     report = {"A": A, "B": B, "C": C, "arms": {}}
