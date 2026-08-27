@@ -38,9 +38,11 @@ Compute: one RTX 3060, ~60 GPU-hours total. Every headline claim was pre-registe
 
 ## Method
 
-**Codec.** Each byte value has a fixed random phasor; position `p` multiplies its phase (fractional power encoding, after Plate's HRR). Bind by phase addition, bundle by summation, ℓ2-normalize. The codec is frozen; only a shared projection trains. Removing the rotation (a pure bag of bytes) makes anagrams identical and trains *worse than the grid* — order binding is load-bearing. The code is **suffix-preserving and capacity-limited with graceful degradation**, not losslessly unlimited: cosine separation of last-byte edits decays smoothly with token length (measured in `results/stress/capacity_curve.png`), whereas the grid is *exactly* blind to every edit past its window — cosine 1.0 to the last bit, and max |Δlogits| = 0 on collision swaps in trained models.
+**Codec.** Each byte value has a fixed random phasor; position `p` multiplies its phase (fractional power encoding, after Plate's HRR). Bind by phase addition, bundle by summation, ℓ2-normalize. The codec is frozen; only a shared projection trains. Removing the rotation (a pure bag of bytes) makes anagrams identical and trains *worse than the grid* — order binding is load-bearing. The code is **suffix-preserving and capacity-limited with graceful degradation**, not losslessly unlimited: cosine separation of last-byte edits decays smoothly with token length (measured below; source artifact in results/stress/), whereas the grid is *exactly* blind to every edit past its window — cosine 1.0 to the last bit, and max |Δlogits| = 0 on collision swaps in trained models.
 
 **Protocol.** Arms differ only in the embedding module: same tokenizer, data order, and body initialization, verified by a body-state hash. Matched trainable-parameter budgets (at d512: 2,097,152 → ALBERT rank 16, hash 3,584 buckets). Predictions registered in `results/RUNS.md` before each run. Determinism from NumPy PCG64 pins tables, codecs, initialization, and batch order — all verified by `verify_fingerprints.py`, a CI gate recomputing every table's SHA-256 against disk; CUDA *training trajectories* are not bit-reproducible (same-seed reruns vary by ~0.007), so all inference uses the measured cross-seed floors: **n=3 at both scales** (d384 ±0.0053–0.0168; d512 ±0.0117–0.0224). Differences under ~2 seed-sd are reported as unresolved.
+
+![Suffix-edit separation vs token length](figures/capacity_curve.png)
 
 ## Results
 
@@ -105,13 +107,13 @@ wave768 reaches parity with the learned rank-16 factorization at **786K paramete
 
 **In a conventional untied architecture the codec is not the practical choice**: a tied-embedding baseline — a learned input representation borrowing the output head's parameters — beats the grid by −0.123 and wave768 by −0.081 at 745M tokens. Tying is undefined in output-head-free designs, which is precisely the architecture where byte codecs' parameter accounting becomes real (~10–12M total embedding cost against ~0.5B conventional at V=131K, d=4096). The codec's standing claims in conventional settings are structural: no `V` in its cost, no per-token state, compositional codes, and the collision/fairness results above.
 
-![Loss vs embedding parameters](figures/fig7_efficiency.png)
+![wave768 beats the grid's best setting at 4× fewer parameters](figures/fig7_efficiency.png)
 
 ### 6 · Short-budget comparisons overstate every gap
 
 Across three arms and 93 evaluation points each, gaps to the baseline peak by 66–100M tokens and compress **2–3×** before plateauing (wave768: −0.0995 → −0.041; tied: −0.387 → −0.12). The early crossover (codec behind until ~1,200 steps, ahead after) replicated on a new corpus. Any embedding comparison near 1:1 token:parameter ratios should expect contraction of this order before its gaps become claims.
 
-![Gap trajectories over 750M tokens](figures/fig10_stability_gap.png)
+![Gaps compress 2–3×, then hold; tied wins the conventional architecture.](figures/fig10_stability_gap.png)
 
 ## Negative results and withdrawn claims
 
@@ -128,7 +130,7 @@ Kept in the main text because they are the credibility of everything above.
 
 Three seeds on all five core contrasts; single seed on secondary arms. Same-seed CUDA reruns vary by ~0.007 (training is not bit-reproducible); all inference uses the larger cross-seed floors. One model family; 11–38M bodies; validation loss and BPB only — the axes where a dense table is strongest and the codec's structural properties (unseen tokens, robustness) are untested. BPB *levels* across scripts are corpus-confounded; the M6 cross-tokenizer BPB comparison is confounded by token-matched (byte-mismatched) training exposure. The aliasing floor's harmlessness is argued from emission rarity, not measured.
 
-![Suffix-edit separation vs token length](figures/capacity_curve.png)
+
 
 ## Reproducibility
 
