@@ -14,6 +14,8 @@ Interactive demo: [abi2024.github.io/kronecker_v2](https://abi2024.github.io/kro
 - **The phase code removes the window** and matches a learned factorization at 37% of its parameters — but a **tied-embedding baseline beats every frozen codec in conventional architectures**; the codec's parameter story is specific to designs with no output head.
 - **Short-budget comparisons overstate every gap 2–3×** before plateauing — measured on 93-point training curves, and applicable to any comparison made near 1:1 token:parameter ratios.
 
+![Every unconstrained tokenizer violates the byte window](figures/fig9_window_audit.png)
+
 ## Abstract
 
 Kronecker byte×position embeddings encode a token's first `pos_dim` bytes on a fixed grid; bytes past the window are dropped. We show this window is not a free parameter but a **tokenizer design constraint**: tokens sharing a truncated prefix receive permanently identical vectors, and the reference vocabulary avoids this at `pos_dim=32` only because it was built to (max token length exactly 32 bytes). At the reference paper's own `pos_dim=16`, 903 of 131,072 tokens collide — 98% of them Indic. Auditing five external tokenizers, **every unconstrained vocabulary carries permanent collisions even at 32 bytes**, and SentencePiece vocabularies additionally ship ~250 exact-duplicate byte strings (byte-fallback aliasing) that no byte codec can separate.
@@ -69,6 +71,8 @@ Near-linear in dose; zero at the placebo the *tokenizer* built. The mechanism is
 
 **The receipt** (`results/stress/stress_report.json`): in the trained baseline, swapping " सरकार" → " सरकारी" (693 real validation contexts sampled) changes the logits by **max |Δ| = 0.000e+00 — bit-identical forwards**, while swapping in a length-matched distinct token moves them by 14.8. The wave arm distinguishes both (9.0 / 12.3). The model does not merely struggle with these words; it provably cannot tell them apart.
 
+![Collision penalty vs dose — zero at zero](figures/fig5_dose_response.png)
+
 ### 3 · The cost lands where collision rates say it will
 
 Relative bits-per-byte gain over the grid, all six M3 arms, ordered as registered before the Malayalam data existed:
@@ -79,6 +83,8 @@ Relative bits-per-byte gain over the grid, all six M3 arms, ordered as registere
 | dense (32× params) | −3.2% | −6.0% | −8.3% |
 
 At matched width the frozen codecs are slightly *worse* than the grid on Latin; the aggregate win is a high-bytes-per-character story. On external vocabularies the victims are Cyrillic (Gemma) and Thai (Qwen): the window tax is universal, the currency depends on vocabulary composition. Bits per byte is the only cross-tokenizer axis — Qwen's per-token loss is 39% lower than Gemma's on the same text while its per-byte cost is *higher* (1.181 vs 1.159).
+
+![The gain follows each script's collision rate](figures/fig8_script_ladder.png)
 
 ### 4 · Most of the matched-width gain is spread, not Fourier structure
 
@@ -99,9 +105,13 @@ wave768 reaches parity with the learned rank-16 factorization at **786K paramete
 
 **In a conventional untied architecture the codec is not the practical choice**: a tied-embedding baseline — a learned input representation borrowing the output head's parameters — beats the grid by −0.123 and wave768 by −0.081 at 745M tokens. Tying is undefined in output-head-free designs, which is precisely the architecture where byte codecs' parameter accounting becomes real (~10–12M total embedding cost against ~0.5B conventional at V=131K, d=4096). The codec's standing claims in conventional settings are structural: no `V` in its cost, no per-token state, compositional codes, and the collision/fairness results above.
 
+![Loss vs embedding parameters](figures/fig7_efficiency.png)
+
 ### 6 · Short-budget comparisons overstate every gap
 
 Across three arms and 93 evaluation points each, gaps to the baseline peak by 66–100M tokens and compress **2–3×** before plateauing (wave768: −0.0995 → −0.041; tied: −0.387 → −0.12). The early crossover (codec behind until ~1,200 steps, ahead after) replicated on a new corpus. Any embedding comparison near 1:1 token:parameter ratios should expect contraction of this order before its gaps become claims.
+
+![Gap trajectories over 750M tokens](figures/fig10_stability_gap.png)
 
 ## Negative results and withdrawn claims
 
@@ -117,6 +127,8 @@ Kept in the main text because they are the credibility of everything above.
 ## Limitations
 
 Three seeds on all five core contrasts; single seed on secondary arms. Same-seed CUDA reruns vary by ~0.007 (training is not bit-reproducible); all inference uses the larger cross-seed floors. One model family; 11–38M bodies; validation loss and BPB only — the axes where a dense table is strongest and the codec's structural properties (unseen tokens, robustness) are untested. BPB *levels* across scripts are corpus-confounded; the M6 cross-tokenizer BPB comparison is confounded by token-matched (byte-mismatched) training exposure. The aliasing floor's harmlessness is argued from emission rarity, not measured.
+
+![Suffix-edit separation vs token length](figures/capacity_curve.png)
 
 ## Reproducibility
 
